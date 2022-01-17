@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+{% load django_vite %}
+{% block css %}
+  <link href="https://unpkg.com/primeicons/primeicons.css" rel="stylesheet">
+{% endblock %}
+{% block js %}
+{#  {% vite_hmr_client %}#}
+  <script type="module" src="http://localhost:3000/@vite/client"></script>
+{% endblock %}
+
+{% block content %}
+  <div id="app"></div>
+  <script type="module" src="http://localhost:3000/src/main.ts"></script>
+  {% vite_legacy_polyfills %}
+{% endblock %}

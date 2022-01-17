@@ -1,0 +1,35 @@
+{% extends 'auth_layout.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="row">
+        <h3 class="titles">
+            <span class="sm-title">welcome</span>
+            <span class="md-title">reactool sign in</span>
+        </h3>
+        <div class="form-container">
+            <form method="POST">
+                {% csrf_token %}
+                <div id="email" class="control-group">
+                    <label id="username" class="controls">
+                        <i class="fas fa-envelope"></i>
+                        <input type="text"
+                               name="username" autofocus=""
+                               autocapitalize="none"
+                               autocomplete="username"
+                               placeholder="tanaka"
+                               class="textinput textInput"
+                               required="" id="username">
+                    </label>
+                </div>
+                <div id="div_id_password" class="control-group">
+                    <label id="password" class="controls">
+                        <i class="fas fa-key"></i>
+                        <input type="password" name="password" autocomplete="current-password" placeholder="password" class="text-input textInput" required="" id="password">
+                    </label>
+                </div>
+                <button type="submit" class="btn--submit">sign in</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

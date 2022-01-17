@@ -1,0 +1,163 @@
+import os
+from pathlib import Path
+from decouple import config
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+SECRET_KEY = config("SECRET_KEY")
+
+DEBUG = config("DEBUG", default=True, cast=bool)
+
+ALLOWED_HOSTS = ["*"]
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = ['http://localhost:3000', "http://192.168.100.84:3000"]
+X_FRAME_OPTIONS = 'ALLOWALL'
+XS_SHARING_ALLOWED_METHODS = ['POST', 'GET', 'OPTIONS', 'PUT', 'DELETE']
+
+INSTALLED_APPS = [
+  'django.contrib.admin',
+  'django.contrib.auth',
+  'django.contrib.contenttypes',
+  'django.contrib.sessions',
+  'django.contrib.messages',
+  'django.contrib.staticfiles',
+  'django.contrib.sites',
+
+  "companies", "accounts", "salons", "projects", "routes", "sumaipad", "permissions",
+  "rest_framework", "allauth", 'rest_framework_api_key', 'rest_framework_simplejwt', 'crispy_forms',
+  "corsheaders", "django_cleanup.apps.CleanupConfig", "django_vite",
+
+]
+SITE_ID = 1
+AUTH_USER_MODEL = "accounts.CustomUser"
+ACCOUNT_ADAPTER = ("allauth.account.adapter.DefaultAccountAdapter",)
+ACCOUNT_EMAIL_VERIFICATION = "none"
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = False
+AUTHENTICATION_BACKENDS = (
+  "django.contrib.auth.backends.ModelBackend",
+  "allauth.account.auth_backends.AuthenticationBackend",
+)
+LOGIN_URL = "/accounts/login/"
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/accounts/login/"
+
+DJANGORESIZED_DEFAULT_SIZE = [700, 700]
+DJANGORESIZED_DEFAULT_QUALITY = 75
+DJANGORESIZED_DEFAULT_KEEP_META = True
+DJANGORESIZED_DEFAULT_FORCE_FORMAT = 'JPEG'
+DJANGORESIZED_DEFAULT_FORMAT_EXTENSIONS = {'JPEG': ".jpg"}
+DJANGORESIZED_DEFAULT_NORMALIZE_ROTATION = True
+
+REST_FRAMEWORK = {
+  'DEFAULT_AUTHENTICATION_CLASSES': [
+    'rest_framework.authentication.SessionAuthentication',
+    'rest_framework.authentication.TokenAuthentication',
+    # 'rest_framework_simplejwt.authentication.JWTAuthentication',
+  ],
+  'DEFAULT_PERMISSION_CLASSES': [
+    'rest_framework.permissions.IsAuthenticated',
+    # "rest_framework_api_key.permissions.HasAPIKey",
+  ]
+}
+
+MIDDLEWARE = [
+  'django.middleware.security.SecurityMiddleware',
+  'django.contrib.sessions.middleware.SessionMiddleware',
+  'django.middleware.common.CommonMiddleware',
+  'django.middleware.csrf.CsrfViewMiddleware',
+  'django.contrib.auth.middleware.AuthenticationMiddleware',
+  'django.contrib.messages.middleware.MessageMiddleware',
+  'django.middleware.clickjacking.XFrameOptionsMiddleware',
+  'corsheaders.middleware.CorsMiddleware',
+]
+
+ROOT_URLCONF = 'reactool.urls'
+
+TEMPLATES = [
+  {
+    'BACKEND': 'django.template.backends.django.DjangoTemplates',
+    'DIRS': [BASE_DIR / 'templates']
+    ,
+    'APP_DIRS': True,
+    'OPTIONS': {
+      'context_processors': [
+        'django.template.context_processors.debug',
+        'django.template.context_processors.request',
+        'django.contrib.auth.context_processors.auth',
+        'django.contrib.messages.context_processors.messages',
+      ],
+    },
+  },
+]
+
+WSGI_APPLICATION = 'reactool.wsgi.application'
+
+if DEBUG:
+  DATABASES = {
+    'default': {
+      'ENGINE': 'mysql.connector.django',
+      'NAME': 'reactool_pro',
+      'USER': 'root',
+      'PASSWORD': 'snickers.007',
+      'HOST': 'localhost',
+      'PORT': '3306'
+    }
+  }
+else:
+  DATABASES = {
+    'default': {
+      'ENGINE': 'mysql.connector.django',
+      'NAME': 'reactool_pro',
+      'USER': 'root',
+      'PASSWORD': 'snickers.007',
+      'HOST': 'localhost',
+      'PORT': '3306'
+    }
+  }
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_PASSWORD_VALIDATORS = [
+  {
+    'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+  },
+  {
+    'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+  },
+  {
+    'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+  },
+  {
+    'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+  },
+]
+
+LANGUAGE_CODE = 'ja'
+TIME_ZONE = 'Asia/Tokyo'
+USE_I18N = True
+USE_L10N = True
+USE_TZ = True
+
+# If use HMR or not.s
+
+DJANGO_VITE_DEV_MODE = DEBUG
+
+GOOGLE_MAP_API_KEY = config("GOOGLE_MAP_API_KEY")
+
+if DEBUG:
+  DJANGO_VITE_ASSETS_PATH = BASE_DIR / "app-reactool/src"
+  STATIC_URL = '/static/'
+  STATICFILES_DIRS = [
+    BASE_DIR / "static",
+    DJANGO_VITE_ASSETS_PATH,
+  ]
+  MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+  MEDIA_URL = '/media/'
+else:
+  # Where ViteJS assets are built.
+  DJANGO_VITE_ASSETS_PATH = BASE_DIR / "static"
+  STATICFILES_DIRS = [
+    'static',
+    DJANGO_VITE_ASSETS_PATH,
+  ]

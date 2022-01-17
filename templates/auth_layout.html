@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign In</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap" rel="stylesheet">
+</head>
+<style>
+html,
+body {
+    font-family: 'Lato', sans-serif;
+}
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(112, 161, 255, .08);
+}
+body > section.sign-in-box  {
+    width: 100%;
+    height: auto;
+    max-width: 374px;
+    padding: 20px 20px 40px 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px -10px rgba(30, 144, 255, .24);
+}
+body > section.sign-in-box > .row {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+body > section.sign-in-box > .row > h3.titles {
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+body > section.sign-in-box > .row > h3.titles > span {
+    text-align: center;
+    display: block;
+}
+body > section.sign-in-box > .row > h3.titles > span.sm-title {
+    font-weight: 300;
+    font-size: .9rem;
+    color: #a4b0be;
+}
+body > section.sign-in-box > .row > h3.titles > span.md-title {
+    font-size: 1.8rem;
+    color: #2f3542;
+    font-weight: 500;
+    margin-top: 10px;
+}
+body > section.sign-in-box > .row > .form-container {
+    margin: auto;
+    width: 100%;
+    max-width: 90%;
+}
+body > section.sign-in-box > .row > .form-container > form > button.btn--submit {
+    position: relative;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 100%;
+    border-radius: 8px;
+    background-color: #1e90ff;
+    outline: 0;
+    border: 0;
+    color: #f1f1f1;
+    text-transform: capitalize;
+    font-family: "lato", sans-serif;
+    cursor: pointer;
+}
+body > section.sign-in-box > .row > .form-container > form > .control-group > label.controls {
+    position: relative;
+    display: block;
+    height: 40px;
+    margin-bottom: 30px;
+}
+body > section.sign-in-box > .row > .form-container > form > .control-group > label.controls > i {
+    position: absolute;
+    left: 15px;
+    top: 54%;
+    transform: translateY(-50%);
+    color: #1e90ff;
+}
+body > section.sign-in-box > .row > .form-container > form > .control-group > .controls > input {
+    border: 1px solid #dcdde1;
+    border-radius: 8px;
+    padding-left: 50px;
+    height: 100%;
+    width: calc(100% - 50px);
+    font-family: 'Lato', sans-serif;
+    outline: 0;
+}
+body > section.sign-in-box > .row > .form-container > form > .control-group > .controls > input:focus {
+    border-color: #70a1ff;
+    border-radius: 8px;
+}
+
+
+</style>
+<body>
+    <section class="sign-in-box">
+        {% block content %}
+        {% endblock %}
+    </section>
+    <link rel="stylesheet"
+          href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+          integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu"
+          crossorigin="anonymous">
+</body>
+</html>
