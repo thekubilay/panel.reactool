@@ -32,14 +32,13 @@ INSTALLED_APPS = [
 ]
 SITE_ID = 1
 AUTH_USER_MODEL = "accounts.CustomUser"
-ACCOUNT_ADAPTER = ("allauth.account.adapter.DefaultAccountAdapter",)
+# ACCOUNT_ADAPTER = ("allauth.account.adapter.DefaultAccountAdapter",)
 ACCOUNT_EMAIL_VERIFICATION = "none"
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = False
 AUTHENTICATION_BACKENDS = (
   "django.contrib.auth.backends.ModelBackend",
-  # "allauth.account.auth_backends.AuthenticationBackend",
 )
 LOGIN_URL = "/accounts/login/"
 LOGIN_REDIRECT_URL = "/"
@@ -110,23 +109,13 @@ else:
   DATABASES = {
     'default': {
       'ENGINE': 'mysql.connector.django',
-      'NAME': "rds_reactool_test",
-      'USER': "reactool1",
-      'PASSWORD': "rKWGszjn45x",
-      'HOST': "aa1fteqqu3lxe3r.ckh4r4vbpxv4.ap-northeast-1.rds.amazonaws.com",
-      'PORT': 3306,
+      'NAME': 'reactool',
+      'USER': 'root',
+      'PASSWORD': 'snickers.007',
+      'HOST': 'localhost',
+      'PORT': '3306'
     }
   }
-  # DATABASES = {
-  #   'default': {
-  #     'ENGINE': 'mysql.connector.django',
-  #     'NAME': 'reactool',
-  #     'USER': 'root',
-  #     'PASSWORD': 'snickers.007',
-  #     'HOST': 'localhost',
-  #     'PORT': '3306'
-  #   }
-  # }
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
