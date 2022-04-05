@@ -98,9 +98,9 @@ if 'RDS_DB_NAME' in os.environ:
   DATABASES = {
     'default': {
       'ENGINE': 'mysql.connector.django',
-      'NAME': os.environ['RDS_DB_NAME'],
-      'USER': os.environ['RDS_USERNAME'],
-      'PASSWORD': os.environ['RDS_PASSWORD'],
+      'NAME': "rds_reactool_test",
+      'USER': "reactool1",
+      'PASSWORD': "rKWGszjn45x",
       'HOST': os.environ['RDS_HOSTNAME'],
       'PORT': os.environ['RDS_PORT'],
     }
