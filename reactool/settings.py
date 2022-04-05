@@ -3,13 +3,15 @@ from pathlib import Path
 from decouple import config
 from django.contrib.messages import constants as messages
 
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config("SECRET_KEY")
 
 DEBUG = config("DEBUG", default=True, cast=bool)
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["127.0.0.1",
+                 "192.168.100.36",
+                 "panel-test-env.eba-92hkwvtp.ap-northeast-1.elasticbeanstalk.com",
+                 ]
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = ["http://localhost:3000", "http://192.168.100.84:3000"]
 X_FRAME_OPTIONS = 'ALLOWALL'
@@ -116,7 +118,6 @@ else:
       'PORT': '3306'
     }
   }
-
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
