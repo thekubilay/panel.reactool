@@ -438,3 +438,4 @@ fabric.properties
 /app/tsconfig.json
 /app/vite.config.ts
 /app/.idea/
+/static/
