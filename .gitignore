@@ -29,7 +29,6 @@ media
 .Python
 build/
 develop-eggs/
-dist/
 downloads/
 eggs/
 .eggs/
@@ -427,3 +426,14 @@ fabric.properties
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+/app/public/
+/app/src/
+/app/.env.development
+/app/.env.production
+/app/.gitignore
+/app/index.html
+/app/package.json
+/app/package-lock.json
+/app/README.md
+/app/tsconfig.json
+/app/vite.config.ts
