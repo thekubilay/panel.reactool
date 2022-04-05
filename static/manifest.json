@@ -1,0 +1,1279 @@
+{
+  "src/main.ts": {
+    "file": "main.js",
+    "src": "src/main.ts",
+    "isEntry": true,
+    "imports": [
+      "_vendor.js"
+    ],
+    "dynamicImports": [
+      "src/views/admin/Users.vue",
+      "src/views/admin/Salons.vue",
+      "src/views/admin/Projects.vue",
+      "src/views/admin/Routes.vue",
+      "src/views/admin/ProjectPermissions.vue",
+      "src/views/admin/News.vue",
+      "src/views/admin/Tutorials.vue",
+      "src/views/admin/TutorialImages.vue",
+      "src/views/admin/LogsError.vue",
+      "src/views/boards/Dashboard.vue",
+      "src/views/boards/Calendar.vue",
+      "src/views/boards/Users.vue",
+      "src/views/boards/Tutorials.vue",
+      "src/views/boards/Salon.vue",
+      "src/views/boards/SalonProjects.vue",
+      "src/views/boards/SalonPlaces.vue",
+      "src/views/boards/Project.vue",
+      "src/views/boards/ProjectRoutes.vue",
+      "src/views/boards/ProjectPermissions.vue",
+      "src/views/boards/ProjectPlaces.vue",
+      "src/views/boards/ProjectPlacesCategories.vue",
+      "src/views/boards/ProjectPlans.vue",
+      "src/views/boards/ProjectGallery.vue",
+      "src/views/boards/ProjectLinks.vue",
+      "src/views/boards/ProjectDocuments.vue",
+      "src/views/boards/ProjectDocumentsFolders.vue",
+      "src/views/boards/ProjectGeneralPlans.vue",
+      "src/views/boards/ProjectVistas.vue",
+      "src/views/boards/ProjectBuildingVr.vue",
+      "src/views/boards/ProjectBuilding.vue",
+      "src/views/boards/ProjectLoan.vue",
+      "src/views/boards/ProjectParkingFees.vue",
+      "src/views/boards/ProjectColorSimulator.vue",
+      "src/views/boards/ProjectRoomVrTypes.vue",
+      "src/views/boards/ProjectRoomVrFloors.vue",
+      "src/views/boards/ProjectCalendar.vue",
+      "src/views/boards/Frame1.vue",
+      "src/views/boards/Frame2.vue",
+      "src/views/boards/index.vue",
+      "src/views/admin/index.vue"
+    ],
+    "css": [
+      "assets/main2.css"
+    ],
+    "assets": [
+      "assets/logo.gif",
+      "assets/Inter-Light.woff2",
+      "assets/Inter-Light.woff",
+      "assets/Inter-Regular.woff2",
+      "assets/Inter-Regular.woff",
+      "assets/Inter-Medium.woff2",
+      "assets/Inter-Medium.woff",
+      "assets/Inter-SemiBold.woff2",
+      "assets/Inter-SemiBold.woff",
+      "assets/Inter-Bold.woff2",
+      "assets/Inter-Bold.woff",
+      "assets/color.png",
+      "assets/primeicons.eot",
+      "assets/primeicons.ttf",
+      "assets/primeicons.woff",
+      "assets/primeicons.svg"
+    ]
+  },
+  "_vendor.js": {
+    "file": "chunks/vendor.js",
+    "isDynamicEntry": true
+  },
+  "src/views/boards/index.vue": {
+    "file": "chunks/index.js",
+    "src": "src/views/boards/index.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor.js",
+      "_FormQuery.js",
+      "_Icon.js",
+      "_ButtonDropdown.js",
+      "_useFormRequestBuilder.js",
+      "node_modules/primevue/password/password.esm.js",
+      "src/main.ts",
+      "_FormUserUpdate.js",
+      "_useUtils.js",
+      "_menu.esm.js",
+      "_overlayeventbus.esm.js",
+      "_rules.js"
+    ],
+    "css": [
+      "assets/index2.css"
+    ]
+  },
+  "_FormQuery.js": {
+    "file": "chunks/FormQuery.js",
+    "imports": [
+      "_vendor.js",
+      "src/main.ts",
+      "_useFormRequestBuilder.js"
+    ],
+    "dynamicImports": [
+      "_vendor.js",
+      "node_modules/primevue/dropdown/dropdown.esm.js",
+      "node_modules/primevue/checkbox/checkbox.esm.js",
+      "node_modules/primevue/password/password.esm.js",
+      "node_modules/primevue/textarea/textarea.esm.js",
+      "node_modules/primevue/radiobutton/radiobutton.esm.js",
+      "src/components/form/inputs/FileInput.vue",
+      "node_modules/primevue/slider/slider.esm.js",
+      "node_modules/primevue/calendar/calendar.esm.js"
+    ],
+    "css": [
+      "assets/FormQuery.css"
+    ]
+  },
+  "_Icon.js": {
+    "file": "chunks/Icon.js",
+    "imports": [
+      "src/main.ts",
+      "_vendor.js"
+    ],
+    "dynamicImports": [
+      "src/components/icons/close.vue",
+      "src/components/icons/csv.vue",
+      "src/components/icons/empty.vue",
+      "src/components/icons/file.vue",
+      "src/components/icons/folder-empty.vue",
+      "src/components/icons/folder.vue",
+      "src/components/icons/image.vue",
+      "src/components/icons/pdf.vue",
+      "src/components/icons/pdf2.vue",
+      "src/components/icons/pin.vue",
+      "src/components/icons/reactool.vue",
+      "src/components/icons/reactool_black.vue",
+      "src/components/icons/setting.vue",
+      "src/components/icons/upload.vue",
+      "src/components/icons/video.vue"
+    ]
+  },
+  "_ButtonDropdown.js": {
+    "file": "chunks/ButtonDropdown.js",
+    "imports": [
+      "_vendor.js",
+      "_menu.esm.js"
+    ],
+    "css": [
+      "assets/ButtonDropdown.css"
+    ]
+  },
+  "_useFormRequestBuilder.js": {
+    "file": "chunks/useFormRequestBuilder.js",
+    "imports": [
+      "_vendor.js",
+      "src/main.ts"
+    ],
+    "css": [
+      "assets/useFormRequestBuilder.css"
+    ]
+  },
+  "_FormUserUpdate.js": {
+    "file": "chunks/FormUserUpdate.js",
+    "imports": [
+      "_rules.js"
+    ]
+  },
+  "_useUtils.js": {
+    "file": "chunks/useUtils.js"
+  },
+  "_menu.esm.js": {
+    "file": "chunks/menu.esm.js",
+    "imports": [
+      "_vendor.js",
+      "_overlayeventbus.esm.js"
+    ]
+  },
+  "node_modules/primevue/password/password.esm.js": {
+    "file": "chunks/password.esm.js",
+    "src": "node_modules/primevue/password/password.esm.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor.js",
+      "_overlayeventbus.esm.js"
+    ]
+  },
+  "_rules.js": {
+    "file": "chunks/rules.js"
+  },
+  "_overlayeventbus.esm.js": {
+    "file": "chunks/overlayeventbus.esm.js",
+    "imports": [
+      "_vendor.js"
+    ]
+  },
+  "src/views/admin/index.vue": {
+    "file": "chunks/index2.js",
+    "src": "src/views/admin/index.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor.js",
+      "_Icon.js",
+      "src/main.ts",
+      "_useFormRequestBuilder.js",
+      "_BarTool.js",
+      "_FormQuery.js",
+      "_DialogDelete.js"
+    ],
+    "css": [
+      "assets/index.css"
+    ]
+  },
+  "_BarTool.js": {
+    "file": "chunks/BarTool.js",
+    "imports": [
+      "_vendor.js"
+    ],
+    "css": [
+      "assets/BarTool.css"
+    ]
+  },
+  "_DialogDelete.js": {
+    "file": "chunks/DialogDelete.js",
+    "imports": [
+      "_vendor.js"
+    ],
+    "css": [
+      "assets/DialogDelete.css"
+    ]
+  },
+  "src/views/admin/Users.vue": {
+    "file": "chunks/Users.js",
+    "src": "src/views/admin/Users.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor.js",
+      "node_modules/primevue/dropdown/dropdown.esm.js",
+      "_useFormRequestBuilder.js",
+      "_DialogDelete.js",
+      "_FormQuery.js",
+      "_rules.js",
+      "_FormUserUpdate.js",
+      "src/main.ts",
+      "_BarTool.js",
+      "_overlayeventbus.esm.js",
+      "_virtualscroller.esm.js"
+    ]
+  },
+  "node_modules/primevue/dropdown/dropdown.esm.js": {
+    "file": "chunks/dropdown.esm.js",
+    "src": "node_modules/primevue/dropdown/dropdown.esm.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor.js",
+      "_overlayeventbus.esm.js",
+      "_virtualscroller.esm.js"
+    ]
+  },
+  "_virtualscroller.esm.js": {
+    "file": "chunks/virtualscroller.esm.js",
+    "imports": [
+      "_vendor.js"
+    ]
+  },
+  "src/views/admin/Salons.vue": {
+    "file": "chunks/Salons.js",
+    "src": "src/views/admin/Salons.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor.js",
+      "node_modules/primevue/dropdown/dropdown.esm.js",
+      "_vuedraggable.umd.js",
+      "_useFormRequestBuilder.js",
+      "_FormQuery.js",
+      "_DialogDelete.js",
+      "_BarTool.js",
+      "_FormSalon.js",
+      "src/main.ts",
+      "_overlayeventbus.esm.js",
+      "_virtualscroller.esm.js"
+    ]
+  },
+  "_vuedraggable.umd.js": {
+    "file": "chunks/vuedraggable.umd.js",
+    "imports": [
+      "_vendor.js"
+    ]
+  },
+  "_FormSalon.js": {
+    "file": "chunks/FormSalon.js"
+  },
+  "src/views/admin/Projects.vue": {
+    "file": "chunks/Projects.js",
+    "src": "src/views/admin/Projects.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "node_modules/primevue/dropdown/dropdown.esm.js",
+      "_vendor.js",
+      "_vuedraggable.umd.js",
+      "_useFormRequestBuilder.js",
+      "_FormQuery.js",
+      "_DialogDelete.js",
+      "_BarTool.js",
+      "src/main.ts",
+      "_FormProject.js",
+      "_useUtils.js",
+      "_overlayeventbus.esm.js",
+      "_virtualscroller.esm.js",
+      "_rules.js"
+    ]
+  },
+  "_FormProject.js": {
+    "file": "chunks/FormProject.js",
+    "imports": [
+      "src/main.ts",
+      "_rules.js"
+    ]
+  },
+  "src/views/admin/Routes.vue": {
+    "file": "chunks/Routes.js",
+    "src": "src/views/admin/Routes.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_vuedraggable.umd.js",
+      "_vendor.js",
+      "_useFormRequestBuilder.js",
+      "_FormQuery.js",
+      "_DialogDelete.js",
+      "_BarTool.js",
+      "src/main.ts",
+      "_FormRoute.js",
+      "_rules.js"
+    ]
+  },
+  "_FormRoute.js": {
+    "file": "chunks/FormRoute.js",
+    "imports": [
+      "_rules.js"
+    ]
+  },
+  "src/views/admin/ProjectPermissions.vue": {
+    "file": "chunks/ProjectPermissions.js",
+    "src": "src/views/admin/ProjectPermissions.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor.js",
+      "_useFormRequestBuilder.js",
+      "_FormQuery.js",
+      "_DialogDelete.js",
+      "_BarTool.js",
+      "src/main.ts",
+      "_FormProjectPermission.js",
+      "_useUtils.js",
+      "_rules.js"
+    ]
+  },
+  "_FormProjectPermission.js": {
+    "file": "chunks/FormProjectPermission.js",
+    "imports": [
+      "_rules.js"
+    ]
+  },
+  "src/views/admin/News.vue": {
+    "file": "chunks/News.js",
+    "src": "src/views/admin/News.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor.js",
+      "node_modules/primevue/dropdown/dropdown.esm.js",
+      "_editor.esm.js",
+      "_useFormRequestBuilder.js",
+      "_DialogDelete.js",
+      "_BarTool.js",
+      "src/main.ts",
+      "_overlayeventbus.esm.js",
+      "_virtualscroller.esm.js"
+    ],
+    "css": [
+      "assets/News.css"
+    ]
+  },
+  "_editor.esm.js": {
+    "file": "chunks/editor.esm.js",
+    "imports": [
+      "_vendor.js"
+    ]
+  },
+  "src/views/admin/Tutorials.vue": {
+    "file": "chunks/Tutorials.js",
+    "src": "src/views/admin/Tutorials.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "node_modules/primevue/dropdown/dropdown.esm.js",
+      "_vendor.js",
+      "_vuedraggable.umd.js",
+      "_useFormRequestBuilder.js",
+      "_FormQuery.js",
+      "_DialogDelete.js",
+      "_BarTool.js",
+      "src/main.ts",
+      "_overlayeventbus.esm.js",
+      "_virtualscroller.esm.js"
+    ],
+    "css": [
+      "assets/Tutorials2.css"
+    ]
+  },
+  "src/views/admin/TutorialImages.vue": {
+    "file": "chunks/TutorialImages.js",
+    "src": "src/views/admin/TutorialImages.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "node_modules/primevue/dropdown/dropdown.esm.js",
+      "_vendor.js",
+      "_vuedraggable.umd.js",
+      "_useFormRequestBuilder.js",
+      "_FormQuery.js",
+      "_DialogDelete.js",
+      "_BarTool.js",
+      "src/main.ts",
+      "_overlayeventbus.esm.js",
+      "_virtualscroller.esm.js"
+    ]
+  },
+  "src/views/admin/LogsError.vue": {
+    "file": "chunks/LogsError.js",
+    "src": "src/views/admin/LogsError.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_BarTool.js",
+      "src/main.ts",
+      "_vendor.js"
+    ]
+  },
+  "src/views/boards/Dashboard.vue": {
+    "file": "chunks/Dashboard.js",
+    "src": "src/views/boards/Dashboard.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/main.ts",
+      "_vendor.js"
+    ],
+    "css": [
+      "assets/Dashboard.css"
+    ]
+  },
+  "src/views/boards/Calendar.vue": {
+    "file": "chunks/Calendar.js",
+    "src": "src/views/boards/Calendar.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_main.js",
+      "_vendor.js"
+    ]
+  },
+  "_main.js": {
+    "file": "chunks/main.js",
+    "imports": [
+      "_vendor.js"
+    ],
+    "css": [
+      "assets/main.css"
+    ]
+  },
+  "src/views/boards/Users.vue": {
+    "file": "chunks/Users2.js",
+    "src": "src/views/boards/Users.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/main.ts",
+      "_vendor.js"
+    ]
+  },
+  "src/views/boards/Tutorials.vue": {
+    "file": "chunks/Tutorials2.js",
+    "src": "src/views/boards/Tutorials.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_BarTool.js",
+      "src/main.ts",
+      "_Icon.js",
+      "_vendor.js"
+    ],
+    "css": [
+      "assets/Tutorials.css"
+    ]
+  },
+  "src/views/boards/Salon.vue": {
+    "file": "chunks/Salon.js",
+    "src": "src/views/boards/Salon.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor.js",
+      "_BarTool.js",
+      "_FormQuery.js",
+      "_ButtonDropdown.js",
+      "_useFormRequestBuilder.js",
+      "_ContextImagesThumbnailContainer.js",
+      "src/main.ts",
+      "_FormSalon.js",
+      "_rules.js",
+      "_FormSalonPlaces.js",
+      "_menu.esm.js",
+      "_overlayeventbus.esm.js",
+      "_Icon.js"
+    ],
+    "css": [
+      "assets/Salon.css"
+    ]
+  },
+  "_ContextImagesThumbnailContainer.js": {
+    "file": "chunks/ContextImagesThumbnailContainer.js",
+    "imports": [
+      "_Icon.js",
+      "_vendor.js"
+    ],
+    "css": [
+      "assets/ContextImagesThumbnailContainer.css"
+    ]
+  },
+  "_FormSalonPlaces.js": {
+    "file": "chunks/FormSalonPlaces.js",
+    "imports": [
+      "_rules.js"
+    ]
+  },
+  "src/views/boards/SalonProjects.vue": {
+    "file": "chunks/SalonProjects.js",
+    "src": "src/views/boards/SalonProjects.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_FormProject.js",
+      "src/main.ts",
+      "_useFormRequestBuilder.js",
+      "_vuedraggable.umd.js",
+      "_FormQuery.js",
+      "_Icon.js",
+      "_ContextImagesThumbnailContainer.js",
+      "_vendor.js",
+      "_rules.js"
+    ]
+  },
+  "src/views/boards/SalonPlaces.vue": {
+    "file": "chunks/SalonPlaces.js",
+    "src": "src/views/boards/SalonPlaces.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_vuedraggable.umd.js",
+      "_menu.esm.js",
+      "_useFormRequestBuilder.js",
+      "_Icon.js",
+      "_DialogDelete.js",
+      "_ContextImagesThumbnailContainer.js",
+      "_FormQuery.js",
+      "src/main.ts",
+      "_FormSalonPlaces.js",
+      "_useRightClickHandler.js",
+      "_vendor.js",
+      "_overlayeventbus.esm.js",
+      "_rules.js"
+    ],
+    "css": [
+      "assets/SalonPlaces.css"
+    ]
+  },
+  "_useRightClickHandler.js": {
+    "file": "chunks/useRightClickHandler.js",
+    "imports": [
+      "_useFormRequestBuilder.js",
+      "_vendor.js"
+    ]
+  },
+  "src/views/boards/Project.vue": {
+    "file": "chunks/Project.js",
+    "src": "src/views/boards/Project.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor.js",
+      "_column.esm.js",
+      "_BarTool.js",
+      "_useFormRequestBuilder.js",
+      "_ButtonDropdown.js",
+      "_FormQuery.js",
+      "_ContextImagesThumbnailContainer.js",
+      "_FormNested.js",
+      "src/main.ts",
+      "_FormProject.js",
+      "_useUtils.js",
+      "node_modules/primevue/dropdown/dropdown.esm.js",
+      "_overlayeventbus.esm.js",
+      "_virtualscroller.esm.js",
+      "_menu.esm.js",
+      "_Icon.js",
+      "_rules.js"
+    ],
+    "css": [
+      "assets/Project.css"
+    ]
+  },
+  "_column.esm.js": {
+    "file": "chunks/column.esm.js",
+    "imports": [
+      "_vendor.js",
+      "node_modules/primevue/dropdown/dropdown.esm.js",
+      "_virtualscroller.esm.js",
+      "_overlayeventbus.esm.js"
+    ]
+  },
+  "_FormNested.js": {
+    "file": "chunks/FormNested.js",
+    "imports": [
+      "_vendor.js",
+      "_FormQuery.js",
+      "_useFormRequestBuilder.js",
+      "src/main.ts"
+    ]
+  },
+  "src/views/boards/ProjectRoutes.vue": {
+    "file": "chunks/ProjectRoutes.js",
+    "src": "src/views/boards/ProjectRoutes.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_vuedraggable.umd.js",
+      "_vendor.js",
+      "_menu.esm.js",
+      "_useFormRequestBuilder.js",
+      "_FormQuery.js",
+      "_DialogDelete.js",
+      "_BarTool.js",
+      "_FormRoute.js",
+      "src/main.ts",
+      "_useRightClickHandler.js",
+      "_overlayeventbus.esm.js",
+      "_rules.js"
+    ],
+    "css": [
+      "assets/ProjectLoan.css"
+    ]
+  },
+  "src/views/boards/ProjectPermissions.vue": {
+    "file": "chunks/ProjectPermissions2.js",
+    "src": "src/views/boards/ProjectPermissions.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_useFormRequestBuilder.js",
+      "_FormQuery.js",
+      "_FormProjectPermission.js",
+      "src/main.ts",
+      "_useUtils.js",
+      "_vendor.js",
+      "_rules.js"
+    ],
+    "css": [
+      "assets/ProjectPermissions.css"
+    ]
+  },
+  "src/views/boards/ProjectPlaces.vue": {
+    "file": "chunks/ProjectPlaces.js",
+    "src": "src/views/boards/ProjectPlaces.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_vuedraggable.umd.js",
+      "_menu.esm.js",
+      "_vendor.js",
+      "node_modules/primevue/dropdown/dropdown.esm.js",
+      "_useFormRequestBuilder.js",
+      "_BarTool.js",
+      "_FormQuery.js",
+      "_ContextImagesThumbnailContainer.js",
+      "_Icon.js",
+      "src/main.ts",
+      "_useRightClickHandler.js",
+      "_rules.js",
+      "_useUtils.js",
+      "_overlayeventbus.esm.js",
+      "_virtualscroller.esm.js"
+    ],
+    "css": [
+      "assets/ProjectPlaces.css"
+    ]
+  },
+  "src/views/boards/ProjectPlacesCategories.vue": {
+    "file": "chunks/ProjectPlacesCategories.js",
+    "src": "src/views/boards/ProjectPlacesCategories.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_vuedraggable.umd.js",
+      "_vendor.js",
+      "_menu.esm.js",
+      "_useFormRequestBuilder.js",
+      "_BarTool.js",
+      "_FormQuery.js",
+      "_ContextImagesThumbnailContainer.js",
+      "src/main.ts",
+      "_useRightClickHandler.js",
+      "_DialogDelete.js",
+      "_overlayeventbus.esm.js",
+      "_Icon.js"
+    ],
+    "css": [
+      "assets/ProjectPlacesCategories.css"
+    ]
+  },
+  "src/views/boards/ProjectPlans.vue": {
+    "file": "chunks/ProjectPlans.js",
+    "src": "src/views/boards/ProjectPlans.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor.js",
+      "_vuedraggable.umd.js",
+      "_menu.esm.js",
+      "_column.esm.js",
+      "_useFormRequestBuilder.js",
+      "_BarTool.js",
+      "_Icon.js",
+      "_useRightClickHandler.js",
+      "src/main.ts",
+      "_FormQuery.js",
+      "_FormNested.js",
+      "_DialogDelete.js",
+      "_overlayeventbus.esm.js",
+      "node_modules/primevue/dropdown/dropdown.esm.js",
+      "_virtualscroller.esm.js"
+    ],
+    "css": [
+      "assets/ProjectPlans.css"
+    ]
+  },
+  "src/views/boards/ProjectGallery.vue": {
+    "file": "chunks/ProjectGallery.js",
+    "src": "src/views/boards/ProjectGallery.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_vuedraggable.umd.js",
+      "_vendor.js",
+      "_menu.esm.js",
+      "_useFormRequestBuilder.js",
+      "_BarTool.js",
+      "_Icon.js",
+      "src/main.ts",
+      "_useRightClickHandler.js",
+      "_FormQuery.js",
+      "_rules.js",
+      "_overlayeventbus.esm.js"
+    ],
+    "css": [
+      "assets/ProjectGallery.css"
+    ]
+  },
+  "src/views/boards/ProjectLinks.vue": {
+    "file": "chunks/ProjectLinks.js",
+    "src": "src/views/boards/ProjectLinks.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor.js",
+      "_vuedraggable.umd.js",
+      "_menu.esm.js",
+      "_useFormRequestBuilder.js",
+      "_BarTool.js",
+      "_Icon.js",
+      "_FormQuery.js",
+      "_DialogDelete.js",
+      "_ContextImagesThumbnailContainer.js",
+      "src/main.ts",
+      "_useRightClickHandler.js",
+      "_rules.js",
+      "_overlayeventbus.esm.js"
+    ],
+    "css": [
+      "assets/ProjectLinks.css"
+    ]
+  },
+  "src/views/boards/ProjectDocuments.vue": {
+    "file": "chunks/ProjectDocuments.js",
+    "src": "src/views/boards/ProjectDocuments.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor.js",
+      "_vuedraggable.umd.js",
+      "node_modules/primevue/dropdown/dropdown.esm.js",
+      "_menu.esm.js",
+      "_useFormRequestBuilder.js",
+      "_FormQuery.js",
+      "_DialogDelete.js",
+      "_BarTool.js",
+      "_Icon.js",
+      "src/main.ts",
+      "_useRightClickHandler.js",
+      "_rules.js",
+      "_useUtils.js",
+      "_overlayeventbus.esm.js",
+      "_virtualscroller.esm.js"
+    ],
+    "css": [
+      "assets/ProjectDocuments.css"
+    ]
+  },
+  "src/views/boards/ProjectDocumentsFolders.vue": {
+    "file": "chunks/ProjectDocumentsFolders.js",
+    "src": "src/views/boards/ProjectDocumentsFolders.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_vuedraggable.umd.js",
+      "_vendor.js",
+      "_menu.esm.js",
+      "_useFormRequestBuilder.js",
+      "_BarTool.js",
+      "_FormQuery.js",
+      "_DialogDelete.js",
+      "src/main.ts",
+      "_useRightClickHandler.js",
+      "_overlayeventbus.esm.js"
+    ],
+    "css": [
+      "assets/ProjectDocumentsFolders.css"
+    ]
+  },
+  "src/views/boards/ProjectGeneralPlans.vue": {
+    "file": "chunks/ProjectGeneralPlans.js",
+    "src": "src/views/boards/ProjectGeneralPlans.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_vuedraggable.umd.js",
+      "_vendor.js",
+      "_menu.esm.js",
+      "node_modules/primevue/dropdown/dropdown.esm.js",
+      "_useFormRequestBuilder.js",
+      "_BarTool.js",
+      "_Icon.js",
+      "src/main.ts",
+      "_useRightClickHandler.js",
+      "_FormQuery.js",
+      "_rules.js",
+      "_useUtils.js",
+      "_overlayeventbus.esm.js",
+      "_virtualscroller.esm.js"
+    ],
+    "css": [
+      "assets/ProjectGeneralPlans.css"
+    ]
+  },
+  "src/views/boards/ProjectVistas.vue": {
+    "file": "chunks/ProjectVistas.js",
+    "src": "src/views/boards/ProjectVistas.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor.js",
+      "_menu.esm.js",
+      "node_modules/primevue/dropdown/dropdown.esm.js",
+      "node_modules/primevue/slider/slider.esm.js",
+      "_useFormRequestBuilder.js",
+      "_BarTool.js",
+      "_Icon.js",
+      "_FormQuery.js",
+      "_DialogDelete.js",
+      "src/main.ts",
+      "_useRightClickHandler.js",
+      "_useUtils.js",
+      "_useGrabAndMoveHandler.js",
+      "_overlayeventbus.esm.js",
+      "_virtualscroller.esm.js"
+    ],
+    "css": [
+      "assets/ProjectVistas.css"
+    ],
+    "assets": [
+      "assets/compass.svg"
+    ]
+  },
+  "node_modules/primevue/slider/slider.esm.js": {
+    "file": "chunks/slider.esm.js",
+    "src": "node_modules/primevue/slider/slider.esm.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor.js"
+    ]
+  },
+  "_useGrabAndMoveHandler.js": {
+    "file": "chunks/useGrabAndMoveHandler.js",
+    "imports": [
+      "_vendor.js"
+    ]
+  },
+  "src/views/boards/ProjectBuildingVr.vue": {
+    "file": "chunks/ProjectBuildingVr.js",
+    "src": "src/views/boards/ProjectBuildingVr.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor.js",
+      "node_modules/primevue/dropdown/dropdown.esm.js",
+      "_menu.esm.js",
+      "_column.esm.js",
+      "_BarTool.js",
+      "_useFormRequestBuilder.js",
+      "src/main.ts",
+      "_useRightClickHandler.js",
+      "_Icon.js",
+      "_FormQuery.js",
+      "_ContextImagesThumbnailContainer.js",
+      "_useUtils.js",
+      "_DialogDelete.js",
+      "_FormNested.js",
+      "_overlayeventbus.esm.js",
+      "_virtualscroller.esm.js"
+    ],
+    "css": [
+      "assets/ProjectBuildingVr.css"
+    ]
+  },
+  "src/views/boards/ProjectBuilding.vue": {
+    "file": "chunks/ProjectBuilding.js",
+    "src": "src/views/boards/ProjectBuilding.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor.js",
+      "_useFormRequestBuilder.js",
+      "_BarTool.js",
+      "_vuedraggable.umd.js",
+      "_menu.esm.js",
+      "_FormNested.js",
+      "_FormQuery.js",
+      "_ContextImagesThumbnailContainer.js",
+      "_Icon.js",
+      "src/main.ts",
+      "_useRightClickHandler.js",
+      "_overlayeventbus.esm.js"
+    ],
+    "css": [
+      "assets/ProjectBuilding.css"
+    ]
+  },
+  "src/views/boards/ProjectLoan.vue": {
+    "file": "chunks/ProjectLoan.js",
+    "src": "src/views/boards/ProjectLoan.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_vuedraggable.umd.js",
+      "_vendor.js",
+      "_menu.esm.js",
+      "_useFormRequestBuilder.js",
+      "_FormQuery.js",
+      "_DialogDelete.js",
+      "_BarTool.js",
+      "src/main.ts",
+      "_useRightClickHandler.js",
+      "_overlayeventbus.esm.js"
+    ],
+    "css": [
+      "assets/ProjectLoan.css"
+    ]
+  },
+  "src/views/boards/ProjectParkingFees.vue": {
+    "file": "chunks/ProjectParkingFees.js",
+    "src": "src/views/boards/ProjectParkingFees.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_vuedraggable.umd.js",
+      "_vendor.js",
+      "_menu.esm.js",
+      "_useFormRequestBuilder.js",
+      "_FormQuery.js",
+      "_DialogDelete.js",
+      "_BarTool.js",
+      "src/main.ts",
+      "_useRightClickHandler.js",
+      "_overlayeventbus.esm.js"
+    ],
+    "css": [
+      "assets/ProjectParkingFees.css"
+    ]
+  },
+  "src/views/boards/ProjectColorSimulator.vue": {
+    "file": "chunks/ProjectColorSimulator.js",
+    "src": "src/views/boards/ProjectColorSimulator.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor.js",
+      "_vuedraggable.umd.js",
+      "node_modules/primevue/dropdown/dropdown.esm.js",
+      "_menu.esm.js",
+      "_column.esm.js",
+      "_useFormRequestBuilder.js",
+      "_BarTool.js",
+      "_FormQuery.js",
+      "_ContextImagesThumbnailContainer.js",
+      "src/main.ts",
+      "_useRightClickHandler.js",
+      "_DialogDelete.js",
+      "_FormNested.js",
+      "_Icon.js",
+      "_useUtils.js",
+      "_overlayeventbus.esm.js",
+      "_virtualscroller.esm.js"
+    ],
+    "css": [
+      "assets/ProjectColorSimulator.css"
+    ]
+  },
+  "src/views/boards/ProjectRoomVrTypes.vue": {
+    "file": "chunks/ProjectRoomVrTypes.js",
+    "src": "src/views/boards/ProjectRoomVrTypes.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor.js",
+      "_menu.esm.js",
+      "_useFormRequestBuilder.js",
+      "_BarTool.js",
+      "_FormQuery.js",
+      "_DialogDelete.js",
+      "_ContextImagesThumbnailContainer.js",
+      "_Icon.js",
+      "src/main.ts",
+      "_useRightClickHandler.js",
+      "_overlayeventbus.esm.js"
+    ],
+    "css": [
+      "assets/ProjectRoomVrTypes.css"
+    ]
+  },
+  "src/views/boards/ProjectRoomVrFloors.vue": {
+    "file": "chunks/ProjectRoomVrFloors.js",
+    "src": "src/views/boards/ProjectRoomVrFloors.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor.js",
+      "_menu.esm.js",
+      "node_modules/primevue/dropdown/dropdown.esm.js",
+      "_useFormRequestBuilder.js",
+      "_BarTool.js",
+      "_Icon.js",
+      "src/main.ts",
+      "_useUtils.js",
+      "_useRightClickHandler.js",
+      "src/components/form/inputs/FileInput.vue",
+      "_DialogDelete.js",
+      "node_modules/primevue/slider/slider.esm.js",
+      "_useGrabAndMoveHandler.js",
+      "_overlayeventbus.esm.js",
+      "_virtualscroller.esm.js"
+    ],
+    "css": [
+      "assets/ProjectRoomVrFloors.css"
+    ],
+    "assets": [
+      "assets/compass.svg"
+    ]
+  },
+  "src/components/form/inputs/FileInput.vue": {
+    "file": "chunks/FileInput.js",
+    "src": "src/components/form/inputs/FileInput.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_Icon.js",
+      "_vendor.js",
+      "src/main.ts"
+    ],
+    "css": [
+      "assets/FileInput.css"
+    ]
+  },
+  "src/views/boards/ProjectCalendar.vue": {
+    "file": "chunks/ProjectCalendar.js",
+    "src": "src/views/boards/ProjectCalendar.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor.js",
+      "_main.js",
+      "node_modules/primevue/calendar/calendar.esm.js",
+      "_editor.esm.js",
+      "_overlayeventbus.esm.js",
+      "_virtualscroller.esm.js",
+      "_useFormRequestBuilder.js",
+      "_DialogDelete.js",
+      "src/main.ts",
+      "_useUtils.js"
+    ],
+    "css": [
+      "assets/ProjectCalendar.css"
+    ]
+  },
+  "node_modules/primevue/calendar/calendar.esm.js": {
+    "file": "chunks/calendar.esm.js",
+    "src": "node_modules/primevue/calendar/calendar.esm.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor.js",
+      "_overlayeventbus.esm.js"
+    ]
+  },
+  "src/views/boards/Frame1.vue": {
+    "file": "chunks/Frame1.js",
+    "src": "src/views/boards/Frame1.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/main.ts",
+      "_vendor.js"
+    ]
+  },
+  "src/views/boards/Frame2.vue": {
+    "file": "chunks/Frame2.js",
+    "src": "src/views/boards/Frame2.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/main.ts",
+      "_vendor.js"
+    ]
+  },
+  "src/components/icons/close.vue": {
+    "file": "chunks/close.js",
+    "src": "src/components/icons/close.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/main.ts",
+      "_vendor.js"
+    ]
+  },
+  "src/components/icons/csv.vue": {
+    "file": "chunks/csv.js",
+    "src": "src/components/icons/csv.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/main.ts",
+      "_vendor.js"
+    ]
+  },
+  "src/components/icons/empty.vue": {
+    "file": "chunks/empty.js",
+    "src": "src/components/icons/empty.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/main.ts",
+      "_vendor.js"
+    ]
+  },
+  "src/components/icons/file.vue": {
+    "file": "chunks/file.js",
+    "src": "src/components/icons/file.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/main.ts",
+      "_vendor.js"
+    ]
+  },
+  "src/components/icons/folder-empty.vue": {
+    "file": "chunks/folder-empty.js",
+    "src": "src/components/icons/folder-empty.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/main.ts",
+      "_vendor.js"
+    ]
+  },
+  "src/components/icons/folder.vue": {
+    "file": "chunks/folder.js",
+    "src": "src/components/icons/folder.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/main.ts",
+      "_vendor.js"
+    ]
+  },
+  "src/components/icons/image.vue": {
+    "file": "chunks/image.js",
+    "src": "src/components/icons/image.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/main.ts",
+      "_vendor.js"
+    ]
+  },
+  "src/components/icons/pdf.vue": {
+    "file": "chunks/pdf.js",
+    "src": "src/components/icons/pdf.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/main.ts",
+      "_vendor.js"
+    ]
+  },
+  "src/components/icons/pdf2.vue": {
+    "file": "chunks/pdf2.js",
+    "src": "src/components/icons/pdf2.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/main.ts",
+      "_vendor.js"
+    ]
+  },
+  "src/components/icons/pin.vue": {
+    "file": "chunks/pin.js",
+    "src": "src/components/icons/pin.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/main.ts",
+      "_vendor.js"
+    ]
+  },
+  "src/components/icons/reactool.vue": {
+    "file": "chunks/reactool.js",
+    "src": "src/components/icons/reactool.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/main.ts",
+      "_vendor.js"
+    ],
+    "css": [
+      "assets/reactool.css"
+    ]
+  },
+  "src/components/icons/reactool_black.vue": {
+    "file": "chunks/reactool_black.js",
+    "src": "src/components/icons/reactool_black.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/main.ts",
+      "_vendor.js"
+    ],
+    "css": [
+      "assets/reactool_black.css"
+    ]
+  },
+  "src/components/icons/setting.vue": {
+    "file": "chunks/setting.js",
+    "src": "src/components/icons/setting.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/main.ts",
+      "_vendor.js"
+    ]
+  },
+  "src/components/icons/upload.vue": {
+    "file": "chunks/upload.js",
+    "src": "src/components/icons/upload.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/main.ts",
+      "_vendor.js"
+    ],
+    "css": [
+      "assets/upload.css"
+    ]
+  },
+  "src/components/icons/video.vue": {
+    "file": "chunks/video.js",
+    "src": "src/components/icons/video.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/main.ts",
+      "_vendor.js"
+    ]
+  },
+  "node_modules/primevue/checkbox/checkbox.esm.js": {
+    "file": "chunks/checkbox.esm.js",
+    "src": "node_modules/primevue/checkbox/checkbox.esm.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor.js"
+    ]
+  },
+  "node_modules/primevue/textarea/textarea.esm.js": {
+    "file": "chunks/textarea.esm.js",
+    "src": "node_modules/primevue/textarea/textarea.esm.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor.js"
+    ]
+  },
+  "node_modules/primevue/radiobutton/radiobutton.esm.js": {
+    "file": "chunks/radiobutton.esm.js",
+    "src": "node_modules/primevue/radiobutton/radiobutton.esm.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor.js"
+    ]
+  }
+}

@@ -159,10 +159,19 @@ MESSAGE_TAGS = {
 }
 
 if DEBUG:
-  DJANGO_VITE_ASSETS_PATH = BASE_DIR / "app/src"
+  # DJANGO_VITE_ASSETS_PATH = BASE_DIR / "app/src"
+  # STATIC_URL = '/static/'
+  # STATICFILES_DIRS = [
+  #   BASE_DIR / "static",
+  #   DJANGO_VITE_ASSETS_PATH,
+  # ]
+  # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+  # MEDIA_URL = '/media/'
+
+  DJANGO_VITE_ASSETS_PATH = BASE_DIR / "app/dist"
   STATIC_URL = '/static/'
+  STATIC_ROOT = 'static'
   STATICFILES_DIRS = [
-    BASE_DIR / "static",
     DJANGO_VITE_ASSETS_PATH,
   ]
   MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -190,5 +199,5 @@ else:
   DJANGO_VITE_ASSETS_PATH = BASE_DIR / "static"
   STATICFILES_DIRS = [
     'reactool/static',
-    DJANGO_VITE_ASSETS_PATH,
+    # DJANGO_VITE_ASSETS_PATH,
   ]
