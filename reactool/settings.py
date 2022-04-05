@@ -205,7 +205,7 @@ else:
   DEFAULT_FILE_STORAGE = "reactool.aws_storages.MediaStorage"
 
   STATIC_ROOT = BASE_DIR / 'static'
-  DJANGO_VITE_ASSETS_PATH = BASE_DIR / "static"
+  DJANGO_VITE_ASSETS_PATH = "static"
   STATICFILES_DIRS = [
     DJANGO_VITE_ASSETS_PATH,
   ]
