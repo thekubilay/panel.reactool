@@ -102,21 +102,31 @@ if 'RDS_DB_NAME' in os.environ:
       'NAME': "rds_reactool_test",
       'USER': "reactool1",
       'PASSWORD': "rKWGszjn45x",
-      'HOST': os.environ['RDS_HOSTNAME'],
-      'PORT': os.environ['RDS_PORT'],
+      'HOST': "aa1fteqqu3lxe3r.ckh4r4vbpxv4.ap-northeast-1.rds.amazonaws.com",
+      'PORT': 3306,
     }
   }
 else:
   DATABASES = {
     'default': {
       'ENGINE': 'mysql.connector.django',
-      'NAME': 'reactool',
-      'USER': 'root',
-      'PASSWORD': 'snickers.007',
-      'HOST': 'localhost',
-      'PORT': '3306'
+      'NAME': "rds_reactool_test",
+      'USER': "reactool1",
+      'PASSWORD': "rKWGszjn45x",
+      'HOST': "aa1fteqqu3lxe3r.ckh4r4vbpxv4.ap-northeast-1.rds.amazonaws.com",
+      'PORT': 3306,
     }
   }
+  # DATABASES = {
+  #   'default': {
+  #     'ENGINE': 'mysql.connector.django',
+  #     'NAME': 'reactool',
+  #     'USER': 'root',
+  #     'PASSWORD': 'snickers.007',
+  #     'HOST': 'localhost',
+  #     'PORT': '3306'
+  #   }
+  # }
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
