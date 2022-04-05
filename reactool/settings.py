@@ -23,7 +23,6 @@ CORS_ORIGIN_WHITELIST = [
 ]
 X_FRAME_OPTIONS = 'ALLOWALL'
 XS_SHARING_ALLOWED_METHODS = ['POST', 'GET', 'OPTIONS', 'PUT', 'DELETE']
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 INSTALLED_APPS = [
   'django.contrib.admin',
@@ -41,7 +40,7 @@ INSTALLED_APPS = [
 ]
 SITE_ID = 1
 AUTH_USER_MODEL = "accounts.CustomUser"
-ACCOUNT_ADAPTER = ("allauth.account.adapter.DefaultAccountAdapter",)
+# ACCOUNT_ADAPTER = ("allauth.account.adapter.DefaultAccountAdapter",)
 ACCOUNT_EMAIL_VERIFICATION = "none"
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = True
