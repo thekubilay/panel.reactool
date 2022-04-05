@@ -1,5 +1,5 @@
 import requests
-# import cv2
+import cv2
 import mojimoji
 
 from reactool.settings import DEBUG
@@ -37,20 +37,20 @@ def get_image_px_sizes(image_path):
     'channel': None
   }
 
-  # try:
-  #   current_site = "https://demo.reactool.jp"
-  #   if DEBUG:
-  #     current_site = "http://127.0.0.1:8000"
-  #
-  #   img = Image.open(requests.get(current_site + "/media/" + str(image_path), stream=True).raw)
-  #   print(img.size)
-  #   w, h = img.size
-  #   context = {
-  #     'width': w,
-  #     'height': h,
-  #   }
-  # except cv2.error as e:
-  #   print(e)
+  try:
+    current_site = "https://test-panel.reactool.jp"
+    if DEBUG:
+      current_site = "http://127.0.0.1:8000"
+
+    img = Image.open(requests.get(current_site + "/media/" + str(image_path), stream=True).raw)
+    print(img.size)
+    w, h = img.size
+    context = {
+      'width': w,
+      'height': h,
+    }
+  except cv2.error as e:
+    print(e)
 
   return context
 

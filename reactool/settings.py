@@ -32,13 +32,14 @@ INSTALLED_APPS = [
 ]
 SITE_ID = 1
 AUTH_USER_MODEL = "accounts.CustomUser"
-# ACCOUNT_ADAPTER = ("allauth.account.adapter.DefaultAccountAdapter",)
+ACCOUNT_ADAPTER = ("allauth.account.adapter.DefaultAccountAdapter",)
 ACCOUNT_EMAIL_VERIFICATION = "none"
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = False
 AUTHENTICATION_BACKENDS = (
   "django.contrib.auth.backends.ModelBackend",
+  # "allauth.account.auth_backends.AuthenticationBackend",
 )
 LOGIN_URL = "/accounts/login/"
 LOGIN_REDIRECT_URL = "/"
@@ -158,23 +159,23 @@ MESSAGE_TAGS = {
 }
 
 if DEBUG:
-  DJANGO_VITE_ASSETS_PATH = BASE_DIR / "app/src"
-  STATIC_URL = '/static/'
-  STATICFILES_DIRS = [
-    BASE_DIR / "static",
-    DJANGO_VITE_ASSETS_PATH,
-  ]
-  MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-  MEDIA_URL = '/media/'
-
-  # DJANGO_VITE_ASSETS_PATH = BASE_DIR / "app/dist"
+  # DJANGO_VITE_ASSETS_PATH = BASE_DIR / "app/src"
   # STATIC_URL = '/static/'
-  # STATIC_ROOT = 'static'
   # STATICFILES_DIRS = [
+  #   BASE_DIR / "static",
   #   DJANGO_VITE_ASSETS_PATH,
   # ]
   # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
   # MEDIA_URL = '/media/'
+
+  DJANGO_VITE_ASSETS_PATH = BASE_DIR / "app/dist"
+  STATIC_URL = '/static/'
+  STATIC_ROOT = BASE_DIR / 'static'
+  STATICFILES_DIRS = [
+    DJANGO_VITE_ASSETS_PATH,
+  ]
+  MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+  MEDIA_URL = '/media/'
 else:
   # Where ViteJS assets are built.   # aws settings
   AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
