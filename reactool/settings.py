@@ -194,7 +194,7 @@ else:
   # s3 public media settings
   PUBLIC_MEDIA_LOCATION = 'media'
   MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
-  DEFAULT_FILE_STORAGE = "ecc.aws_storages.MediaStorage"
+  DEFAULT_FILE_STORAGE = "reactool.aws_storages.MediaStorage"
 
   DJANGO_VITE_ASSETS_PATH = BASE_DIR / "static"
   STATICFILES_DIRS = [
