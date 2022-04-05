@@ -10,8 +10,7 @@ DEBUG = config("DEBUG", default=True, cast=bool)
 
 ALLOWED_HOSTS = ["127.0.0.1",
                  "192.168.100.36",
-                 "panel-test-env.eba-92hkwvtp.ap-northeast-1.elasticbeanstalk.com",
-                 ]
+                 "panel-test-env.eba-92hkwvtp.ap-northeast-1.elasticbeanstalk.com",]
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = ["http://localhost:3000", "http://192.168.100.84:3000"]
 X_FRAME_OPTIONS = 'ALLOWALL'
@@ -27,7 +26,7 @@ INSTALLED_APPS = [
   'django.contrib.sites',
 
   "companies", "accounts", "salons", "projects", "routes", "sumaipad", "permissions", "logs", "news",
-  "rest_framework", "allauth", 'rest_framework_simplejwt', 'crispy_forms', "tutorials",
+  "rest_framework", 'rest_framework_simplejwt', 'crispy_forms', "tutorials",
   "corsheaders", "django_cleanup.apps.CleanupConfig", "django_vite",
 
 ]
