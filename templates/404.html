@@ -1,0 +1,42 @@
+{% load static %}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/error.css' %}">
+{% endblock %}
+{% block content %}
+<div class="error-page">
+  <main class="error">
+    <div class="main-section">
+      <div class="error-wrapper">
+        <div class="error-forground">
+          <h1>お探しのページは<br>見つかりませんでした。</h1>
+          <p>あなたがお探しのページは一時的にアクセスができない状況にあるか、移動もしくは削除された可能性があります。<br></p>
+          <button onclick="window.location='/'" class="error-button" type="button">メインページに戻る</button>
+        </div>
+        <span class="error-number">404</span>
+      </div>
+
+      <div class="error-image-wrapper">
+        <div class="error-image-anchor">
+          <div class="images-bg-container">
+            <div class="images-bg">
+              <div class="outer-ring"></div>
+              <div class="inner-ring"></div>
+              <div class="comets">
+                <div class="comet d1">
+                  <div class="comet-image c1"></div>
+                </div>
+                <div class="comet d2">
+                  <div class="comet-image c2"></div>
+                </div>
+                <div class="comet d3">
+                  <div class="comet-image c3"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+{% endblock %}

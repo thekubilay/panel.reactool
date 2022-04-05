@@ -1,47 +1,31 @@
+from common.helpers import set_coordinates, calculate_ppm
 from rest_framework import viewsets
-from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
 from sumaipad.routes.permissions import (IsSuperAdmin, IsAdmin, IsCompanyManager)
-from rest_framework import status
-from rest_framework.permissions import IsAdminUser
-from sumaipad.models import (Plan, PlanTypeImage, PlanImage, VistaSimulator, Coord, CoordImage, Document,
-                             Floor, Room, Link, Gallery, BuildingParkingFee, BuildingBankType,
-                             VistaSimulatorContent, Route,
-                             DocumentFolder, RoomSimulatorImage, RoomSimulatorColorImage, RoomSimulatorContentTitle,
+from sumaipad.models import (PlanField, PlanContent, PlanContext, PlanFieldOption,
+                             ColorSimulatorRoom, ColorSimulatorRoomPart, ColorSimulatorRoomPartItem,
+                             VistaSimulator, MapPlace, GeneralPlan,
+                             MapPlaceImage,
+                             Document,
+                             BuildingFloor, BuildingFloorRoom, Link, Gallery, BuildingParkingFee, BuildingBankType,
+                             VistaSimulatorContent, BuildingVr, BuildingVrDirection, BuildingVrDirectionImage,
+                             DocumentFolder, RoomVrNextRoom,
                              MapCategory, RoomVr, RoomVrFloor, PlanMenu, MapSetting,
-                             Slideshow, Building, RoomSimulator, RoomSimulatorContent, RoomSimulatorBaseImage)
-from sumaipad.routes.serializers import (PlansSerializer, PlanImagesSerializer, PlanTypeImagesSerializer,
-                                         CoordsSerializer, FloorSerializer, RoomSerializer, DocumentsSerializer,
+                             Slideshow, Building)
+
+from sumaipad.routes.serializers import (PlanFieldSerializer, PlanContentSerializer, PlanContextSerializer,
+                                         MapPlaceSerializer, BuildingFloorSerializer, BuildingFloorRoomSerializer,
+                                         DocumentsSerializer, BuildingVrSerializer, BuildingVrDirectionSerializer,
+                                         BuildingVrDirectionImageSerializer,
                                          DocumentFoldersSerializer, MapCategorySerializer, MapSettingSerializer,
-                                         GallerySerializer, PlanMenuSerializer,
-                                         VistaSimulatorSerializer, CoordImageSerializer, RouteSerializer,
-                                         RoomSimulatorSerializer, RoomSimulatorContentSerializer,
-                                         LinkSerializer, RoomSimulatorColorImageSerializer,
-                                         RoomVrSerializer, RoomVrFloorSerializer,
-                                         RoomSimulatorImageSerializer, RoomSimulatorContentTitleSerializer,
+                                         GallerySerializer, PlanFieldOptionSerializer,
+                                         VistaSimulatorSerializer, MapPlaceImageSerializer,
+                                         LinkSerializer,
+                                         ColorSimulatorRoomSerializer, ColorSimulatorRoomPartSerializer,
+                                         ColorSimulatorRoomPartItemSerializer,
+                                         RoomVrSerializer, RoomVrFloorSerializer, GeneralPlanSerializer,
                                          BuildingSerializer, BuildingBankTypeSerializer, BuildingParkingFeeSerializer,
-                                         RoomSimulatorBaseImageSerializer, VistaSimulatorContentsSerializer)
-
-
-class RouteViewSet(viewsets.ModelViewSet):
-  queryset = Route.objects.all()
-  serializer_class = RouteSerializer
-  permission_classes = [IsSuperAdmin | IsAdmin | IsCompanyManager]
-
-  def create(self, request, *args, **kwargs):
-    if "reordered" in request.data:
-      items = request.data["reordered"]
-      for i, item in enumerate(items):
-        route = Route.objects.get(id=item["id"])
-        route.order_id = i + 1
-        route.save()
-    else:
-      serializer = RouteSerializer(data=request.data)
-      serializer.is_valid(raise_exception=True)
-      serializer.save()
-      return Response(serializer.data)
-
-    return Response(status=200)
+                                         VistaSimulatorContentsSerializer)
 
 
 class GalleryViewSet(viewsets.ModelViewSet):
@@ -127,279 +111,524 @@ class DocumentViewSet(viewsets.ModelViewSet):
 
     return Response(status=200)
 
-#
-# class PlanViewSet(ModelViewSet):
-#   queryset = Plan.objects.all()
-#   serializer_class = PlansSerializer
-#
-#
-# class PlanMenuViewSet(ModelViewSet):
-#   queryset = PlanMenu.objects.all()
-#   serializer_class = PlanMenuSerializer
-#
-#   def create(self, request, *args, **kwargs):
-#     if "ordered" in request.data:
-#       items = request.data["ordered"]
-#       for item in items:
-#         menu = PlanMenu.objects.get(id=item["id"])
-#         menu.order_id = item["order_id"]
-#         menu.save()
-#
-#       return Response(status=status.HTTP_200_OK)
-#     else:
-#       serializer = self.get_serializer(data=request.data)
-#       serializer.is_valid(raise_exception=True)
-#       self.perform_create(serializer)
-#       return Response(serializer.data)
-#
-#
-# class PlanTypeImageViewSet(ModelViewSet):
-#   queryset = PlanTypeImage.objects.all()
-#   serializer_class = PlanTypeImagesSerializer
-#
-#
-# class PlanImageViewSet(ModelViewSet):
-#   queryset = PlanImage.objects.all()
-#   serializer_class = PlanImagesSerializer
-#
-#
-# class RoomSimulatorViewSet(ModelViewSet):
-#   queryset = RoomSimulator.objects.all()
-#   serializer_class = RoomSimulatorSerializer
-#
-#   def create(self, request, *args, **kwargs):
-#     if "ordered" in request.data:
-#       items = request.data["ordered"]
-#       for item in items:
-#         room = RoomSimulator.objects.get(id=item["id"])
-#         room.order_id = item["order_id"]
-#         room.save()
-#
-#       return Response(status=status.HTTP_200_OK)
-#     else:
-#       serializer = self.get_serializer(data=request.data)
-#       serializer.is_valid(raise_exception=True)
-#       self.perform_create(serializer)
-#       return Response(serializer.data)
-#
-#
-# class RoomSimulatorContentTitleViewSet(ModelViewSet):
-#   queryset = RoomSimulatorContentTitle.objects.all()
-#   serializer_class = RoomSimulatorContentTitleSerializer
-#
-#   def create(self, request, *args, **kwargs):
-#     if "ordered" in request.data:
-#       items = request.data["ordered"]
-#       for item in items:
-#         room = RoomSimulatorContentTitle.objects.get(id=item["id"])
-#         room.order_id = item["order_id"]
-#         room.save()
-#
-#       return Response(status=status.HTTP_200_OK)
-#     else:
-#       serializer = self.get_serializer(data=request.data)
-#       serializer.is_valid(raise_exception=True)
-#       self.perform_create(serializer)
-#       return Response(serializer.data)
-#
-#
-# class RoomSimulatorContentViewSet(ModelViewSet):
-#   queryset = RoomSimulatorContent.objects.all()
-#   serializer_class = RoomSimulatorContentSerializer
-#
-#   def create(self, request, *args, **kwargs):
-#     if "ordered" in request.data:
-#       items = request.data["ordered"]
-#       for item in items:
-#         content = RoomSimulatorContent.objects.get(id=item["id"])
-#         content.order_id = item["order_id"]
-#         content.save()
-#
-#       return Response(status=status.HTTP_200_OK)
-#     else:
-#       serializer = self.get_serializer(data=request.data)
-#       serializer.is_valid(raise_exception=True)
-#       self.perform_create(serializer)
-#       return Response(serializer.data)
-#
-#
-# class RoomSimulatorImageViewSet(ModelViewSet):
-#   queryset = RoomSimulatorImage.objects.all()
-#   serializer_class = RoomSimulatorImageSerializer
-#
-#
-# class RoomSimulatorBaseImageViewSet(ModelViewSet):
-#   queryset = RoomSimulatorBaseImage.objects.all()
-#   serializer_class = RoomSimulatorBaseImageSerializer
-#
-#
-# class RoomSimulatorColorImageViewSet(ModelViewSet):
-#   queryset = RoomSimulatorColorImage.objects.all()
-#   serializer_class = RoomSimulatorColorImageSerializer
-#
-#
-# class VistaSimulatorViewSet(ModelViewSet):
-#   queryset = VistaSimulator.objects.all()
-#   serializer_class = VistaSimulatorSerializer
-#
-#
-# class VistaSimulatorContentsViewSet(ModelViewSet):
-#   queryset = VistaSimulatorContent.objects.all()
-#   serializer_class = VistaSimulatorContentsSerializer
-#
-#
-# class CoordViewSet(ModelViewSet):
-#   queryset = Coord.objects.all()
-#   serializer_class = CoordsSerializer
-#   permission_classes = [IsSuper | IsAdminUser]
-#
-#
-# class MapSettingViewSet(ModelViewSet):
-#   queryset = MapSetting.objects.all()
-#   serializer_class = MapSettingSerializer
-#   permission_classes = [IsSuper | IsAdminUser]
-#
-#
-# class MapCategoryViewSet(ModelViewSet):
-#   queryset = MapCategory.objects.all()
-#   serializer_class = MapCategorySerializer
-#   permission_classes = [IsSuper | IsAdminUser]
-#
-#   def create(self, request, *args, **kwargs):
-#     if "ordered" in request.data:
-#       items = request.data["ordered"]
-#       for item in items:
-#         category = MapCategory.objects.get(id=item["id"])
-#         category.order_id = item["order_id"]
-#         category.save()
-#
-#       return Response(status=status.HTTP_200_OK)
-#     else:
-#       serializer = self.get_serializer(data=request.data)
-#       serializer.is_valid(raise_exception=True)
-#       self.perform_create(serializer)
-#       return Response(serializer.data)
-#
-#
-# class CoordImageViewSet(ModelViewSet):
-#   queryset = CoordImage.objects.all()
-#   serializer_class = CoordImageSerializer
-#   permission_classes = [IsSuper | IsAdminUser]
-#
-#
-# class BuildingParkingFeeViewSet(ModelViewSet):
-#   queryset = BuildingParkingFee.objects.all()
-#   serializer_class = BuildingParkingFeeSerializer
-#
-#
-# class BuildingBankTypeViewSet(ModelViewSet):
-#   queryset = BuildingBankType.objects.all()
-#   serializer_class = BuildingBankTypeSerializer
-#
-#
-# class DocumentsViewSet(ModelViewSet):
-#   queryset = Document.objects.all()
-#   serializer_class = DocumentsSerializer
-#
-#
-# class DocumentFoldersViewSet(ModelViewSet):
-#   queryset = DocumentFolder.objects.all()
-#   serializer_class = DocumentFoldersSerializer
-#   permission_classes = [IsSuper | IsAdminUser]
-#
-#   def create(self, request, *args, **kwargs):
-#     if "ordered" in request.data:
-#       items = request.data["ordered"]
-#       for item in items:
-#         doc = DocumentFolder.objects.get(id=item["id"])
-#         doc.order_id = item["order_id"]
-#         doc.save()
-#
-#       return Response(status=status.HTTP_200_OK)
-#     else:
-#       serializer = self.get_serializer(data=request.data)
-#       serializer.is_valid(raise_exception=True)
-#       self.perform_create(serializer)
-#       return Response(serializer.data)
-#
-#
-# class LinksViewSet(ModelViewSet):
-#   queryset = Link.objects.all()
-#   serializer_class = LinksSerializer
-#
-#
-# class GalleryViewSet(ModelViewSet):
-#   queryset = Gallery.objects.all()
-#   serializer_class = GallerySerializer
-#
-#
-# class SlideshowViewSet(ModelViewSet):
-#   queryset = Slideshow.objects.all()
-#   serializer_class = SlideshowSerializer
-#
-#
-# class RoomViewSet(ModelViewSet):
-#   queryset = Room.objects.all()
-#   serializer_class = RoomSerializer
-#
-#   def create(self, request, *args, **kwargs):
-#     if "array" in request.data:
-#       items = request.data["array"]
-#       for item in items:
-#         serializer = self.get_serializer(data=item)
-#         serializer.is_valid(raise_exception=True)
-#         self.perform_create(serializer)
-#
-#       return Response(status=status.HTTP_200_OK)
-#
-#     elif "ordered" in request.data:
-#       items = request.data["ordered"]
-#       for item in items:
-#         room = Room.objects.get(id=item["id"])
-#         room.order_id = item["order_id"]
-#         room.save()
-#
-#       return Response(status=status.HTTP_200_OK)
-#
-#     else:
-#       serializer = self.get_serializer(data=request.data)
-#       serializer.is_valid(raise_exception=True)
-#       self.perform_create(serializer)
-#       return Response(serializer.data)
-#
-#
-# class FloorViewSet(ModelViewSet):
-#   queryset = Floor.objects.all()
-#   serializer_class = FloorSerializer
-#
-#   def create(self, request, *args, **kwargs):
-#     if "ordered" in request.data:
-#       items = request.data["ordered"]
-#       for item in items:
-#         floor = Floor.objects.get(id=item["id"])
-#         floor.order_id = item["order_id"]
-#         floor.save()
-#
-#       return Response(status=status.HTTP_200_OK)
-#
-#     else:
-#       serializer = self.get_serializer(data=request.data)
-#       serializer.is_valid(raise_exception=True)
-#       self.perform_create(serializer)
-#       return Response(serializer.data)
-#
-#
-# class BuildingViewSet(ModelViewSet):
-#   queryset = Building.objects.all()
-#   serializer_class = BuildingSerializer
-#
-#
-# class RoomVrViewSet(ModelViewSet):
-#   queryset = RoomVr.objects.all()
-#   serializer_class = RoomVrSerializer
-#
-#
-# class RoomVrFloorViewSet(ModelViewSet):
-#   queryset = RoomVrFloor.objects.all()
-#   serializer_class = RoomVrFloorSerializer
-#
+
+class MapSettingViewSet(viewsets.ModelViewSet):
+  queryset = MapSetting.objects.all()
+  serializer_class = MapSettingSerializer
+
+  def get_permissions(self):
+    permission_classes = [IsSuperAdmin | IsAdmin]
+    if self.action == "update":
+      permission_classes = [IsSuperAdmin | IsAdmin | IsCompanyManager]
+    else:
+      permission_classes = [IsSuperAdmin | IsAdmin]
+
+    return [permission() for permission in permission_classes]
+
+
+class MapCategoryViewSet(viewsets.ModelViewSet):
+  queryset = MapCategory.objects.all()
+  serializer_class = MapCategorySerializer
+
+  def create(self, request, *args, **kwargs):
+    if "reordered" in request.data:
+      items = request.data["reordered"]
+      for i, item in enumerate(items):
+        category = MapCategory.objects.get(id=item["id"])
+        category.order_id = i + 1
+        category.save()
+    else:
+      serializer = MapCategorySerializer(data=request.data)
+      serializer.is_valid(raise_exception=True)
+      serializer.save()
+      return Response(serializer.data)
+
+    return Response(status=200)
+
+
+class MapPlaceViewSet(viewsets.ModelViewSet):
+  queryset = MapPlace.objects.all()
+  serializer_class = MapPlaceSerializer
+
+  def create(self, request, *args, **kwargs):
+    if "reordered" in request.data:
+      items = request.data["reordered"]
+      for i, item in enumerate(items):
+        place = MapPlace.objects.get(id=item["id"])
+        place.order_id = i + 1
+        place.save()
+
+    else:
+      serializer = MapPlaceSerializer(data=request.data)
+      serializer.is_valid(raise_exception=True)
+      place = serializer.save()
+      coords = set_coordinates(place)
+      place.lat = coords["lat"]
+      place.lng = coords["lng"]
+      place.save()
+      return Response(serializer.data)
+
+    return Response(status=200)
+
+  def partial_update(self, request, *args, **kwargs):
+    instance = self.queryset.get(pk=kwargs.get('pk'))
+    serializer = self.serializer_class(instance, data=request.data, partial=True)
+    serializer.is_valid(raise_exception=True)
+    place = serializer.save()
+    coords = set_coordinates(place)
+    place.lat = coords["lat"]
+    place.lng = coords["lng"]
+    place.save()
+    return Response(serializer.data)
+
+  class MapPlaceImageViewSet(viewsets.ModelViewSet):
+    queryset = MapPlaceImage.objects.all()
+    serializer_class = MapPlaceImageSerializer
+
+
+class MapPlaceImageViewSet(viewsets.ModelViewSet):
+  queryset = MapPlaceImage.objects.all()
+  serializer_class = MapPlaceImageSerializer
+
+
+class PlanFieldViewSet(viewsets.ModelViewSet):
+  queryset = PlanField.objects.all()
+  serializer_class = PlanFieldSerializer
+
+  def create(self, request, *args, **kwargs):
+    if "reordered" in request.data:
+      items = request.data["reordered"]
+      for i, item in enumerate(items):
+        field = PlanField.objects.get(id=item["id"])
+        field.order_id = i + 1
+        field.save()
+        contexts = PlanContext.objects.filter(plan_field=field)
+        for context in contexts:
+          context.order_id = field.order_id
+          context.save()
+
+      return Response(status=200)
+    else:
+      serializer = PlanFieldSerializer(data=request.data)
+      serializer.is_valid(raise_exception=True)
+      field = serializer.save()
+      contents = PlanContent.objects.filter(project=serializer.data["project"])
+      for content in contents:
+        PlanContext.objects.create(order_id=field.order_id, plan_field=field, plan_content=content, field=field.type)
+
+      return Response(serializer.data)
+
+
+class PlanFieldOptionViewSet(viewsets.ModelViewSet):
+  queryset = PlanFieldOption.objects.all()
+  serializer_class = PlanFieldOptionSerializer
+
+  def create(self, request, *args, **kwargs):
+    updates = request.data["update"] or []
+    for item in updates:
+      PlanFieldOption.objects.filter(id=item["id"]).update(id=int(item["id"]), order_id=item["order_id"], name=item["name"])
+
+    creates = request.data["create"] or []
+    for item in creates:
+      PlanFieldOption.objects.create(plan_field_id=item["plan_field"], name=item["name"], order_id=item["order_id"])
+
+    removes = request.data["remove"] or []
+    for item in removes:
+      option = PlanFieldOption.objects.get(id=item)
+      option.delete()
+
+    return Response(status=200)
+
+
+class PlanContentViewSet(viewsets.ModelViewSet):
+  queryset = PlanContent.objects.all()
+  serializer_class = PlanContentSerializer
+
+  def create(self, request, *args, **kwargs):
+    if "reordered" in request.data:
+      items = request.data["reordered"]
+      for i, item in enumerate(items):
+        content = PlanContent.objects.get(id=item["id"])
+        content.order_id = i + 1
+        content.save()
+    else:
+      serializer = PlanContentSerializer(data=request.data)
+      serializer.is_valid(raise_exception=True)
+      row = serializer.save()
+      fields = PlanField.objects.filter(project=row.project)
+
+      if "duplicate" not in request.data:
+        for field in fields:
+          PlanContext.objects.create(plan_field=field, order_id=field.order_id, plan_content=row, field=field.type,
+                                     value=None)
+
+      return Response(serializer.data)
+
+    return Response(status=200)
+
+
+class PlanContextViewSet(viewsets.ModelViewSet):
+  queryset = PlanContext.objects.all()
+  serializer_class = PlanContextSerializer
+
+  def create(self, request, *args, **kwargs):
+    if "update" in request.data:
+      contexts = request.data["update"]
+      for item in contexts:
+        context = PlanContext.objects.get(id=item["id"])
+        context.value = item["value"] or ""
+        context.save()
+
+    elif "duplicate" in request.data:
+      items = request.data["duplicate"]
+      for item in items:
+        PlanContext.objects.create(plan_field_id=item["plan_field"]["id"], plan_content_id=item["plan_content"],
+                                   order_id=item["order_id"], field=item["field"], value=item["value"])
+
+    return Response(status=200)
+
+  def partial_update(self, request, *args, **kwargs):
+    instance = self.queryset.get(pk=kwargs.get('pk'))
+    serializer = PlanContextSerializer(instance, data=request.data, partial=True)
+    serializer.is_valid(raise_exception=True)
+    context = serializer.save()
+    print(context)
+    if context.plan_field.name == "距離画像":
+      image_data = calculate_ppm(context.image)
+      context.ppm = image_data["ppm"]
+
+      context.save()
+
+    return Response(serializer.data)
+
+  def update(self, request, *args, **kwargs):
+    instance = self.queryset.get(pk=kwargs.get('pk'))
+    serializer = PlanContextSerializer(instance, data=request.data)
+    serializer.is_valid(raise_exception=True)
+    context = serializer.save()
+    if context.plan_field.name == "距離画像":
+      image_data = calculate_ppm(context.image)
+      context.ppm = image_data["ppm"]
+      context.save()
+
+    return Response(serializer.data)
+
+
+class GeneralPlanViewSet(viewsets.ModelViewSet):
+  queryset = GeneralPlan.objects.all()
+  serializer_class = GeneralPlanSerializer
+
+  def create(self, request, *args, **kwargs):
+    if "reordered" in request.data:
+      items = request.data["reordered"]
+      for i, item in enumerate(items):
+        plan = GeneralPlan.objects.get(id=item["id"])
+        plan.order_id = i + 1
+        plan.save()
+
+      return Response(status=200)
+
+    else:
+      serializer = GeneralPlanSerializer(data=request.data)
+      serializer.is_valid(raise_exception=True)
+      serializer.save()
+      return Response(serializer.data)
+
+
+class BuildingVrViewSet(viewsets.ModelViewSet):
+  queryset = BuildingVr.objects.all()
+  serializer_class = BuildingVrSerializer
+
+  def list(self, request, *args, **kwargs):
+    return Response(status=200)
+
+
+class BuildingVrDirectionViewSet(viewsets.ModelViewSet):
+  queryset = BuildingVrDirection.objects.all()
+  serializer_class = BuildingVrDirectionSerializer
+
+  def list(self, request, *args, **kwargs):
+    return Response(status=200)
+
+  def create(self, request, *args, **kwargs):
+    data = request.data["create"] or []
+    remove = request.data["remove"] or []
+
+    for item in remove:
+      if item["id"] is not None:
+        exists = BuildingVrDirection.objects.filter(id=item["id"]).exists()
+        if exists:
+          direction = BuildingVrDirection.objects.get(id=item["id"])
+          direction.delete()
+
+    for item in data:
+      if item["id"] is None:
+        BuildingVrDirection.objects.create(building_vr_id=item["building_vr"], name=item["name"])
+      else:
+        exists = BuildingVrDirection.objects.filter(id=item["id"]).exists()
+        if exists:
+          direction = BuildingVrDirection.objects.get(id=item["id"])
+          direction.name = item["name"]
+          direction.save()
+
+    return Response(status=200)
+
+
+class BuildingVrDirectionImageViewSet(viewsets.ModelViewSet):
+  queryset = BuildingVrDirectionImage.objects.all()
+  serializer_class = BuildingVrDirectionImageSerializer
+
+  def list(self, request, *args, **kwargs):
+    return Response(status=200)
+
+
+class BuildingViewSet(viewsets.ModelViewSet):
+  queryset = Building.objects.all()
+  serializer_class = BuildingSerializer
+
+  def create(self, request, *args, **kwargs):
+    return Response(status=200)
+
+  def list(self, request, *args, **kwargs):
+    return Response(status=200)
+
+  def destroy(self, request, *args, **kwargs):
+    return Response(status=200)
+
+
+class BuildingFloorViewSet(viewsets.ModelViewSet):
+  queryset = BuildingFloor.objects.all()
+  serializer_class = BuildingFloorSerializer
+
+  def create(self, request, *args, **kwargs):
+    if "reordered" in request.data:
+      items = request.data["reordered"]
+      for i, item in enumerate(items):
+        floor = BuildingFloor.objects.get(id=item["id"])
+        floor.order_id = i + 1
+        floor.save()
+
+      return Response(status=200)
+
+    else:
+      serializer = BuildingFloorSerializer(data=request.data)
+      serializer.is_valid(raise_exception=True)
+      serializer.save()
+      return Response(serializer.data)
+
+  def list(self, request, *args, **kwargs):
+    return Response(status=200)
+
+  def update(self, request, *args, **kwargs):
+    return Response(status=200)
+
+  def partial_update(self, request, *args, **kwargs):
+    return Response(status=200)
+
+
+class BuildingFloorRoomViewSet(viewsets.ModelViewSet):
+  queryset = BuildingFloorRoom.objects.all()
+  serializer_class = BuildingFloorRoomSerializer
+
+  def create(self, request, *args, **kwargs):
+    if "reordered" in request.data:
+      items = request.data["reordered"]
+      for i, item in enumerate(items):
+        room = BuildingFloorRoom.objects.get(id=item["id"])
+        room.order_id = i + 1
+        room.save()
+
+      return Response(status=200)
+
+    if "create" in request.data:
+      items = request.data["create"]
+      for i, item in enumerate(items):
+        BuildingFloorRoom.objects.create(building_floor_id=item["building_floor"], order_id=i + 1)
+      return Response(status=200)
+    elif "duplicate" in request.data:
+      items = request.data["duplicate"]
+      for i, item in enumerate(items):
+        BuildingFloorRoom.objects.create(building_floor_id=item["building_floor"], order_id=i + 1,
+                                         number=item["number"], status=item["status"], menu=item["menu"],
+                                         type=item["type"], m2=item["m2"], plan=item["plan"],
+                                         price=item["price"], management_fee=item["management_fee"],
+                                         fixing_fee=item["fixing_fee"], sub=item["sub"],
+                                         sub_content=item["sub_content"])
+      return Response(status=200)
+    else:
+      serializer = BuildingFloorRoomSerializer(data=request.data)
+      serializer.is_valid(raise_exception=True)
+      serializer.save()
+      return Response(serializer.data)
+
+  def list(self, request, *args, **kwargs):
+    return Response(status=200)
+
+
+class VistaSimulatorViewSet(viewsets.ModelViewSet):
+  queryset = VistaSimulator.objects.all()
+  serializer_class = VistaSimulatorSerializer
+
+
+class VistaSimulatorContentViewSet(viewsets.ModelViewSet):
+  queryset = VistaSimulatorContent.objects.all()
+  serializer_class = VistaSimulatorContentsSerializer
+
+  def partial_update(self, request, *args, **kwargs):
+    instance = self.queryset.get(pk=kwargs.get('pk'))
+
+    serializer = VistaSimulatorContentsSerializer(instance, data=request.data, partial=True)
+    serializer.is_valid(raise_exception=True)
+    context = serializer.save()
+    if "plan_type" not in request.data:
+      context.plan_type = None
+      context.save()
+
+    return Response(serializer.data)
+
+
+class ColorSimulatorRoomViewSet(viewsets.ModelViewSet):
+  queryset = ColorSimulatorRoom.objects.all()
+  serializer_class = ColorSimulatorRoomSerializer
+
+  def create(self, request, *args, **kwargs):
+    if "reordered" in request.data:
+      items = request.data["reordered"]
+      for i, item in enumerate(items):
+        room = ColorSimulatorRoom.objects.get(id=item["id"])
+        room.order_id = i + 1
+        room.name = item["name"]
+        room.save()
+
+      return Response(status=200)
+
+    else:
+      rooms = ColorSimulatorRoom.objects.filter(project_id=request.data["project"])
+      request.data._mutable = True
+      request.data["order_id"] = 1 if len(rooms) > 1 else len(rooms) + 1
+      serializer = ColorSimulatorRoomSerializer(data=request.data)
+      serializer.is_valid(raise_exception=True)
+      serializer.save()
+      return Response(serializer.data)
+
+
+class ColorSimulatorRoomPartViewSet(viewsets.ModelViewSet):
+  queryset = ColorSimulatorRoomPart.objects.all()
+  serializer_class = ColorSimulatorRoomPartSerializer
+
+  def create(self, request, *args, **kwargs):
+    if "reordered" in request.data:
+      items = request.data["reordered"]
+      for i, item in enumerate(items):
+        part = ColorSimulatorRoomPart.objects.get(id=item["id"])
+        part.order_id = i + 1
+        part.save()
+
+      return Response(status=200)
+
+    else:
+      parts = ColorSimulatorRoomPart.objects.filter(color_simulator_room_id=request.data["color_simulator_room"])
+      request.data._mutable = True
+      request.data["order_id"] = 1 if len(parts) > 1 else len(parts) + 1
+      serializer = ColorSimulatorRoomPartSerializer(data=request.data)
+      serializer.is_valid(raise_exception=True)
+      serializer.save()
+      return Response(serializer.data)
+
+
+class ColorSimulatorRoomPartItemViewSet(viewsets.ModelViewSet):
+  queryset = ColorSimulatorRoomPartItem.objects.all()
+  serializer_class = ColorSimulatorRoomPartItemSerializer
+
+  def create(self, request, *args, **kwargs):
+    if "reordered" in request.data:
+      items = request.data["reordered"]
+      for i, item in enumerate(items):
+        part_item = ColorSimulatorRoomPartItem.objects.get(id=item["id"])
+        part_item.order_id = i + 1
+        part_item.save()
+
+      return Response(status=200)
+
+    else:
+      parts = ColorSimulatorRoomPartItem.objects.filter(
+        color_simulator_room_part_id=request.data["color_simulator_room_part"])
+      request.data._mutable = True
+      request.data["order_id"] = 1 if len(parts) > 1 else len(parts) + 1
+      serializer = ColorSimulatorRoomPartItemSerializer(data=request.data)
+      serializer.is_valid(raise_exception=True)
+      serializer.save()
+      return Response(serializer.data)
+
+
+class RoomVrViewSet(viewsets.ModelViewSet):
+  queryset = RoomVr.objects.all()
+  serializer_class = RoomVrSerializer
+
+
+class RoomVrFloorViewSet(viewsets.ModelViewSet):
+  queryset = RoomVrFloor.objects.all()
+  serializer_class = RoomVrFloorSerializer
+
+
+class RoomVrNextRoomViewSet(viewsets.ModelViewSet):
+  queryset = RoomVrNextRoom.objects.all()
+  serializer_class = RoomVrFloorSerializer
+
+  def create(self, request, *args, **kwargs):
+    for item in request.data["create"]:
+      if "id" in item:
+        portal = RoomVrNextRoom.objects.get(id=item["id"])
+        portal.next_room = item["next_room"]
+        portal.button_x = item["button_x"]
+        portal.button_y = item["button_y"]
+        portal.save()
+      else:
+        RoomVrNextRoom.objects.create(room_vr_floor_id=item["room_vr_floor"],
+                                      next_room=item["next_room"],
+                                      button_x=item["button_x"],
+                                      button_y=item["button_y"])
+
+    return Response(status=200)
+
+
+class LoanBankTypeViewSet(viewsets.ModelViewSet):
+  queryset = BuildingBankType.objects.all()
+  serializer_class = BuildingBankTypeSerializer
+
+  def create(self, request, *args, **kwargs):
+    if "reordered" in request.data:
+      items = request.data["reordered"]
+      for i, item in enumerate(items):
+        bank_type = BuildingBankType.objects.get(id=item["id"])
+        bank_type.order_id = i + 1
+        bank_type.save()
+
+      return Response(status=200)
+
+    else:
+      serializer = BuildingBankTypeSerializer(data=request.data)
+      serializer.is_valid(raise_exception=True)
+      serializer.save()
+      return Response(serializer.data)
+
+
+class ParkingFeeViewSet(viewsets.ModelViewSet):
+  queryset = BuildingParkingFee.objects.all()
+  serializer_class = BuildingParkingFeeSerializer
+
+  def create(self, request, *args, **kwargs):
+    if "reordered" in request.data:
+      items = request.data["reordered"]
+      for i, item in enumerate(items):
+        parking_fee = BuildingParkingFee.objects.get(id=item["id"])
+        parking_fee.order_id = i + 1
+        parking_fee.save()
+
+      return Response(status=200)
+
+    else:
+      serializer = BuildingParkingFeeSerializer(data=request.data)
+      serializer.is_valid(raise_exception=True)
+      serializer.save()
+      return Response(serializer.data)

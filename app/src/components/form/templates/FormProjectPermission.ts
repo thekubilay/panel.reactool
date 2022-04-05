@@ -1,0 +1,95 @@
+import {Form} from "@/types/Form";
+import {isRomajiWithIrregulars, isSpace} from "@/components/form/rules";
+
+export const form: Form[][] = [
+  [ // tab
+    { // form row
+      classes: ["flex", "justify-space-between"],
+      elements: [ // columns
+        { // columns in row
+          component: null,
+          name: "Dropdown",
+          db_column_name: "active",
+          type: "text",
+          model: false,
+          label: "アクティブ",
+          hint: null,
+          required: true,
+          rules: [],
+          id: "active_input",
+          disabled: false,
+          options: [{name: "オン", value: true}, {name: "オフ", value: false},],
+          optionLabel: "name",
+          optionValue: "value",
+          placeholder: "状態選択",
+          appendTo: "body",
+          props: ["placeholder", "required", "disabled", "options", "optionLabel", "optionValue", "appendTo"],
+          classes: ["flex-column", "column-1", "relative"],
+        },
+      ],
+    },
+    { // form row
+      classes: ["flex", "justify-space-between"],
+      elements: [ // columns
+        { // columns in row
+          component: null,
+          name: "InputText",
+          db_column_name: "code_name",
+          type: "text",
+          model: null,
+          label: "権限コード名",
+          hint: null,
+          placeholder: "is_token",
+          required: true,
+          id: "code_name_input",
+          rules: [isSpace, isRomajiWithIrregulars],
+          disabled: false,
+          props: ["placeholder", "required", "disabled"],
+          classes: ["flex-column", "column-1"],
+        },
+      ],
+    },
+    { // form row
+      classes: ["flex", "justify-space-between"],
+      elements: [ // columns
+        { // columns in row
+          component: null,
+          name: "InputText",
+          db_column_name: "name",
+          type: "text",
+          model: null,
+          label: "権限名",
+          hint: null,
+          placeholder: "トークン",
+          required: true,
+          id: "name_input",
+          rules: [],
+          disabled: false,
+          props: ["placeholder", "required", "disabled"],
+          classes: ["flex-column", "column-1"],
+        },
+      ],
+    },
+    { // form row
+      classes: ["flex", "justify-space-between"],
+      elements: [ // columns
+        { // columns in row
+          component: null,
+          name: "InputText",
+          db_column_name: "description",
+          type: "text",
+          model: null,
+          label: "権限内容",
+          hint: null,
+          placeholder: "プロジェクトをプライベートできる、特別な権限",
+          required: false,
+          id: "description_input",
+          rules: [],
+          disabled: false,
+          props: ["placeholder", "required", "disabled"],
+          classes: ["flex-column", "column-1"],
+        },
+      ],
+    },
+  ],
+]

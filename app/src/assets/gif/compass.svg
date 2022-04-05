@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" y1="0.299" x2="0.5" y2="0.943" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#8cc2c9" stop-opacity="0.902"/>
+      <stop offset="1" stop-color="#466165" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g id="compass" transform="translate(-242 -187)">
+    <circle id="Ellipse_1" data-name="Ellipse 1" cx="100" cy="100" r="100" transform="translate(242 187)" fill="rgba(219,239,240,0.34)"/>
+    <circle id="Ellipse_2" data-name="Ellipse 2" cx="55" cy="55" r="55" transform="translate(287 232)" fill="rgba(141,195,188,0.27)"/>
+    <path id="Polygon_1" data-name="Polygon 1" d="M40.168,22.727a12,12,0,0,1,21.665,0l31.987,67.11A12,12,0,0,1,82.987,107H19.013A12,12,0,0,1,8.181,89.837Z" transform="translate(292 273)" fill="url(#linear-gradient)"/>
+  </g>
+</svg>

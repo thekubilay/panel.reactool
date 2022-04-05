@@ -1,0 +1,43 @@
+button,
+.p-button {
+  height: 30px;
+  font-size: .75rem;
+  background-color: unset;
+  outline: 0;
+  border: 0;
+  border-radius: 0;
+  padding: 0 6px 0 10px;
+}
+button span,
+.p-button span {
+  font-weight: 400;
+  padding-bottom: 1px;
+}
+
+button i,
+.p-button i {
+  font-size: .75rem;
+}
+
+
+/* button kinds */
+
+button:enabled:hover,
+.p-button:enabled:hover {
+  background: none;
+  border-color: unset;
+}
+
+button.submit:enabled:hover,
+.p-button.submit:enabled:hover {
+  background: #4F46E5;
+  color: #ffffff;
+  border-color: #4F46E5;
+}
+
+button.submit:enabled:hover,
+.p-button.submit:enabled:hover {
+  background: #4F46E5;
+  color: #ffffff;
+  border-color: #4F46E5;
+}

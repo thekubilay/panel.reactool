@@ -1,3 +1,4 @@
 from django.contrib import admin
+from salons.models import MapSetting
 
-# Register your models here.
+admin.site.register(MapSetting)

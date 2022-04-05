@@ -1,0 +1,225 @@
+/* content */
+.rf-dialog form {
+  margin-top: 14px;
+  padding: 0 14px 0 14px;
+}
+
+.rf-dialog .row {
+  margin-bottom: 14px;
+}
+
+.rf-dialog .row.button-input-row {
+  padding-left: 4px;
+}
+
+.rf-dialog .row.cbx-row {
+  margin-bottom: 0;
+}
+
+.rf-dialog .row:last-child {
+  margin-bottom: 0;
+}
+
+.rf-dialog span.hint {
+  margin-top: 4px;
+  font-size: .64rem;
+  margin-left: 4px;
+  color: #878c91;
+  min-height: 16px;
+}
+
+.rf-dialog span.label {
+  margin-bottom: 8px;
+  height: 19px;
+}
+
+.rf-dialog span.title-label {
+  margin-bottom: 4px;
+  padding-left: 2px;
+  width: calc(100% - 2px);
+}
+
+.rf-dialog span.invalid {
+  font-size: .75rem;
+  margin-top: 4px;
+  color: #e63946;
+  padding-left: 4px;
+}
+
+.rf-dialog .button-input-wrapper {
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.rf-dialog .button-input-wrapper > span.title {
+  width: 100%;
+}
+
+.rf-dialog .button-input-wrapper > span.label {
+  margin-right: auto;
+  margin-bottom: 0;
+}
+
+.rf-dialog .p-calendar > .p-inputtext,
+.rf-dialog .p-inputnumber > .p-inputtext,
+.rf-dialog .cfec /* custom form element class */
+{
+  height: 38px;
+  border: 1px solid #ced6e0;
+  border-radius: 0;
+  font-size: .85rem;
+  background-color: rgba(116, 185, 255, 0.04);
+}
+.rf-dialog .p-calendar.cfec {
+  background-color: unset;
+  border: 0;
+}
+.rf-dialog .p-multiselect .p-multiselect-label {
+  padding: 0.5rem 0.75rem;
+}
+
+.rf-dialog .cfec.p-slider /* custom form element class */ {
+  height: 8px;
+}
+.rf-dialog .p-chips > .p-inputtext, /* custom form element class */
+.rf-dialog .p-inputnumber{
+  height: 37px;
+  border: 1px solid #ced6e0;
+}
+.rf-dialog .p-inputnumber{
+  border: 0;
+}
+
+.rf-dialog .p-chips {
+  width: 100%;
+}
+.p-chips .p-chips-multiple-container .p-chips-token {
+  padding: 0.375rem 0.75rem;
+  background: #dee2e6;
+  color: #495057;
+  margin: 4px 0.5rem 4px 0;
+}
+.rf-dialog .p-chips > .p-inputtext {
+  min-height: 38px;
+  height: auto;
+  width: 100%;
+  border: 1px solid #ced6e0;
+  border-radius: 0;
+  font-size: .85rem;
+  padding: 0 0 0 10px;
+  background-color: rgba(116, 185, 255, 0.04);
+}
+
+
+.rf-dialog .fic /* custom form element class */{
+  width: 100%;
+  height: 225px;
+  background-color: #ffffff;
+  border: 0;
+}
+.rf-dialog .fic.error /* custom form element class */{
+  width: 100%;
+  height: 225px;
+  background-color: #ffffff;
+  border: 0;
+}
+.rf-dialog .fic span.name.error /* custom form element class */{
+  width: 100%;
+  height: 225px;
+  color: #eb4d4b !important;
+  padding: 4px 10px;
+  font-size: .8rem !important;
+  border: 0;
+}
+
+.rf-dialog .p-checkbox,
+.rf-dialog .p-radiobutton /* custom form element class */
+{
+  height: 38px;
+  border: 0;
+  width: 28px;
+  border-radius: 0;
+  font-size: .85rem;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+}
+
+.rf-dialog .p-inputtextarea.cfec /* custom form textarea class */
+{
+  height: 66px;
+}
+
+.rf-dialog .p-password-input /* custom form element class */
+{
+  height: 36px;
+  width: 100%;
+  background-color: rgba(116, 185, 255, 0.04);
+  border: 0;
+  border-radius: 0;
+  font-size: .85rem;
+}
+
+.rf-dialog .p-input-icon-left > i, .p-input-icon-right > i {
+  position: absolute;
+  top: 50%;
+  margin-top: -0.3rem;
+  cursor: pointer;
+}
+
+.rf-dialog .cfec::placeholder {
+  color: rgba(124, 136, 150, .5);
+  font-size: 0.75rem;
+}
+
+.rf-dialog .error {
+  background-color: rgba(230, 57, 70, 0.03);
+  border: 1px solid #e63946;
+}
+
+.rf-dialog .p-inputtext.error:enabled:focus {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: 0 0 0 0.2rem rgba(230, 57, 70, 0.1);
+  border-color: #e63946;
+}
+
+.rf-dialog .p-dropdown-panel {
+  left: 0 !important;
+  top: 70px !important;
+}
+
+.rf-dialog .action-wrapper {
+  height: 70px;
+  margin-top: 20px;
+}
+
+.rf-dialog .action-wrapper > button {
+  height: 40px;
+  width: 100px;
+  background-color: #f1f1f1;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.rf-dialog .action-wrapper > button.cancel {
+  margin-right: auto;
+}
+
+.rf-dialog .action-wrapper > button.remove {
+  background-color: rgba(230, 57, 70, 0.1);
+  color: #e63946;
+  border: 1px solid #e63946;
+  border-right: 0;
+}
+
+.rf-dialog .action-wrapper > button.submit-or-next {
+  border-left: 0;
+  background-color: #006de4;
+  color: #f1f1f1;
+}
+
+.rf-dialog .action-wrapper > button.submit-or-next.double {
+  width: 200px;
+}

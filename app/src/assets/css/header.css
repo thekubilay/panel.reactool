@@ -1,0 +1,130 @@
+header#bar_app .bar-app-brand {
+  height: 100%;
+  width: 254px;
+  min-width: 254px;
+  padding-bottom: 2px;
+}
+header#bar_app .bar-app-global-actions {
+  height: 100%;
+  width: 254px;
+  min-width: 254px;
+  padding-bottom: 2px;
+}
+
+header#bar_app .bar-app-brand a.brand svg {
+  position: relative;
+  top: 2px
+}
+
+header#bar_app a.brand > span.wrapper {
+  position: relative;
+  top: 1px;
+  margin-left: 10px;
+}
+
+header#bar_app a.brand > span.wrapper span {
+  line-height: 1;
+  font-family: 'Roboto', sans-serif;
+}
+
+header#bar_app a.brand > span.wrapper > .text {
+  color: #f1f1f1;
+  letter-spacing: 1px;
+  font-size: 1rem;
+  position: relative;
+  font-weight: 400;
+  top: 1px;
+}
+
+header#bar_app a.brand > span.wrapper .text > span {
+  font-weight: 40;
+  letter-spacing: .6px;
+  margin-left: 2px;
+}
+
+header#bar_app a.brand > span.wrapper > .sub-text {
+  margin-top: 2px;
+  font-size: .6rem;
+  font-weight: 300;
+  color: #98c1d9;
+}
+
+header#bar_app > .mhw-container {
+  width: calc(100% - 254px);
+  padding-left: 0;
+}
+
+header#bar_app > .mhw-container a.admin-route {
+  border-right: 1px solid #464545;
+  margin-right: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+header#bar_app > .mhw-container a.admin-route > svg {
+  position: relative;
+  top: 2px;
+  fill: #f1f1f1;
+  /*width: 20px;*/
+  height: 16px;
+}
+
+header#bar_app > .mhw-container .pi-search {
+  position: relative;
+  top: 1.5px;
+}
+
+header#bar_app > .mhw-container .p-inputtext {
+  height: 30px;
+  padding: 0 0 0 26px;
+  background-color: #161a1d;
+  border: 0;
+  border-bottom: 1px solid #1a1f21;
+  outline: 0;
+  font-size: .8rem;
+  border-radius: 0;
+  transition: .5s;
+  font-weight: 300;
+  color: #dcdde1;
+}
+
+header#bar_app > .mhw-container .p-inputtext:enabled:focus {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: none;
+  border-color: #6366F1;
+}
+
+header#bar_app > .mhw-container .p-button {
+  border-radius: 0;
+  font-size: .8rem;
+  height: 30px;
+  padding: 0 10px 1px 0;
+  background-color: #161a1d;
+  border: 0;
+}
+
+header#bar_app > .mhw-container .p-button .p-button-label {
+  font-weight: 400;
+}
+
+header#bar_app > .mhw-container .p-button:enabled:focus {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: none;
+}
+
+header#bar_app > .mhw-container .avatar {
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+  object-fit: cover;
+  background-position: center;
+}
+
+/* irregulars */
+#user_setting {
+  border-radius: 0;
+  top: 44px !important;
+  width: 200px !important;
+}

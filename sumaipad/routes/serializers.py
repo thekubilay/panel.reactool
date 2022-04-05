@@ -1,16 +1,13 @@
 from rest_framework import serializers
-from sumaipad.models import (Plan, PlanTypeImage, PlanImage, RoomSimulator, RoomSimulatorContent,
-                             RoomSimulatorContentTitle, PlanMenu, Route,
-                             VistaSimulator, VistaSimulatorContent, CoordImage, Coord, Building, Floor, Room, Document,
-                             RoomVr, RoomVrFloor, MapSetting,
+from sumaipad.models import (ColorSimulatorRoom, ColorSimulatorRoomPart,
+                             ColorSimulatorRoomPartItem, PlanContent, PlanField,
+                             VistaSimulator, VistaSimulatorContent, MapPlace, MapPlaceImage, Building, BuildingFloor,
+                             BuildingFloorRoom,
+                             Document, PlanContext, PlanFieldOption, GeneralPlan,
+                             RoomVr, RoomVrFloor, MapSetting, RoomVrNextRoom,
+                             BuildingVr, BuildingVrDirection, BuildingVrDirectionImage,
                              DocumentFolder, Link, Gallery, BuildingBankType, MapCategory,
-                             BuildingParkingFee, RoomSimulatorImage, RoomSimulatorColorImage, RoomSimulatorBaseImage)
-
-
-class RouteSerializer(serializers.ModelSerializer):
-  class Meta:
-    model = Route
-    fields = "__all__"
+                             BuildingParkingFee)
 
 
 class LinkSerializer(serializers.ModelSerializer):
@@ -25,73 +22,60 @@ class GallerySerializer(serializers.ModelSerializer):
     fields = "__all__"
 
 
-class PlanMenuSerializer(serializers.ModelSerializer):
+class PlanFieldOptionSerializer(serializers.ModelSerializer):
   class Meta:
-    model = PlanMenu
+    model = PlanFieldOption
     fields = "__all__"
 
 
-class PlanTypeImagesSerializer(serializers.ModelSerializer):
+class PlanFieldSerializer(serializers.ModelSerializer):
+  plan_field_options = PlanFieldOptionSerializer(many=True, required=False)
+
   class Meta:
-    model = PlanTypeImage
+    model = PlanField
     fields = "__all__"
 
 
-class PlansSerializer(serializers.ModelSerializer):
-  type_image = PlanTypeImagesSerializer(required=False)
+class PlanContextSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = PlanContext
+    fields = "__all__"
+    depth = 1
+
+
+class PlanContentSerializer(serializers.ModelSerializer):
+  plan_contexts = PlanContextSerializer(many=True, required=False)
 
   class Meta:
-    model = Plan
+    model = PlanContent
     fields = "__all__"
 
 
-class PlanImagesSerializer(serializers.ModelSerializer):
+class GeneralPlanSerializer(serializers.ModelSerializer):
   class Meta:
-    model = PlanImage
+    model = GeneralPlan
     fields = "__all__"
 
 
-class RoomSimulatorImageSerializer(serializers.ModelSerializer):
+class ColorSimulatorRoomPartItemSerializer(serializers.ModelSerializer):
   class Meta:
-    model = RoomSimulatorImage
+    model = ColorSimulatorRoomPartItem
     fields = "__all__"
 
 
-class RoomSimulatorColorImageSerializer(serializers.ModelSerializer):
+class ColorSimulatorRoomPartSerializer(serializers.ModelSerializer):
+  room_part_items = ColorSimulatorRoomPartItemSerializer(many=True, required=False)
+
   class Meta:
-    model = RoomSimulatorColorImage
+    model = ColorSimulatorRoomPart
     fields = "__all__"
 
 
-class RoomSimulatorContentSerializer(serializers.ModelSerializer):
-  room_sim_image = RoomSimulatorImageSerializer(required=False)
-  room_sim_color_image = RoomSimulatorColorImageSerializer(required=False)
+class ColorSimulatorRoomSerializer(serializers.ModelSerializer):
+  room_parts = ColorSimulatorRoomPartSerializer(many=True, required=False)
 
   class Meta:
-    model = RoomSimulatorContent
-    fields = "__all__"
-
-
-class RoomSimulatorContentTitleSerializer(serializers.ModelSerializer):
-  room_contents = RoomSimulatorContentSerializer(many=True, required=False)
-
-  class Meta:
-    model = RoomSimulatorContentTitle
-    fields = "__all__"
-
-
-class RoomSimulatorBaseImageSerializer(serializers.ModelSerializer):
-  class Meta:
-    model = RoomSimulatorBaseImage
-    fields = "__all__"
-
-
-class RoomSimulatorSerializer(serializers.ModelSerializer):
-  room_sim_base_image = RoomSimulatorBaseImageSerializer(required=False)
-  room_content_titles = RoomSimulatorContentTitleSerializer(many=True, required=False)
-
-  class Meta:
-    model = RoomSimulator
+    model = ColorSimulatorRoom
     fields = "__all__"
 
 
@@ -106,12 +90,6 @@ class VistaSimulatorSerializer(serializers.ModelSerializer):
 
   class Meta:
     model = VistaSimulator
-    fields = "__all__"
-
-
-class CoordImageSerializer(serializers.ModelSerializer):
-  class Meta:
-    model = CoordImage
     fields = "__all__"
 
 
@@ -133,15 +111,23 @@ class MapSettingSerializer(serializers.ModelSerializer):
     fields = "__all__"
 
 
-class CoordsSerializer(serializers.ModelSerializer):
-  coord_images = CoordImageSerializer(many=True, required=False)
+class MapPlaceImageSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = MapPlaceImage
+    fields = "__all__"
+
+
+class MapPlaceSerializer(serializers.ModelSerializer):
+  map_place_images = MapPlaceImageSerializer(many=True, required=False)
 
   class Meta:
-    model = Coord
+    model = MapPlace
     fields = "__all__"
 
 
 class MapCategorySerializer(serializers.ModelSerializer):
+  map_places = MapPlaceSerializer(many=True, required=False)
+
   class Meta:
     model = MapCategory
     fields = "__all__"
@@ -161,31 +147,61 @@ class DocumentFoldersSerializer(serializers.ModelSerializer):
     fields = "__all__"
 
 
-class RoomSerializer(serializers.ModelSerializer):
+class BuildingVrDirectionImageSerializer(serializers.ModelSerializer):
   class Meta:
-    model = Room
+    model = BuildingVrDirectionImage
     fields = "__all__"
 
 
-class FloorSerializer(serializers.ModelSerializer):
-  rooms = RoomSerializer(many=True, required=False)
+class BuildingVrDirectionSerializer(serializers.ModelSerializer):
+  building_vr_direction_images = BuildingVrDirectionImageSerializer(many=True, required=False)
 
   class Meta:
-    model = Floor
+    model = BuildingVrDirection
+    fields = "__all__"
+
+
+class BuildingVrSerializer(serializers.ModelSerializer):
+  building_vr_directions = BuildingVrDirectionSerializer(many=True, required=False)
+
+  class Meta:
+    model = BuildingVr
+    fields = "__all__"
+
+
+class BuildingFloorRoomSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = BuildingFloorRoom
+    fields = "__all__"
+
+
+class BuildingFloorSerializer(serializers.ModelSerializer):
+  rooms = BuildingFloorRoomSerializer(many=True, required=False)
+
+  class Meta:
+    model = BuildingFloor
     fields = "__all__"
 
 
 class BuildingSerializer(serializers.ModelSerializer):
   parking_fees = BuildingParkingFeeSerializer(many=True, required=False)
   bank_types = BuildingBankTypeSerializer(many=True, required=False)
-  floors = FloorSerializer(many=True, required=False)
+  floors = BuildingFloorSerializer(many=True, required=False)
 
   class Meta:
     model = Building
     fields = "__all__"
 
 
+class RoomVrNextRoomSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = RoomVrNextRoom
+    fields = "__all__"
+
+
 class RoomVrFloorSerializer(serializers.ModelSerializer):
+  next_rooms = RoomVrNextRoomSerializer(many=True, required=False)
+
   class Meta:
     model = RoomVrFloor
     fields = "__all__"

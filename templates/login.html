@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+  <div class="login flex align-center justify-center">
+    <div class="main align-center justify-center">
+      <div class="container">
+        <div class="form-title"><img src="{% static 'img/logo.svg' %}" alt="" class=""></div>
+
+        <form method="POST" class="form">
+          {% csrf_token %}
+          <div class="form-row">
+            <label for="username" class="label"> ユーザー名 </label>
+            <div class="icon"><img src="{% static 'svg/person.svg' %}" alt=""></div>
+            <input id="username" name="username" placeholder="IDを入れてください" type="text" class="">
+          </div>
+          <div class="form-row">
+            <label for="password" class="label"> パスワード </label>
+            <div class="icon"><img src="{% static 'svg/lock.svg' %}" alt=""></div>
+            <input id="password" type="password" name="password" placeholder="パスワードを入れてください" maxlength="256" class="">
+          </div>
+
+          {% if messages %}
+            {% for message in messages %}
+              <div class="flex align-center">
+                <p class="text-center" style="color:red;font-size: 1rem; font-weight: 300">{{ message }}</p>
+              </div>
+            {% endfor %}
+          {% endif %}
+          <button id="button-login" type="submit" class="form-button flex justify-center align-center">
+            <span class="form-button-text">ログイン</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+{% block js %}
+  <script>
+    const username = document.getElementById("username");
+    const password = document.getElementById("password");
+    const button_login = document.getElementById("button-login");
+
+    function formCheck() {
+      if (username?.value && password?.value) {
+        button_login.classList.add('active')
+      } else {
+        button_login.classList.remove('active')
+      }
+    }
+
+    username.addEventListener("input", function () {
+      formCheck();
+    });
+    password.addEventListener("input", function () {
+      formCheck();
+    });
+  </script>
+{% endblock %}

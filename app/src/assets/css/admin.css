@@ -1,0 +1,19 @@
+.admin-board .p-button {
+  margin-left: auto;
+  height: 36px;
+  width: 36px;
+  background-color: #ffffff;
+  border: 0;
+  outline: 0;
+  border-radius: 0;
+  color: #9a9898;
+}
+
+.admin-board .p-button .pi {
+  font-size: 1rem;
+}
+
+.admin-board .p-button:hover {
+  background-color: #f1f1f1;
+  color: #555555;
+}

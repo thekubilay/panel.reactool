@@ -3,41 +3,49 @@ from sumaipad.routes import views
 
 router = DefaultRouter()
 
-router.register(r"routes", views.RouteViewSet, basename="app_routes")
 router.register(r"galleries", views.GalleryViewSet, basename="app_galleries")
+
 router.register(r"links", views.LinkViewSet, basename="app_links")
+
 router.register(r"documents", views.DocumentViewSet, basename="app_documents")
 router.register(r"document_folders", views.DocumentFolderViewSet, basename="app_document_folders")
-# router.register(r"plans", views.PlanViewSet, basename="plans")
-# router.register(r"plan-menus", views.PlanMenuViewSet, basename="plan-menus")
-# router.register(r"type-images", views.PlanTypeImageViewSet, basename="type-images")
-# router.register(r"plan-images", views.PlanImageViewSet, basename="plan-images")
-# router.register(r"room-simulators", views.RoomSimulatorViewSet, basename="room-simulators")
-# router.register(r"room-simulator-base-images", views.RoomSimulatorBaseImageViewSet,
-#                 basename="room-simulator-base-images")
-# router.register(r"room-simulator-content-titles", views.RoomSimulatorContentTitleViewSet,
-#                 basename="room-simulator-content-titles")
-# router.register(r"room-simulator-contents", views.RoomSimulatorContentViewSet, basename="room-simulator-contents")
-# router.register(r"room-simulator-images", views.RoomSimulatorImageViewSet, basename="room-simulator-images")
-# router.register(r"room-simulator-color-images", views.RoomSimulatorColorImageViewSet,
-#                 basename="room-simulator-color-images")
-# router.register(r"vista-simulators", views.VistaSimulatorViewSet, basename="vista-simulators")
-# router.register(r"vista-simulator-contents", views.VistaSimulatorContentsViewSet, basename="vista-simulator-contents")
-# router.register(r"map-settings", views.MapSettingViewSet, basename="map-settings")
-# router.register(r"coords", views.CoordViewSet, basename="coords")
-# router.register(r"map-categories", views.MapCategoryViewSet, basename="map-categories")
-# router.register(r"coord-images", views.CoordImageViewSet, basename="coord-images")
-# router.register(r"documents", views.DocumentsViewSet, basename="documents")
-# router.register(r"document-folders", views.DocumentFoldersViewSet, basename="document-folders")
-# router.register(r"links", views.LinksViewSet, basename="links")
-# router.register(r"rooms", views.RoomViewSet, basename="rooms")
-# router.register(r"floors", views.FloorViewSet, basename="floors")
-# router.register(r"buildings", views.BuildingViewSet, basename="buildings")
+
+router.register(r"map_settings", views.MapSettingViewSet, basename="app_map_settings")
+router.register(r"map_categories", views.MapCategoryViewSet, basename="app_map_categories")
+router.register(r"map_places", views.MapPlaceViewSet, basename="app_map_places")
+router.register(r"map_place_images", views.MapPlaceImageViewSet, basename="app_map_place_images")
+
+router.register(r"plan_fields", views.PlanFieldViewSet, basename="app_plan_fields")
+router.register(r"plan_contents", views.PlanContentViewSet, basename="app_plan_contents")
+router.register(r"plan_contexts", views.PlanContextViewSet, basename="app_plan_contexts")
+router.register(r"plan_field_options", views.PlanFieldOptionViewSet, basename="app_plan_field_options")
+
+router.register(r"general_plans", views.GeneralPlanViewSet, basename="app_general_plans")
+
+router.register(r"building", views.BuildingViewSet, basename="app_building")
+router.register(r"building_floors", views.BuildingFloorViewSet, basename="app_building_floors")
+router.register(r"building_floor_rooms", views.BuildingFloorRoomViewSet, basename="app_building_floor_rooms")
+
+
+router.register(r"bank_types", views.LoanBankTypeViewSet, basename="app_building_bank_types")
+router.register(r"parking_fees", views.ParkingFeeViewSet, basename="app_building_parking_fees")
+
+
+router.register(r"building_vr_directions", views.BuildingVrDirectionViewSet, basename="app_building_vr_directions")
+router.register(r"building_vr_direction_images", views.BuildingVrDirectionImageViewSet, basename="app_building_vr_direction_images")
+
+router.register(r"vista_simulators", views.VistaSimulatorViewSet, basename="app_vista_simulators")
+router.register(r"vista_simulator_contents", views.VistaSimulatorContentViewSet, basename="app_vista_simulator_contents")
+
+router.register(r"color_simulator_rooms", views.ColorSimulatorRoomViewSet, basename="app_color_simulator_rooms")
+router.register(r"color_simulator_room_parts", views.ColorSimulatorRoomPartViewSet, basename="app_color_simulator_room_parts")
+router.register(r"color_simulator_room_part_items", views.ColorSimulatorRoomPartItemViewSet, basename="app_color_simulator_room_part_items")
+
+router.register(r"room_vrs", views.RoomVrViewSet, basename="app_room_vrs")
+router.register(r"room_vr_floors", views.RoomVrFloorViewSet, basename="app_room_vr_floors")
+router.register(r"room_vr_next_rooms", views.RoomVrNextRoomViewSet, basename="app_room_vr_next_rooms")
+
 # router.register(r"parking-fees", views.BuildingParkingFeeViewSet, basename="parking-fees")
 # router.register(r"bank-types", views.BuildingBankTypeViewSet, basename="bank-types")
-# router.register(r"gallery", views.GalleryViewSet, basename="gallery")
-# router.register(r"slideshow", views.SlideshowViewSet, basename="slideshow")
-# router.register(r"room-vr", views.RoomVrViewSet, basename="room-vr")
-# router.register(r"room-vr-floors", views.RoomVrFloorViewSet, basename="room-vr-floors")
 
 urlpatterns = router.urls

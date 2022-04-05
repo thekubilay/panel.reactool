@@ -5,11 +5,23 @@ from projects.models import Project
 from django_resized import ResizedImageField
 
 
+def makeDynamicDirectProjectPath(instance, filename):
+  return f"{instance.project.path}/images/general-plans/{filename}"
+
+
 def makeDynamicImagePath(instance, filename):
-  return f"{instance.project.path}/images/plans/{filename}"
+  return f"{instance.plan_content.project.path}/images/plans/{filename}"
+
+
+def makeDynamicBuildingVrDirectionImagePath(instance, filename):
+  return f"{instance.building_vr_direction.building_vr.project.path}/images/building-vr-image/{filename}"
 
 
 def makeDynamicRoomVrImagePath(instance, filename):
+  return f"{instance.project.path}/images/room-vr/{filename}"
+
+
+def makeDynamicRoomVrVirtualImagePath(instance, filename):
   return f"{instance.room_vr.project.path}/images/room-vr/{filename}"
 
 
@@ -22,19 +34,19 @@ def makeDynamicVistaCompassImagePath(instance, filename):
 
 
 def makeDynamicRoomMadoriImagePath(instance, filename):
-  return f"{instance.floor.building.project.path}/images/building/room/madori/{filename}"
+  return f"{instance.building_floor.building.project.path}/images/building/room/madori/{filename}"
 
 
 def makeDynamicVistaImagePath(instance, filename):
   return f"{instance.vista_simulator.project.path}/images/vistas/{filename}"
 
 
-def makeDynamicCoordImagePath(instance, filename):
-  return f"{instance.coord.project.path}/images/coords/{filename}"
-
-
 def makeDynamicMapCategoryImagePath(instance, filename):
   return f"{instance.project.path}/images/map-category-pins/{filename}"
+
+
+def makeDynamicCoordImagePath(instance, filename):
+  return f"{instance.map_place.project.path}/images/coords/{filename}"
 
 
 def makeDynamicPdfFilePath(instance, filename):
@@ -54,56 +66,85 @@ def makeDynamicSlideshowImagePath(instance, filename):
 
 
 def makeDynamicColorSimImagePath(instance, filename):
-  return f"{instance.room_simulator_content.room_simulator_content_title.room_simulator.project.path}/images/room-simulator/{filename}"
+  return f"{instance.color_simulator_room_part.color_simulator_room.project.path}/images/room-simulator/{filename}"
 
 
 def makeDynamicBaseSimImagePath(instance, filename):
-  return f"{instance.room_simulator.project.path}/images/room-simulator/{filename}"
+  return f"{instance.project.path}/images/room-simulator/{filename}"
 
 
-class Route(models.Model):
-  project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="routes")
-  order_id = models.IntegerField(null=True, blank=True)
-  component = models.CharField(max_length=20, null=True, blank=False)
-  path = models.CharField(max_length=20, null=True, blank=False)
-  name = models.CharField(max_length=20, null=True, blank=False)
-  title = models.CharField(max_length=20, null=True, blank=False)
-  active = models.BooleanField(default=False)
+class PlanField(models.Model):
+  project = models.ForeignKey(Project, null=True, on_delete=models.CASCADE, related_name="plan_fields")
+  order_id = models.IntegerField(null=True, blank=False)
+  name = models.CharField(max_length=20, null=True, blank=True)
+  type = models.CharField(max_length=20, null=True, blank=True)
+  class_name = models.CharField(max_length=40, null=True, blank=True)
+
+  class Meta:
+    ordering = ["order_id"]
 
   def __str__(self):
-    return self.project.name
+    return self.name
+
+  def save(self, *args, **kwargs):
+    new_id = random.randint(100000000, 999999999)
+    if not PlanField.objects.filter(id=self.id).exists():
+      self.id = new_id
+    super().save(*args, **kwargs)
+
+
+class PlanFieldOption(models.Model):
+  plan_field = models.ForeignKey(PlanField, null=True, on_delete=models.CASCADE, related_name="plan_field_options")
+  order_id = models.IntegerField(null=True, blank=False)
+  name = models.CharField(max_length=20, null=True, blank=True)
+
+  class Meta:
+    ordering = ["order_id"]
+
+  def __str__(self):
+    return self.name
+
+  def save(self, *args, **kwargs):
+    new_id = random.randint(100000000, 999999999)
+    if not PlanField.objects.filter(id=self.id).exists():
+      self.id = new_id
+    super().save(*args, **kwargs)
+
+
+class PlanContent(models.Model):
+  project = models.ForeignKey(Project, null=True, on_delete=models.CASCADE, related_name="plan_contents")
+  order_id = models.IntegerField(null=True, blank=False)
+
+  class Meta:
+    ordering = ["order_id"]
+
+  def __int__(self):
+    return self.id
+
+  def save(self, *args, **kwargs):
+    new_id = random.randint(100000000, 999999999)
+    if not PlanContent.objects.filter(id=self.id).exists():
+      self.id = new_id
+    super().save(*args, **kwargs)
+
+
+class PlanContext(models.Model):
+  plan_field = models.ForeignKey(PlanField, null=True, on_delete=models.CASCADE, related_name="plan_contexts")
+  plan_content = models.ForeignKey(PlanContent, null=True, on_delete=models.CASCADE, related_name="plan_contexts")
+  order_id = models.IntegerField(null=True, blank=False)
+  ppm = models.CharField(max_length=8, null=True, blank=True)
+  field = models.CharField(max_length=50, null=True, blank=True)
+  value = models.CharField(max_length=255, null=True, blank=True)
+  image = models.ImageField(null=True, blank=False, upload_to=makeDynamicImagePath)
+  thumbnail = ResizedImageField(size=[400, 400], null=True, blank=False,
+                                upload_to=makeDynamicImagePath)
 
   class Meta:
     ordering = ["order_id"]
 
   def save(self, *args, **kwargs):
     new_id = random.randint(100000000, 999999999)
-    if not Route.objects.filter(id=self.id).exists():
-      self.id = new_id
-    super().save(*args, **kwargs)
-
-
-class Plan(models.Model):
-  project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="plans")
-  menu = models.CharField(max_length=10, null=True, blank=True)
-  type = models.CharField(max_length=20, null=True, blank=True)
-  plan = models.CharField(max_length=50, null=True, blank=True)
-  m2 = models.CharField(max_length=50, null=True, blank=True)
-  price = models.CharField(max_length=50, null=True, blank=True)
-  balcony = models.CharField(max_length=255, null=True, blank=True)
-  roof_balcony = models.CharField(max_length=255, null=True, blank=True)
-  service_balcony = models.CharField(max_length=255, null=True, blank=True)
-  personal_use = models.CharField(max_length=255, null=True, blank=True)
-  terrace = models.CharField(max_length=255, null=True, blank=True)
-  outdoor_unit = models.CharField(max_length=255, null=True, blank=True)
-  alcove = models.CharField(max_length=255, null=True, blank=True)
-
-  def __str__(self):
-    return self.menu
-
-  def save(self, *args, **kwargs):
-    new_id = random.randint(100000000, 999999999)
-    if not Plan.objects.filter(id=self.id).exists():
+    if not PlanContext.objects.filter(id=self.id).exists():
       self.id = new_id
     super().save(*args, **kwargs)
 
@@ -126,45 +167,34 @@ class PlanMenu(models.Model):
     super().save(*args, **kwargs)
 
 
-class PlanTypeImage(models.Model):
-  plan = models.OneToOneField(Plan, on_delete=models.CASCADE, related_name="type_image")
-  image = models.ImageField(null=True, blank=False, upload_to=makeDynamicTypeImagePath)
+class GeneralPlan(models.Model):
+  project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="general_plans")
+  kind = models.CharField(max_length=20, null=False, blank=False)
+  image = models.ImageField(null=True, blank=False, upload_to=makeDynamicDirectProjectPath)
   thumbnail = ResizedImageField(size=[400, 400], null=True, blank=False,
-                                upload_to=makeDynamicTypeImagePath)
-
-  def __str__(self):
-    return self.plan.type
-
-  def save(self, *args, **kwargs):
-    new_id = random.randint(100000000, 999999999)
-    if not PlanTypeImage.objects.filter(id=self.id).exists():
-      self.id = new_id
-    super().save(*args, **kwargs)
-
-
-class PlanImage(models.Model):
-  project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="plan_images")
-  plan = models.CharField(max_length=20, null=False, blank=False)
-  image = models.ImageField(null=True, blank=False, upload_to=makeDynamicImagePath)
-  thumbnail = ResizedImageField(size=[400, 400], null=True, blank=False,
-                                upload_to=makeDynamicImagePath)
+                                upload_to=makeDynamicDirectProjectPath)
   order_id = models.IntegerField(null=True, blank=False)
 
   class Meta:
     ordering = ["order_id"]
 
+  def __str__(self):
+    return self.kind
+
   def save(self, *args, **kwargs):
     new_id = random.randint(100000000, 999999999)
-    if not PlanImage.objects.filter(id=self.id).exists():
+    if not GeneralPlan.objects.filter(id=self.id).exists():
       self.id = new_id
     super().save(*args, **kwargs)
 
 
-class RoomSimulator(models.Model):
-  project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="room_simulator")
+class ColorSimulatorRoom(models.Model):
+  project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="color_simulator_rooms")
   order_id = models.IntegerField(null=True, blank=False)
-  color = models.CharField(max_length=10, null=True, blank=False)
   name = models.CharField(max_length=255, null=True, blank=False)
+  image = models.ImageField(null=True, blank=False, upload_to=makeDynamicBaseSimImagePath, default=None)
+  thumbnail = ResizedImageField(size=[200, 200], null=True, blank=False, default=None,
+                                upload_to=makeDynamicBaseSimImagePath)
 
   class Meta:
     ordering = ["order_id"]
@@ -174,29 +204,15 @@ class RoomSimulator(models.Model):
 
   def save(self, *args, **kwargs):
     new_id = random.randint(100000000, 999999999)
-    if not RoomSimulator.objects.filter(id=self.id).exists():
+    if not ColorSimulatorRoom.objects.filter(id=self.id).exists():
       self.id = new_id
     super().save(*args, **kwargs)
 
 
-class RoomSimulatorBaseImage(models.Model):
-  room_simulator = models.OneToOneField(RoomSimulator, on_delete=models.CASCADE, related_name="room_sim_base_image")
-  image = models.ImageField(null=True, blank=False, upload_to=makeDynamicBaseSimImagePath, default=None)
-  thumbnail = ResizedImageField(size=[200, 200], null=True, blank=False, default=None,
-                                upload_to=makeDynamicBaseSimImagePath)
-
-  def __str__(self):
-    return self.room_simulator.name
-
-  def save(self, *args, **kwargs):
-    new_id = random.randint(100000000, 999999999)
-    if not RoomSimulatorBaseImage.objects.filter(id=self.id).exists():
-      self.id = new_id
-    super().save(*args, **kwargs)
-
-
-class RoomSimulatorContentTitle(models.Model):
-  room_simulator = models.ForeignKey(RoomSimulator, on_delete=models.CASCADE, related_name="room_content_titles")
+class ColorSimulatorRoomPart(models.Model):
+  color_simulator_room = models.ForeignKey(ColorSimulatorRoom, on_delete=models.CASCADE,
+                                           related_name="room_parts")
+  column_count = models.IntegerField(null=True, blank=True)
   order_id = models.IntegerField(null=True, blank=False)
   name = models.CharField(max_length=255, null=True, blank=False)
 
@@ -204,69 +220,39 @@ class RoomSimulatorContentTitle(models.Model):
     ordering = ["order_id"]
 
   def __str__(self):
-    return self.room_simulator.name
+    return self.color_simulator_room.name
 
   def save(self, *args, **kwargs):
     new_id = random.randint(100000000, 999999999)
-    if not RoomSimulatorContentTitle.objects.filter(id=self.id).exists():
+    if not ColorSimulatorRoomPart.objects.filter(id=self.id).exists():
       self.id = new_id
     super().save(*args, **kwargs)
 
 
-class RoomSimulatorContent(models.Model):
-  room_simulator_content_title = models.ForeignKey(RoomSimulatorContentTitle, null=True, on_delete=models.CASCADE,
-                                                   related_name="room_contents")
+class ColorSimulatorRoomPartItem(models.Model):
+  color_simulator_room_part = models.ForeignKey(ColorSimulatorRoomPart, null=True,
+                                                on_delete=models.CASCADE,
+                                                related_name="room_part_items")
   order_id = models.IntegerField(null=True, blank=False)
   option = models.BooleanField(default=False, null=True, blank=False)
   model_room = models.BooleanField(default=False, null=True, blank=False)
-  where_is = models.CharField(max_length=255, null=True, blank=False)
-  color_en = models.CharField(max_length=255, null=True, blank=False)
-  color_jp = models.CharField(max_length=255, null=True, blank=True)
-  color_code = models.CharField(max_length=255, null=True, blank=False)
+  color = models.CharField(max_length=255, null=True, blank=True)
+  part_image = models.ImageField(null=True, blank=False, upload_to=makeDynamicColorSimImagePath)
+  part_thumbnail = ResizedImageField(size=[200, 200], null=True, blank=False,
+                                     upload_to=makeDynamicColorSimImagePath)
+  color_image = models.ImageField(null=True, blank=False, upload_to=makeDynamicColorSimImagePath)
+  color_thumbnail = ResizedImageField(size=[200, 200], null=True, blank=False,
+                                      upload_to=makeDynamicColorSimImagePath)
 
   class Meta:
     ordering = ["order_id"]
 
   def __str__(self):
-    return self.room_simulator_content_title.name
+    return self.color_simulator_room_part.name
 
   def save(self, *args, **kwargs):
     new_id = random.randint(100000000, 999999999)
-    if not RoomSimulatorContent.objects.filter(id=self.id).exists():
-      self.id = new_id
-    super().save(*args, **kwargs)
-
-
-class RoomSimulatorImage(models.Model):
-  room_simulator_content = models.OneToOneField(RoomSimulatorContent, on_delete=models.CASCADE,
-                                                related_name="room_sim_image")
-  image = models.ImageField(null=True, blank=False, upload_to=makeDynamicColorSimImagePath)
-  thumbnail = ResizedImageField(size=[200, 200], null=True, blank=False,
-                                upload_to=makeDynamicColorSimImagePath)
-
-  def __str__(self):
-    return self.room_simulator_content.where_is
-
-  def save(self, *args, **kwargs):
-    new_id = random.randint(100000000, 999999999)
-    if not RoomSimulatorImage.objects.filter(id=self.id).exists():
-      self.id = new_id
-    super().save(*args, **kwargs)
-
-
-class RoomSimulatorColorImage(models.Model):
-  room_simulator_content = models.OneToOneField(RoomSimulatorContent, on_delete=models.CASCADE,
-                                                related_name="room_sim_color_image")
-  image = models.ImageField(null=True, blank=False, upload_to=makeDynamicColorSimImagePath)
-  thumbnail = ResizedImageField(size=[200, 200], null=True, blank=False,
-                                upload_to=makeDynamicColorSimImagePath)
-
-  def __str__(self):
-    return self.room_simulator_content.where_is
-
-  def save(self, *args, **kwargs):
-    new_id = random.randint(100000000, 999999999)
-    if not RoomSimulatorColorImage.objects.filter(id=self.id).exists():
+    if not ColorSimulatorRoomPartItem.objects.filter(id=self.id).exists():
       self.id = new_id
     super().save(*args, **kwargs)
 
@@ -274,14 +260,12 @@ class RoomSimulatorColorImage(models.Model):
 class VistaSimulator(models.Model):
   project = models.OneToOneField(Project, on_delete=models.CASCADE, related_name="vista_simulator")
   image = models.ImageField(null=True, blank=False, upload_to=makeDynamicVistaCompassImagePath)
-  repeat = models.BooleanField(default=True)
-  compass_start_degree = models.CharField(max_length=3, null=True, blank=False)
-  start_position = models.CharField(max_length=5, null=True, blank=False)
-  pin_top_px = models.IntegerField(null=True, blank=False, default=0)
-  pin_left_px = models.IntegerField(null=True, blank=False, default=0)
+  compass_start = models.CharField(max_length=3, null=True, blank=False)
+  compass_top = models.IntegerField(null=True, blank=False, default=0)
+  compass_left = models.IntegerField(null=True, blank=False, default=0)
 
   def __str__(self):
-    return self.compass_start_degree
+    return self.project.name + "の眺望設定"
 
   def save(self, *args, **kwargs):
     new_id = random.randint(100000000, 999999999)
@@ -292,18 +276,20 @@ class VistaSimulator(models.Model):
 
 class VistaSimulatorContent(models.Model):
   vista_simulator = models.ForeignKey(VistaSimulator, on_delete=models.CASCADE, related_name="vista_simulator_contents")
-  type = models.CharField(max_length=5, null=True, blank=False)
-  panorama_type = models.BooleanField(default=True)
-  floor = models.CharField(max_length=2, null=True, blank=False)
+  time = models.CharField(max_length=5, null=True, blank=False)
+  repeat = models.BooleanField(default=True)
+  is_bg = models.BooleanField(default=False)
+  floor_num = models.CharField(max_length=2, null=True, blank=False)
+  plan_type = models.CharField(max_length=5, null=True, blank=True)
+  compass_start = models.CharField(max_length=3, null=True, blank=False)
+  compass_top = models.IntegerField(null=True, blank=False, default=0)
+  compass_left = models.IntegerField(null=True, blank=False, default=0)
   image = models.ImageField(null=True, blank=False, upload_to=makeDynamicVistaImagePath)
   thumbnail = ResizedImageField(size=[400, 400], null=True, blank=False,
                                 upload_to=makeDynamicVistaImagePath)
 
-  class Meta:
-    ordering = ["floor"]
-
   def __str__(self):
-    return self.floor
+    return self.floor_num + "F"
 
   def save(self, *args, **kwargs):
     new_id = random.randint(100000000, 999999999)
@@ -352,8 +338,12 @@ class BuildingParkingFee(models.Model):
 
 class BuildingBankType(models.Model):
   building = models.ForeignKey(Building, on_delete=models.CASCADE, related_name="bank_types")
+  order_id = models.IntegerField(null=True, blank=False)
   name = models.CharField(max_length=255, null=True, blank=False, )
   rate = models.CharField(max_length=14, null=True, blank=False)
+
+  class Meta:
+    ordering = ["order_id"]
 
   def __str__(self):
     return self.building.project.name
@@ -365,7 +355,7 @@ class BuildingBankType(models.Model):
     super().save(*args, **kwargs)
 
 
-class Floor(models.Model):
+class BuildingFloor(models.Model):
   building = models.ForeignKey(Building, on_delete=models.CASCADE, related_name="floors")
   order_id = models.IntegerField(null=True, blank=False)
 
@@ -374,13 +364,13 @@ class Floor(models.Model):
 
   def save(self, *args, **kwargs):
     new_id = random.randint(100000000, 999999999)
-    if not Floor.objects.filter(id=self.id).exists():
+    if not BuildingFloor.objects.filter(id=self.id).exists():
       self.id = new_id
     super().save(*args, **kwargs)
 
 
-class Room(models.Model):
-  floor = models.ForeignKey(Floor, on_delete=models.CASCADE, related_name="rooms")
+class BuildingFloorRoom(models.Model):
+  building_floor = models.ForeignKey(BuildingFloor, on_delete=models.CASCADE, related_name="rooms")
   order_id = models.IntegerField(null=True, blank=False)
   compass = models.CharField(max_length=40, null=True, blank=False)
   number = models.CharField(blank=True, null=True, max_length=10)
@@ -394,32 +384,89 @@ class Room(models.Model):
   fixing_fee = models.CharField(max_length=50, null=True, blank=True)
   sub = models.BooleanField(default=False)
   sub_content = models.CharField(max_length=50, null=True, blank=True)
-  madori_image = models.ImageField(null=True, blank=False, upload_to=makeDynamicRoomMadoriImagePath)
-  madori_thumbnail = ResizedImageField(size=[400, 400], null=True, blank=False,
-                                       upload_to=makeDynamicRoomMadoriImagePath)
+  image = models.ImageField(null=True, blank=False, upload_to=makeDynamicRoomMadoriImagePath)
+  thumbnail = ResizedImageField(size=[400, 400], null=True, blank=False,
+                                upload_to=makeDynamicRoomMadoriImagePath)
 
   class Meta:
     ordering = ["order_id"]
 
   def __str__(self):
-    return self.number
+    if self.number is not None:
+      return self.number+""
+    else:
+      return "no_room_context"
 
   def save(self, *args, **kwargs):
     new_id = random.randint(100000000, 999999999)
-    if not Room.objects.filter(id=self.id).exists():
+    if not BuildingFloorRoom.objects.filter(id=self.id).exists():
+      self.id = new_id
+    super().save(*args, **kwargs)
+
+
+class BuildingVr(models.Model):
+  project = models.OneToOneField(Project, on_delete=models.CASCADE, related_name="building_vr")
+
+  def __str__(self):
+    return self.project.name
+
+  def save(self, *args, **kwargs):
+    new_id = random.randint(100000000, 999999999)
+    if not BuildingVr.objects.filter(id=self.id).exists():
+      self.id = new_id
+    super().save(*args, **kwargs)
+
+
+class BuildingVrDirection(models.Model):
+  building_vr = models.ForeignKey(BuildingVr, on_delete=models.CASCADE, related_name="building_vr_directions")
+  order_id = models.IntegerField(null=True)
+  name = models.CharField(max_length=50, null=True, blank=True)
+
+  class Meta:
+    ordering = ["name"]
+
+  def __str__(self):
+    return self.name
+
+  def save(self, *args, **kwargs):
+    new_id = random.randint(100000000, 999999999)
+    if not BuildingVrDirection.objects.filter(id=self.id).exists():
+      self.id = new_id
+    super().save(*args, **kwargs)
+
+
+class BuildingVrDirectionImage(models.Model):
+  building_vr_direction = models.ForeignKey(BuildingVrDirection, on_delete=models.CASCADE,
+                                            related_name="building_vr_direction_images")
+  name = models.CharField(max_length=50, null=True, blank=True)
+  image = models.ImageField(null=True, blank=False, upload_to=makeDynamicBuildingVrDirectionImagePath)
+  thumbnail = ResizedImageField(size=[400, 400], null=True, blank=False,
+                                upload_to=makeDynamicBuildingVrDirectionImagePath)
+
+  class Meta:
+    ordering = ["name"]
+
+  def __str__(self):
+    return self.name
+
+  def save(self, *args, **kwargs):
+    new_id = random.randint(100000000, 999999999)
+    if not BuildingVrDirectionImage.objects.filter(id=self.id).exists():
       self.id = new_id
     super().save(*args, **kwargs)
 
 
 class RoomVr(models.Model):
   project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="room_vr")
-  type = models.CharField(max_length=10, null=True, blank=False)
+  plan_type = models.CharField(max_length=10, null=True, blank=False)
+  image = ResizedImageField(size=[400, 400], null=True, blank=False,
+                            upload_to=makeDynamicRoomVrImagePath)
 
   class Meta:
-    ordering = ["type"]
+    ordering = ["plan_type"]
 
   def __str__(self):
-    return self.type
+    return self.plan_type
 
   def save(self, *args, **kwargs):
     new_id = random.randint(100000000, 999999999)
@@ -430,23 +477,21 @@ class RoomVr(models.Model):
 
 class RoomVrFloor(models.Model):
   room_vr = models.ForeignKey(RoomVr, on_delete=models.CASCADE, related_name="floors")
-  floor = models.IntegerField(null=True, blank=False)
-  base = models.BooleanField(null=False, default=False)
-  place = models.CharField(null=True, max_length=255, blank=False)
-  vr_image = models.ImageField(null=True, blank=False, upload_to=makeDynamicRoomVrImagePath)
-  madori_image = ResizedImageField(size=[400, 400], null=True, blank=False,
-                                   upload_to=makeDynamicRoomVrImagePath)
-  vr_compass_diff = models.CharField(max_length=4, null=True, blank=False)
-  vr_start_degree = models.CharField(max_length=4, null=True, blank=False)
-  compass_start_degree = models.CharField(max_length=4, null=True, blank=False)
-  compass_top_position = models.CharField(max_length=4, null=True, blank=False)
-  compass_left_position = models.CharField(max_length=4, null=True, blank=False)
+  floor_num = models.IntegerField(null=True, blank=False)
+  base = models.BooleanField(default=True)
+  room = models.CharField(null=True, max_length=255, blank=False)
+  image = models.ImageField(null=True, blank=False, upload_to=makeDynamicRoomVrVirtualImagePath)
+  vr_start = models.IntegerField(null=True, blank=False)
+  compass_diff = models.IntegerField(null=True, blank=False)
+  compass_start = models.IntegerField(null=True, blank=False)
+  compass_top = models.IntegerField(null=True, blank=False)
+  compass_left = models.IntegerField(null=True, blank=False)
 
   class Meta:
-    ordering = ["floor"]
+    ordering = ["floor_num"]
 
   def __str__(self):
-    return self.floor
+    return self.room_vr.plan_type + " - " + str(self.floor_num)
 
   def save(self, *args, **kwargs):
     new_id = random.randint(100000000, 999999999)
@@ -455,9 +500,31 @@ class RoomVrFloor(models.Model):
     super().save(*args, **kwargs)
 
 
+class RoomVrNextRoom(models.Model):
+  room_vr_floor = models.ForeignKey(RoomVrFloor, on_delete=models.CASCADE, related_name="next_rooms")
+  next_room = models.IntegerField(null=True, blank=False)
+  button_x = models.CharField(max_length=255, null=True, blank=False)
+  button_y = models.CharField(max_length=255, null=True, blank=False)
+
+  def __str__(self):
+    return "next/ " + self.room_vr_floor.room_vr.plan_type + " - " + str(self.room_vr_floor.room_vr)
+
+  def save(self, *args, **kwargs):
+    new_id = random.randint(100000000, 999999999)
+    if not RoomVrNextRoom.objects.filter(id=self.id).exists():
+      self.id = new_id
+    super().save(*args, **kwargs)
+
+
 class MapSetting(models.Model):
   project = models.OneToOneField(Project, on_delete=models.CASCADE, related_name="map_settings")
+  all = models.BooleanField(default=True)
+  administrative = models.BooleanField(default=True)
   poi = models.BooleanField(default=True)
+  road = models.BooleanField(default=True)
+  water = models.BooleanField(default=True)
+  line = models.BooleanField(default=True)
+  station = models.BooleanField(default=True)
 
   def __int__(self):
     return self.project.name
@@ -469,49 +536,62 @@ class MapSetting(models.Model):
     super().save(*args, **kwargs)
 
 
-class Coord(models.Model):
-  project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="coords")
-  type = models.CharField(max_length=50, null=True)
-  place = models.CharField(max_length=255, null=True)
-  address = models.CharField(max_length=255, null=True)
-  lat = models.CharField(null=True, max_length=50)
-  lng = models.CharField(null=True, max_length=50)
+class MapCategory(models.Model):
+  project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="map_categories")
+  order_id = models.IntegerField(null=True)
+  empty = models.BooleanField(default=False, null=True)
+  color = models.CharField(max_length=255, null=True, blank=False)
+  name = models.CharField(max_length=255, null=True, blank=False)
+  pin = models.FileField(null=True, blank=False, upload_to=makeDynamicMapCategoryImagePath)
 
-  def __int__(self):
-    return self.type
+  class Meta:
+    ordering = ["order_id"]
+
+  def __str__(self):
+    return self.name
 
   def save(self, *args, **kwargs):
     new_id = random.randint(100000000, 999999999)
-    if not Coord.objects.filter(id=self.id).exists():
+    if not MapCategory.objects.filter(id=self.id).exists():
       self.id = new_id
     super().save(*args, **kwargs)
 
 
-class CoordImage(models.Model):
-  coord = models.ForeignKey(Coord, on_delete=models.CASCADE, related_name="coord_images")
+class MapPlace(models.Model):
+  project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="map_places")
+  map_category = models.ForeignKey(MapCategory, null=True, on_delete=models.CASCADE, related_name="map_places")
+  order_id = models.IntegerField(null=True, blank=False)
+  show_directions = models.BooleanField(default=False)
+  type = models.CharField(max_length=50, null=True)
+  place = models.CharField(max_length=255, null=True)
+  address = models.CharField(max_length=255, null=True)
+  context = models.CharField(max_length=255, null=True, blank=True)
+  lat = models.CharField(null=True, max_length=50)
+  lng = models.CharField(null=True, max_length=50)
+  pin = models.FileField(null=True, blank=False, upload_to=makeDynamicMapCategoryImagePath)
+
+  class Meta:
+    ordering = ["order_id"]
+
+  def __str__(self):
+    return self.place
+
+  def save(self, *args, **kwargs):
+    new_id = random.randint(100000000, 999999999)
+    if not MapPlace.objects.filter(id=self.id).exists():
+      self.id = new_id
+    super().save(*args, **kwargs)
+
+
+class MapPlaceImage(models.Model):
+  map_place = models.ForeignKey(MapPlace, on_delete=models.CASCADE, related_name="map_place_images")
   image = models.ImageField(null=True, blank=False, upload_to=makeDynamicCoordImagePath)
   thumbnail = ResizedImageField(size=[400, 400], null=True, blank=False,
                                 upload_to=makeDynamicCoordImagePath)
 
   def save(self, *args, **kwargs):
     new_id = random.randint(100000000, 999999999)
-    if not CoordImage.objects.filter(id=self.id).exists():
-      self.id = new_id
-    super().save(*args, **kwargs)
-
-
-class MapCategory(models.Model):
-  project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="map_categories")
-  order_id = models.IntegerField(null=True)
-  color = models.CharField(max_length=255, null=True, blank=False)
-  category = models.CharField(max_length=255, null=True, blank=False)
-
-  class Meta:
-    ordering = ["order_id"]
-
-  def save(self, *args, **kwargs):
-    new_id = random.randint(100000000, 999999999)
-    if not MapCategory.objects.filter(id=self.id).exists():
+    if not MapPlaceImage.objects.filter(id=self.id).exists():
       self.id = new_id
     super().save(*args, **kwargs)
 
@@ -594,6 +674,7 @@ class Gallery(models.Model):
     if not Gallery.objects.filter(id=self.id).exists():
       self.id = new_id
     super().save(*args, **kwargs)
+
 
 class Slideshow(models.Model):
   project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="slideshow")

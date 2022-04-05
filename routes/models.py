@@ -7,6 +7,7 @@ class Route(models.Model):
   component = models.CharField(max_length=20, null=True, blank=False)
   path = models.CharField(max_length=20, null=True, blank=False)
   name = models.CharField(max_length=20, null=True, blank=False)
+  panel_name = models.CharField(max_length=30, null=True, blank=False)
   title = models.CharField(max_length=20, null=True, blank=False)
   active = models.BooleanField(default=True)
 

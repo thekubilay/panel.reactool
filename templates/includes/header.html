@@ -1,0 +1,201 @@
+{% load static %}
+<header class="rt-header" id="rt-header">
+  <div class="header-row">
+    <div class="header-wrapper">
+      <div class="header-nav-group">
+        <a href="/home/" class="header-logo">
+          <img src="{% static 'img/logo.svg' %}" class="logo-file">
+        </a>
+        <nav class="navigation">
+          <ul class="navigation-list">
+            <li class="navigation-list-item navigation-list-drop">
+              <button class="navigation-link" onclick="toggleDropdown(0)">
+                    <span class="navigation-link-text">
+                      リアクツールの特徴
+                      <i class="fas fa-chevron-up"></i>
+                      <i class="fas fa-chevron-down"></i>
+                    </span>
+              </button>
+              <div class="navigation-dropdown">
+                <div class="navigation-dropdown-left">
+                  <div class="navigation-dropdown-section">
+                    <h3 class="navigation-dropdown-column-label">
+                      reactoolの特徴
+                    </h3>
+                    <div class="navigation-dropdown-column-wrapper">
+                      <ul class="navigation-dropdown-column">
+                        <li class="navigation-dropdown-item">
+                          <a href="{% url 'page_panel_features' %}">
+                            <div class="navigation-dropdown-card">
+                              <span class="navigation-dropdown-card-label">ツールを個別に導入可能</span>
+                              <span class="navigation-dropdown-card-summary">お好みのツールやシミュレータを
+                                    選んで導入、無駄がありません。</span>
+                            </div>
+                          </a>
+                        </li>
+                        <li class="navigation-dropdown-item">
+                          <a href="{% url 'page_panel_features' %}">
+                            <div class="navigation-dropdown-card">
+                              <span class="navigation-dropdown-card-label">管理画面からアプリを更新</span>
+                              <span class="navigation-dropdown-card-summary">導入後も管理画面からアプリを更新でき、
+                                    より使いやすくカスタマイズできます。</span>
+                            </div>
+                          </a>
+                        </li>
+                        <li class="navigation-dropdown-item">
+                          <a href="{% url 'page_panel_features' %}">
+                            <div class="navigation-dropdown-card">
+                              <span class="navigation-dropdown-card-label">パソコンとiPadに対応</span>
+                              <span class="navigation-dropdown-card-summary">パソコンだけでなく、iPadにも対応。
+                                    様々なシーンでお使い頂けます。</span>
+                            </div>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="navigation-dropdown-section">
+                    <h3 class="navigation-dropdown-column-label">
+                      管理画面について
+                    </h3>
+                    <div class="navigation-dropdown-column-wrapper">
+                      <ul class="navigation-dropdown-column">
+                        <li class="navigation-dropdown-item">
+                          <a href="{% url 'page_panel_features' %}">
+                            <div class="navigation-dropdown-card">
+                              <span class="navigation-dropdown-card-label">アプリ情報の更新</span>
+                              <span class="navigation-dropdown-card-summary">情報の追加・削除ができ、
+                                    いつでも最新情報にアップデートできます。</span>
+                            </div>
+                          </a>
+                        </li>
+                        <li class="navigation-dropdown-item">
+                          <a href="{% url 'page_panel_features' %}">
+                            <div class="navigation-dropdown-card">
+                              <span class="navigation-dropdown-card-label">使いやすくカスタマイズ</span>
+                              <span class="navigation-dropdown-card-summary">情報の並び替えや画像の追加など、
+                                    より使いやすく変更できます。</span>
+                            </div>
+                          </a>
+                        </li>
+                        <li class="navigation-dropdown-item">
+                          <a href="{% url 'page_panel_features' %}">
+                            <div class="navigation-dropdown-card">
+                              <span class="navigation-dropdown-card-label">様々なツールをまとめて管理</span>
+                              <span class="navigation-dropdown-card-summary">全てのツールを一つの画面で管理でき、
+                                    一度にまとめて更新できます。</span>
+                            </div>
+                          </a>
+                        </li>
+                      </ul>
+                      <ul class="navigation-dropdown-column">
+                        <li class="navigation-dropdown-item">
+                          <a href="{% url 'page_panel_features' %}">
+                            <div class="navigation-dropdown-card">
+                              <span class="navigation-dropdown-card-label">24時間いつでも変更可能</span>
+                              <span class="navigation-dropdown-card-summary">お好きな時間にいつでも更新可能です。
+                                    急な情報変更にも対応できます。</span>
+                            </div>
+                          </a>
+                        </li>
+                        <li class="navigation-dropdown-item">
+                          <a href="{% url 'page_panel_features' %}">
+                            <div class="navigation-dropdown-card">
+                              <span class="navigation-dropdown-card-label">変更は即時反映</span>
+                              <span class="navigation-dropdown-card-summary">更新した情報はすぐにアプリに反映されます。
+                                    無駄なタイムラグがありません。</span>
+                            </div>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="navigation-dropdown-right">
+                  <div class="navigation-dropdown-section">
+                    <h3 class="navigation-dropdown-column-label">
+                      さらに便利な機能
+                    </h3>
+                    <div class="navigation-dropdown-column-wrapper">
+                      <ul class="navigation-dropdown-column">
+
+                        <li class="navigation-dropdown-item">
+                          <a href="{% url 'page_panel_features' %}">
+                            <div class="navigation-dropdown-card">
+                              <span class="navigation-dropdown-card-label">API 機能</span>
+                              <span class="navigation-dropdown-card-summary">アプリの情報をAPIを使って直接取得できます。</span>
+                            </div>
+                          </a>
+                        </li>
+                        <li class="navigation-dropdown-item">
+                          <a href="{% url 'page_panel_features' %}">
+                            <div class="navigation-dropdown-card">
+                              <span class="navigation-dropdown-card-label">アプリの閲覧制限機能</span>
+                              <span class="navigation-dropdown-card-summary">閲覧制限したアプリURLを新たに発行できます。</span>
+                            </div>
+                          </a>
+                        </li>
+
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li class="navigation-list-item navigation-list-drop">
+              <button onclick="window.location.href = '/features/'" class="navigation-link">
+                    <span class="navigation-link-text">
+                      フィーチャー
+                    </span>
+              </button>
+
+            </li>
+          </ul>
+          <div class="navigation-mobile-buttons">
+            <a href="#" class="button">試す</a>
+            <a href="#" class="button">ログイン</a>
+          </div>
+        </nav>
+
+      </div>
+      <div class="header-icon-group">
+        <div class="contact-wrapper">
+          <a href="#" class="link-text">
+                <span>
+                  コンタクト
+                </span>
+          </a>
+        </div>
+        {% if user %}
+          <div class="login-wrapper">
+            <a href="{% url 'page_login' %}" class="header-demo-button button">
+              <span>
+                ログイン
+              </span>
+            </a>
+          </div>
+        {% else %}
+          <div class="login-wrapper">
+            <a href="/" class="link-text">
+              <span>
+                管理パネル
+              </span>
+            </a>
+          </div>
+        {% endif %}
+      </div>
+      <button class="header-mobil-nav menu--spin" type="button" onclick="toggleMobile()">
+            <span class="mobil-nav-toggle">
+              <span class="mobil-nav-inner"></span>
+            </span>
+      </button>
+    </div>
+  </div>
+  <div id="navigation-dropdown-wrapper" class="navigation-dropdown-wrapper">
+    <div class="navigation-dropdown-footer">
+    </div>
+    <div class="navigation-dropdown-rightbg">
+    </div>
+  </div>
+</header>

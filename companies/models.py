@@ -13,7 +13,7 @@ class Company(models.Model):
     return self.name
 
   def save(self, *args, **kwargs):
-    new_id = random.randint(100000000, 999999999)
+    new_id = random.randint(10000000, 99999999)  # 8 num
     if not Company.objects.filter(id=self.id).exists():
       self.id = new_id
     super().save(*args, **kwargs)

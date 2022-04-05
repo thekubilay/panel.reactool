@@ -41,6 +41,24 @@ class SalonsViewSet(viewsets.ModelViewSet):
 
     return salons
 
+  def create(self, request, *args, **kwargs):
+    if "reordered" in request.data:
+      items = request.data["reordered"]
+      for i, item in enumerate(items):
+        salon = Salon.objects.get(id=item["id"])
+        salon.order_id = i + 1
+        salon.save()
+
+      return Response(status=200)
+    else:
+      salons = Salon.objects.filter(company=request.data["company"])
+      request.data._mutable = True
+      request.data["order_id"] = 1 if len(salons) > 1 else len(salons) + 1
+      serializer = SalonSerializer(data=request.data)
+      serializer.is_valid(raise_exception=True)
+      serializer.save()
+      return Response(serializer.data)
+
 
 class SalonMapSettingViewSet(viewsets.ModelViewSet):
   queryset = MapSetting.objects.all()

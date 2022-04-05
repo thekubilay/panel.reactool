@@ -1,6 +1,8 @@
 import os
 from pathlib import Path
 from decouple import config
+from django.contrib.messages import constants as messages
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config("SECRET_KEY")
@@ -9,7 +11,7 @@ DEBUG = config("DEBUG", default=True, cast=bool)
 
 ALLOWED_HOSTS = ["*"]
 CORS_ORIGIN_ALLOW_ALL = False
-CORS_ORIGIN_WHITELIST = ['http://localhost:3000', "http://192.168.100.84:3000"]
+CORS_ORIGIN_WHITELIST = ["http://localhost:3000", "http://192.168.100.84:3000"]
 X_FRAME_OPTIONS = 'ALLOWALL'
 XS_SHARING_ALLOWED_METHODS = ['POST', 'GET', 'OPTIONS', 'PUT', 'DELETE']
 
@@ -22,8 +24,8 @@ INSTALLED_APPS = [
   'django.contrib.staticfiles',
   'django.contrib.sites',
 
-  "companies", "accounts", "salons", "projects", "routes", "sumaipad", "permissions",
-  "rest_framework", "allauth", 'rest_framework_api_key', 'rest_framework_simplejwt', 'crispy_forms',
+  "companies", "accounts", "salons", "projects", "routes", "sumaipad", "permissions", "logs", "news",
+  "rest_framework", "allauth", 'rest_framework_simplejwt', 'crispy_forms', "tutorials",
   "corsheaders", "django_cleanup.apps.CleanupConfig", "django_vite",
 
 ]
@@ -57,7 +59,6 @@ REST_FRAMEWORK = {
   ],
   'DEFAULT_PERMISSION_CLASSES': [
     'rest_framework.permissions.IsAuthenticated',
-    # "rest_framework_api_key.permissions.HasAPIKey",
   ]
 }
 
@@ -93,28 +94,29 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'reactool.wsgi.application'
 
-if DEBUG:
+if 'RDS_DB_NAME' in os.environ:
   DATABASES = {
     'default': {
       'ENGINE': 'mysql.connector.django',
-      'NAME': 'reactool_pro',
-      'USER': 'root',
-      'PASSWORD': 'snickers.007',
-      'HOST': 'localhost',
-      'PORT': '3306'
+      'NAME': os.environ['RDS_DB_NAME'],
+      'USER': os.environ['RDS_USERNAME'],
+      'PASSWORD': os.environ['RDS_PASSWORD'],
+      'HOST': os.environ['RDS_HOSTNAME'],
+      'PORT': os.environ['RDS_PORT'],
     }
   }
 else:
   DATABASES = {
     'default': {
       'ENGINE': 'mysql.connector.django',
-      'NAME': 'reactool_pro',
+      'NAME': 'reactool',
       'USER': 'root',
       'PASSWORD': 'snickers.007',
       'HOST': 'localhost',
       'PORT': '3306'
     }
   }
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -133,6 +135,11 @@ AUTH_PASSWORD_VALIDATORS = [
   },
 ]
 
+# CRONJOB
+CRONJOBS = [
+  ('10 */12 * * *', 'accounts.cron.remove_scheduled_user'),
+]
+
 LANGUAGE_CODE = 'ja'
 TIME_ZONE = 'Asia/Tokyo'
 USE_I18N = True
@@ -145,8 +152,14 @@ DJANGO_VITE_DEV_MODE = DEBUG
 
 GOOGLE_MAP_API_KEY = config("GOOGLE_MAP_API_KEY")
 
+MESSAGE_TAGS = {
+  messages.ERROR: 'error',
+  messages.SUCCESS: 'success',
+  messages.INFO: 'info',
+}
+
 if DEBUG:
-  DJANGO_VITE_ASSETS_PATH = BASE_DIR / "app-reactool/src"
+  DJANGO_VITE_ASSETS_PATH = BASE_DIR / "app/src"
   STATIC_URL = '/static/'
   STATICFILES_DIRS = [
     BASE_DIR / "static",

@@ -1,0 +1,78 @@
+<template>
+  <div :style="{height: height}" class="toolbar flex container align-center">
+    <slot></slot>
+  </div>
+</template>
+<script lang="ts" setup>
+import {PropType} from "vue";
+
+defineProps({
+  height: String as PropType<string>,
+})
+</script>
+
+<style>
+.toolbar {
+  background-color: #ffffff;
+  height: 54px;
+  border-bottom: 1px solid #edeae9;
+}
+
+.toolbar h3.title {
+  margin-right: 10px;
+  font-size: .9rem;
+  font-weight: 500;
+}
+
+.toolbar .p-dropdown.dropdown {
+  height: 30px;
+  font-size: .7rem;
+  width: 100px;
+  margin-left: 14px;
+}
+.toolbar .p-dropdown.dropdown .pi {
+  position: relative;
+  top: 1px;
+  font-size: .7rem;
+}
+.toolbar .p-button.submit-button {
+  height: 30px !important;
+  font-size: .7rem !important;
+  padding: 0 10px !important;
+  width: auto !important;
+  background-color: #3742fa !important;
+  margin-left: 14px;
+  color: #FFFFFF !important;
+}
+.toolbar .p-button.submit-button.icon-button {
+  padding: 0 6px !important;
+  width: auto !important;
+  margin-left: 1px;
+}
+.toolbar .p-button.submit-button:first-child {
+  margin-left: 0;
+}
+
+/* tool button */
+.toolbar .p-button.tool-button {
+  height: 30px !important;
+  font-size: .7rem !important;
+  padding: 0 10px !important;
+  width: auto !important;
+  background-color: #edeae9;
+  margin-left: 14px;
+  color: #1a1f21;
+}
+
+.toolbar .p-button.tool-button:enabled:hover {
+  background-color: #edeae9;
+}
+
+.toolbar .p-button.tool-button .pi,
+.toolbar .p-button.submit-button .pi {
+  font-size: .8rem !important;
+  padding-bottom: 2px;
+}
+
+
+</style>

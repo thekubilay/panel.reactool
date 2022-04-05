@@ -2,4 +2,7 @@ from django.apps import AppConfig
 
 
 class RoutesConfig(AppConfig):
-    name = 'routes'
+  name = 'routes'
+
+  def ready(self):
+    import routes.signals

@@ -1,0 +1,245 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: inherit;
+  font-family: Noto Sans JP, Arial, Helvetica, sans-serif;
+  font-size: inherit;
+}
+html {
+  overflow: hidden;
+}
+html.scroll {
+  overflow-y: scroll;
+}
+/* .error-page {
+  display: flex;
+} */
+main.error {
+  margin-top: 140px;
+  margin-bottom: 140px;
+  position: relative;
+  padding: 0;
+  display: block;
+
+}
+main.error .main-section {
+  display: flex;
+  flex-direction: row;
+  /* padding:0 64px; */
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1024px;
+  width: 93%;
+}
+main.error .error-wrapper {
+  width: calc(100% - 320px);
+  min-width: 50%;
+  max-width: 650px;
+  position: relative;
+}
+main.error .error-wrapper .error-forground {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+main.error .error-wrapper > span.error-number {
+  position: absolute;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  font-size: 30vw;
+  padding-bottom: 5px;
+  color: #f4f5f7;
+  top: -25px;
+  left: 0;
+  text-align: center;
+  font-weight: 600;
+  line-height: 100%;
+  /* margin-bottom: 18px; */
+}
+main.error .error-wrapper h1 {
+  font-size: 2.2rem;
+  margin-bottom: 24px;
+}
+main.error .error-wrapper p {
+  margin-bottom: 50px;
+  color: #646F79;
+  font-weight: 400;
+}
+
+
+main.error button.error-button {
+  background-color: #273240;
+  color: #f6f8f9;
+  
+  border-radius: 0px;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  letter-spacing: .5px;
+  padding: 0 16px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color .15s,color .15s ease-in-out;
+  white-space: nowrap;
+  font-size: 0.8rem;
+  font-weight: 400;
+  height: 30px;
+  line-height: 30px;
+}
+
+
+main.error .error-image-wrapper {
+  width: 300px;
+  max-width: 300px;
+}
+
+
+.landing-page section.first-section .col-right {
+  flex-basis: 100%;
+  max-width: 100%;
+}
+.error-image-anchor {
+  position: relative;
+  height: 0;
+  padding-bottom: 100%;
+}
+.images-wrapper{
+
+  width: 100%;
+  height: 100%;
+}
+
+.images-bg-container {
+  width: 100%;
+  height: 100%;
+
+}
+.images-bg-container .images-bg {
+  position: absolute;
+  /* width: 80%;
+  height: 80%; */
+  max-width: 300px;
+  max-height: 300px;
+  min-width: 300px;
+  min-height: 300px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+.images-bg-container .outer-ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  height: calc(100% - 4px);
+  width: calc(100% - 4px);
+  /* background-color: red; */
+  border-radius: 50%;
+  border: 2px solid rgb(244, 244, 244);
+
+}
+.images-bg-container .inner-ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  /* background-color: #0984e3; */
+  width: calc(100% - 88px);
+  height: calc(100% - 88px);
+  border-radius: 50%;
+  border: 40px solid #f6f3f2;
+  /* border: 40px solid #dfdcdb; */
+}
+.comets {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.comet {
+  /* background-color: #273240; */
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: rotate(10deg);
+  animation-duration: 12s;
+  animation-play-state: running;
+  animation-timing-function: linear;
+  animation-name: animation-orbit;
+  animation-iteration-count: infinite;
+  animation-delay: 100ms;
+}
+@keyframes animation-orbit {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
+}
+.comet-image {
+  position: absolute;
+  border-radius: 50%;
+  background-color: #273240;
+  width: 10%;
+  height: 10%;
+}
+.d1 {
+  animation-duration: 55s;
+}
+.d2 {
+  animation-duration: 45s;
+}
+.d3 {
+  animation-duration: 35s;
+}
+.c1 {
+  background-color: #ebecee;
+  top: 11%;
+  left: 10%;
+}
+.c2 {
+  background-color: #f0f0f0;
+  top: 21%;
+  right: 20%;
+}
+.c3 {
+  background-color: #fafafa;
+  bottom: 30%;
+  right: 30%;
+}
+@media (max-width: 49em){
+  main.error .main-section {
+    flex-direction: column;
+  }
+  main.error .error-wrapper {
+    width: 100%;
+    margin-bottom: 24px;
+  }
+  main.error .error-image-wrapper {
+    display: none;
+  }
+}
+@media (min-width: 1115px) {
+  main.error .error-wrapper > span.error-number {
+    font-size: 20rem;
+    max-width: 650px;
+  }
+}
+@media (max-width: 480px) {
+  main.error .error-wrapper > span.error-number {
+    font-size: 12rem;
+    max-width: 650px;
+  }
+}
+
+/* .landing-page section.first-section .col-right .col-right-content-container .images-wrapper {
+  width: 100%;
+  height: 100%;
+} */

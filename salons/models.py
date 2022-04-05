@@ -1,4 +1,6 @@
 import random
+import string
+
 from django.db import models
 from accounts.models import Company
 from django_resized import ResizedImageField
@@ -11,6 +13,7 @@ def makeDynamicMapPlaceImagePath(instance, filename):
 class Salon(models.Model):
   company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name="salons")
   order_id = models.IntegerField(null=True, blank=False)
+  token_on = models.BooleanField(default=False)
   name = models.CharField(null=True, blank=True, max_length=255)
 
   class Meta:
@@ -87,4 +90,23 @@ class MapPlaceImage(models.Model):
     new_id = random.randint(100000000, 999999999)
     if not MapPlaceImage.objects.filter(id=self.id).exists():
       self.id = new_id
+    super().save(*args, **kwargs)
+
+
+class ApiToken(models.Model):
+  salon = models.ForeignKey(Salon, null=True, blank=False, on_delete=models.CASCADE, related_name="api_tokens")
+  token_id = models.CharField(max_length=255, null=True, blank=False)
+  name = models.CharField(max_length=255, null=True, blank=False)
+  permanent = models.BooleanField(default=False)
+  start_date = models.DateField(null=True, blank=False)
+  end_date = models.DateField(null=True, blank=False)
+
+  def save(self, *args, **kwargs):
+    new_id = random.randint(10000000, 99999999)
+    token = ''.join(
+      random.SystemRandom().choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for _ in range(60))
+    if not ApiToken.objects.filter(id=self.id).exists() and not ApiToken.objects.filter(
+      token_id=self.token_id).exists():
+      self.id = new_id
+      self.token_id = token
     super().save(*args, **kwargs)

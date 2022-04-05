@@ -22,7 +22,7 @@ django-rest-auth==0.9.5
 django-vite==1.2.1
 djangorestframework==3.12.2
 djangorestframework-api-key==2.0.0
-djangorestframework-simplejwt==4.7.1
+djangorestframework-simplejwt==4.4.0
 easy-thumbnails==2.7.1
 idna==2.10
 lxml==4.7.1
@@ -45,3 +45,7 @@ tinycss2==1.1.1
 Unidecode==1.1.2
 urllib3==1.26.4
 webencodings==0.5.1
+
+opencv-python~=4.5.5.62
+pytesseract==0.3.7
+mojimoji~=0.0.12

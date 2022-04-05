@@ -1,0 +1,70 @@
+
+.spreadsheet-wrapper {
+  background-color: #FFFFFF;
+  height: calc(100% - 34px);
+}
+
+.spreadsheet-wrapper .sb-container {
+  overflow: scroll;
+  height: calc(100% - 55px);
+}
+
+.spreadsheet-wrapper .sh-container {
+  color: #9a9898;
+}
+
+.spreadsheet-wrapper .ss-container .sheet-row {
+  height: auto;
+  font-size: .8rem;
+  border-bottom: 1px solid #edeae9;
+}
+
+.spreadsheet-wrapper .sb-container .sheet-row:hover {
+  background-color: #f9f8f8;
+}
+
+.spreadsheet-wrapper .ss-container .sheet-row .sheet-cell {
+  border-right: 1px solid #edeae9;
+  font-size: .75rem;
+  min-height: 32px;
+  width: 140px;
+  padding-left: 14px;
+  min-width: 140px;
+  max-width: 140px;
+}
+.spreadsheet-wrapper .ss-container .sheet-row .sheet-cell:last-child {
+  border-right: 0;
+}
+
+.spreadsheet-wrapper .ss-container .sheet-row .sheet-cell,
+.spreadsheet-wrapper .ss-container .sheet-row .sheet-cell > span.text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.spreadsheet-wrapper .sb-container .sheet-row .sheet-cell {
+  min-height: 36px;
+}
+
+.spreadsheet-wrapper .ss-container .sheet-row .sheet-cell-long {
+  width: 220px;
+  min-width: 220px;
+  max-width: 220px;
+}
+
+
+.spreadsheet-wrapper .ss-container .sheet-row .sheet-cell.handle {
+  border-right: 0;
+}
+
+.spreadsheet-wrapper .ss-container .sheet-row .sheet-cell.img,
+.spreadsheet-wrapper .ss-container .sheet-row .sheet-cell.num,
+.spreadsheet-wrapper .ss-container .sheet-row .sheet-cell.handle {
+  width: 55px;
+  min-width: 55px;
+}
+
+.spreadsheet-wrapper .ss-container:hover .handle {
+  color: #1a1f21;
+}

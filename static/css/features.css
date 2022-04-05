@@ -1,0 +1,284 @@
+body {
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+.container {
+    width: calc(100% - 34px);
+    margin: auto;
+}
+
+.pricing > .masthead {
+    padding-top: 64px;
+    padding-bottom: 48px;
+}
+.pricing > .masthead h2 {
+    font-size: 45px;
+    line-height: 58px;
+    text-align: center;
+    margin-bottom: 16px;
+}
+.pricing > .masthead p {
+    line-height: 36px;
+    font-size: 22px;
+    width: 66.6%;
+    margin: auto;
+    text-align: center;
+}
+
+.pricing > .main {
+    max-width: 1054px;
+    margin-top: 32px;
+    padding-bottom: 100px;
+}
+
+.pricing > .main > .table-format {
+    position: relative;
+    width: 320px;
+    box-sizing: border-box;
+    padding: 32px 42px 32px 22px;
+    margin: 0 15px 30px;
+    border-radius: 10px;
+    border: 1px solid #f5f6fa;
+    cursor: pointer;
+    transition: all .3s;
+}
+.pricing > .main > .table-format :after {
+    content: "+";
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #B7BFC6;
+    line-height: 36px;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.pricing > .main .title {
+    width: 100%;
+    pointer-events: none;
+    margin-bottom: 0px;
+    pointer-events: none;
+}
+.pricing > .main .title > label {
+    padding: 0px;
+    line-height: 31px;
+    font-size: 22px;
+}
+.pricing > .main .title > .text {
+    font-size: 14px;
+    line-height: 23px;
+    width: 100%;
+    margin: 10px auto 0;
+}
+.pricing > .main > .table-format.map:hover{
+    border: 1px solid #fc5c65;
+    background-color: #fff8f9;
+}
+.pricing > .main > .map .title > label {
+    color: #fc5c65;
+}
+.pricing > .main > .table-format.blueprint:hover{
+    border: 1px solid #a55eea;
+    background-color:  #faf5ff;
+}
+.pricing > .main > .blueprint .title > label {
+    color: #a55eea;
+}
+.pricing > .main > .table-format.plan:hover{
+    border: 1px solid #0fb9b1;
+    background-color:  #f8ffff;
+}
+.pricing > .main > .plan > .title label {
+    color: #0fb9b1;
+}
+.pricing > .main > .table-format.color-select:hover{
+    border: 1px solid #2d98da;
+    background-color:  #f6fbff;
+}
+.pricing > .main > .color-select .title > label {
+    color: #2d98da;
+}
+.pricing > .main > .table-format.vista:hover{
+    border: 1px solid #fa8231;
+    background-color:  #fffaf7;
+}
+.pricing > .main .vista .title > label {
+    color: #fa8231;
+}
+.pricing > .main > .table-format.room-vr:hover{
+    border: 1px solid #f7b731;
+    background-color:  #fffcf6;
+}
+.pricing > .main > .room-vr .title > label {
+    color: #f7b731;
+}
+.pricing > .main > .table-format.building:hover{
+    border: 1px solid #20bf6b;
+    background-color:  #f6fffa;
+}
+.pricing > .main > .building .title > label {
+    color: #20bf6b;
+}
+.pricing > .main > .table-format.loan:hover{
+    border: 1px solid #3867d6;
+    background-color:  #f5f8ff;
+}
+.pricing > .main > .loan .title > label {
+    color: #3867d6;
+}
+.pricing > .main > .table-format.garally:hover{
+    border: 1px solid #fc5c65;
+    background-color:  #fff4f4;
+}
+.pricing > .main > .garally .title > label {
+    color: #fc5c65;
+}
+.pricing > .main > .table-format.link:hover{
+    border: 1px solid #a55eea;
+    background-color:  #f8f1ff;
+}
+.pricing > .main > .link .title > label {
+    color: #a55eea;
+}
+.pricing > .main > .table-format.document:hover{
+    border: 1px solid #2bcbba;
+    background-color:  #f7fffe;
+}
+.pricing > .main > .document .title > label {
+    color: #2bcbba;
+}
+.pricing > .main > .table-format.building-vr:hover{
+    border: 1px solid #4b7bec;
+    background-color:  #f6f9ff;
+}
+.pricing > .main > .building-vr .title > label {
+    color: #4b7bec;
+}
+.pricing > .main .image {
+    width: 100%;
+    height: 150px;
+    background-size: cover;
+    background-position: center center;
+    box-sizing: border-box;
+    /* padding: 0 23px;
+    border-right: 1px solid #818181;
+    border-left: 1px solid #818181; */
+    margin-top: 20px;
+    border: 1px solid #818181;
+}
+.pricing > .main .feature {
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    /* padding: 0 23px;
+    border-right: 1px solid #818181;
+    border-left: 1px solid #818181; */
+    pointer-events: none;
+    opacity: 1;
+    padding-top: 32px;
+}
+.pricing > .main .feature > .icon {
+    flex: 0 0 20px;
+    height: 40px;
+    vertical-align: top;
+    margin-right: 16px;
+    transition: all .3s;
+}
+.pricing > .main .feature > .contents {
+    flex: 1 1 auto;
+    line-height: 0;
+    text-align: left;
+}
+.pricing > .main .feature > .contents > .caption {
+    font-weight: 500;
+    font-size: 14px;
+    color: rgb(39, 50, 64);
+    margin-bottom: 8px;
+    line-height: 14px;
+}
+.pricing > .main .feature > .contents > .text {
+    font-size: 12px;
+    color: rgb(21, 27, 38);
+    line-height: 19px;
+}
+.pricing > .main .feature > .contents > .text > a {
+    color: rgb(39, 50, 64);
+    border-bottom: 2px solid rgb(39, 50, 64);
+}
+
+
+
+/* smart phone */
+@media screen and (max-width: 480px){
+    
+}
+
+
+
+
+/* popup */
+@keyframes fade {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+.pricing > .main > .popup {
+    display:none;
+    position:fixed;
+    text-align:center;
+    top:0;
+    width:100%;
+    height:100%;
+    z-index:100;
+    animation: .3s fade;
+}
+.pricing > .main > .popup > .gray {
+    display:none;
+    position:fixed;
+}
+.pricing > .main > .popup.visible {
+    display:flex;
+}
+.pricing > .main > .popup.visible > .gray {
+    background:rgba(0,0,0,.4);
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.pricing > .main > .popup > .popup-container {
+    background-color: #fff;
+    box-shadow: 10px 10px 60px #555;
+    display: inline-block;
+    height: auto;
+    max-width: 350px;
+    min-height: 100px;
+    padding: 32px 32px;
+    vertical-align: middle;
+    width: 90%;
+    position: relative;
+    border-radius: 8px;
+}
+.pricing > .main > .popup > .popup-container > .popup-close-button {
+    background-color: #fff;
+    border: 3px solid #999;
+    border-radius: 50px;
+    cursor: pointer;
+    display: inline-block;
+    font-family: arial;
+    font-weight: bold;
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    font-size: 25px;
+    line-height: 30px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+}
+.pricing > .main > .popup > .popup-container > .popup-close-button:hover {
+    background-color: #ccc;
+}
+

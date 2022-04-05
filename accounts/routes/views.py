@@ -1,12 +1,15 @@
 import json
 
 from django.shortcuts import get_object_or_404
+from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
 from accounts.routes.permissions import (IsSuperAdmin, IsAdmin, IsUserItSelf, IsCompanyManager)
 from rest_framework import viewsets
-from accounts.models import (CustomUser, UserProfile)
+from rest_framework import generics
+from accounts.models import (CustomUser, UserProfile, NewsLetter)
 from accounts.routes.serializers import (UserSerializer, UserProfileSerializer, UpdateUserAsNormalSerializer,
-                                         UpdateUserAsSuperAdminSerializer, CreateUserAsSuperAdminSerializer,
-                                         CreateUserAsNormalSerializer)
+                                         CreateUserAsSuperAdminSerializer, NewsLetterSerializer,
+                                         CreateUserAsNormalSerializer, ChangePasswordSerializer)
 from rest_framework.response import Response
 
 
@@ -40,6 +43,27 @@ class UserProfileViewSet(viewsets.ModelViewSet):
 
     return profiles
 
+
+class UserNewsLetterViewSet(viewsets.ModelViewSet):
+  queryset = NewsLetter.objects.all()
+  serializer_class = NewsLetterSerializer
+
+  def get_permissions(self):
+    permission_classes = [IsSuperAdmin]
+    if self.action == "update":
+      permission_classes = [IsSuperAdmin | IsAdmin | IsUserItSelf]
+    if self.action == 'partial_update':
+      permission_classes = [IsSuperAdmin | IsAdmin | IsUserItSelf]
+    if self.action == "retrieve":
+      permission_classes = [IsSuperAdmin | IsAdmin | IsUserItSelf]
+    if self.action == "create":
+      permission_classes = [IsSuperAdmin | IsAdmin | IsUserItSelf]
+    if self.action == "list":
+      permission_classes = [IsSuperAdmin | IsAdmin | IsUserItSelf]
+    if self.action == 'destroy':
+      permission_classes = [IsSuperAdmin | IsAdmin]
+
+    return [permission() for permission in permission_classes]
 
 class UserViewSet(viewsets.ModelViewSet):
   queryset = CustomUser.objects.all()
@@ -86,11 +110,7 @@ class UserViewSet(viewsets.ModelViewSet):
 
   def update(self, request, *args, **kwargs):
     instance = self.queryset.get(pk=kwargs.get('pk'))
-    if self.request.user.is_superuser or self.request.user.is_staff:
-      serializer = UpdateUserAsSuperAdminSerializer(instance, data=request.data)
-    else:
-      serializer = UpdateUserAsNormalSerializer(instance, data=request.data)
-
+    serializer = UpdateUserAsNormalSerializer(instance, data=request.data)
     serializer.is_valid(raise_exception=True)
     serializer.save()
     return Response(serializer.data)
@@ -115,3 +135,32 @@ class UserViewSet(viewsets.ModelViewSet):
       user.save()
 
     return Response(serializer.data)
+
+
+class UserUpdatePassword(generics.UpdateAPIView):
+  serializer_class = ChangePasswordSerializer
+  model = CustomUser
+  permission_classes = (IsAuthenticated,)
+
+  def update(self, request, *args, **kwargs):
+    user = self.request.user
+    serializer = self.get_serializer(data=request.data)
+    if serializer.is_valid():
+      if not user.check_password(serializer.data.get("old_password")):
+        content = {
+          "status": 400,
+        }
+        return Response(json.dumps(content))
+
+      user.set_password(serializer.data.get("new_password"))
+      user.save()
+      response = {
+        'status': 'success',
+        'code': status.HTTP_200_OK,
+        'message': 'Password updated successfully',
+        'data': []
+      }
+
+      return Response(response)
+
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

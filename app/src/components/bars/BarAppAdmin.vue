@@ -1,0 +1,97 @@
+<template>
+  <header id="bar_admin" class="flex justify-space-between column-1">
+    <router-link class="brand flex align-center" to="/">
+      <Icon svg="reactool_black" width="100px" style="padding-bottom: 2px" />
+    </router-link>
+
+    <div class="mhw-container container flex align-center justify-end">
+      <div class="username" style="font-size: .75rem">{{user.username}}</div>
+    </div>
+  </header>
+</template>
+
+<script lang="ts" setup>
+import Icon from "@/components/icons/Icon.vue";
+
+import useStore from "@/helpers/useStore";
+
+
+const {user} = useStore()
+
+</script>
+
+<style>
+header#bar_admin {
+  height: 40px;
+  min-height: 40px;
+  background-color: #f1f1f1;
+}
+
+header#bar_admin a.brand {
+  height: 100%;
+  width: 254px;
+  min-width: 254px;
+  padding: 0 14px 0 14px;
+}
+
+header#bar_admin a.brand svg {
+  position: relative;
+  top: 2px
+}
+
+header#bar_admin a.brand > span.wrapper {
+  position: relative;
+  top: 1px;
+  margin-left: 10px;
+
+}
+
+header#bar_admin a.brand > span.wrapper span {
+  line-height: 1;
+  font-family: 'Roboto', sans-serif;
+}
+
+header#bar_admin a.brand > span.wrapper > .text {
+  color: #1a1f21;
+  letter-spacing: 1px;
+  font-size: 1rem;
+  position: relative;
+  font-weight: 400;
+  top: 1px;
+}
+
+header#bar_admin a.brand > span.wrapper .text > span {
+  font-weight: 200;
+  color: #e74c3c;
+  letter-spacing: .6px;
+  margin-left: 2px;
+}
+
+header#bar_admin > .mhw-container {
+  width: calc(100% - 254px);
+  padding-left: 0;
+}
+
+header#bar_admin > .mhw-container > select {
+  height: 30px;
+  cursor: pointer;
+  margin-right: auto;
+  margin-left: 14px;
+  min-width: 140px;
+  padding-left: 5px;
+  border: 1px solid #dcdde1;
+  outline: 0;
+  border-radius: 0;
+}
+
+
+header#bar_admin > .mhw-container .avatar {
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+  object-fit: cover;
+  background-position: center;
+  border: 1px solid #555555;
+}
+
+</style>
