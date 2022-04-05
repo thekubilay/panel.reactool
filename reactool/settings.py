@@ -10,7 +10,7 @@ DEBUG = config("DEBUG", default=True, cast=bool)
 
 ALLOWED_HOSTS = ["127.0.0.1",
                  "192.168.100.36",
-                 "panel-test-env.eba-92hkwvtp.ap-northeast-1.elasticbeanstalk.com",]
+                 "panel-test-env.eba-92hkwvtp.ap-northeast-1.elasticbeanstalk.com", ]
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = ["http://localhost:3000", "http://192.168.100.84:3000"]
 X_FRAME_OPTIONS = 'ALLOWALL'
@@ -27,7 +27,7 @@ INSTALLED_APPS = [
 
   "companies", "accounts", "salons", "projects", "routes", "sumaipad", "permissions", "logs", "news",
   "rest_framework", 'rest_framework_simplejwt', 'crispy_forms', "tutorials",
-  "corsheaders", "django_cleanup.apps.CleanupConfig", "django_vite",
+  "corsheaders", "django_cleanup.apps.CleanupConfig", "django_vite", "storages",
 
 ]
 SITE_ID = 1
@@ -168,9 +168,27 @@ if DEBUG:
   MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
   MEDIA_URL = '/media/'
 else:
-  # Where ViteJS assets are built.
+  # Where ViteJS assets are built.   # aws settings
+  AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+  AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+  AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
+  AWS_DEFAULT_ACL = 'public-read'
+  AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+  AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
+
+  # s3 static settings
+  AWS_S3_FILE_OVERWRITE = False
+  AWS_LOCATION = 'static'
+  STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
+  STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+  # s3 public media settings
+  PUBLIC_MEDIA_LOCATION = 'media'
+  MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
+  DEFAULT_FILE_STORAGE = "ecc.aws_storages.MediaStorage"
+
   DJANGO_VITE_ASSETS_PATH = BASE_DIR / "static"
   STATICFILES_DIRS = [
-    'static',
+    'reactool/static',
     DJANGO_VITE_ASSETS_PATH,
   ]
