@@ -1,0 +1,1 @@
+const e=[[{classes:["flex"],elements:[{component:null,name:"InputText",db_column_name:"name",type:"text",model:null,label:"\u30B5\u30ED\u30F3\u540D",hint:null,placeholder:"\u3007\u3007\u30B5\u30ED\u30F3",required:!0,id:"salon_name_input",rules:[],disabled:!1,props:["placeholder","required","disabled"],classes:["flex-column","column-1"]}]}]];export{e as f};

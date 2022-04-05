@@ -437,3 +437,4 @@ fabric.properties
 /app/README.md
 /app/tsconfig.json
 /app/vite.config.ts
+/app/.idea/
