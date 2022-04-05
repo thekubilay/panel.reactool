@@ -39,7 +39,7 @@ ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = False
 AUTHENTICATION_BACKENDS = (
   "django.contrib.auth.backends.ModelBackend",
-  "allauth.account.auth_backends.AuthenticationBackend",
+  # "allauth.account.auth_backends.AuthenticationBackend",
 )
 LOGIN_URL = "/accounts/login/"
 LOGIN_REDIRECT_URL = "/"
