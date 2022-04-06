@@ -6,13 +6,13 @@
   <title>reactool</title>
   <link rel="icon" href="{% static 'favicon.ico' %}" />
   <link rel="stylesheet" href="{% static 'assets/main2.css' %}">
-
-
   {% block css %}{% endblock %}
 </head>
 <body>
   {% block content %}{% endblock %}
   {% block js %}{% endblock %}
   <script src="https://kit.fontawesome.com/51a0ad452e.js" crossorigin="anonymous"></script>
+
+  <script type="module" src="{% static 'main.js' %}"></script>
 </body>
 </html>
