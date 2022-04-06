@@ -10,12 +10,15 @@ DEBUG = config("DEBUG", default=True, cast=bool)
 
 ALLOWED_HOSTS = [
   "127.0.0.1",
+  "127.0.0.1:8000",
   "192.168.100.36",
   "panel-test-env.eba-92hkwvtp.ap-northeast-1.elasticbeanstalk.com",
   "bucket-reactool-test.s3.amazonaws.com"
 ]
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = [
+  "http://127.0.0.1",
+  "http://127.0.0.1:8000",
   "http://localhost:3000",
   "https://app.reactool.jp"
 ]
@@ -174,14 +177,41 @@ if DEBUG:
   # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
   # MEDIA_URL = '/media/'
 
-  DJANGO_VITE_ASSETS_PATH = BASE_DIR / "app/dist"
-  STATIC_URL = '/static/'
-  STATIC_ROOT = BASE_DIR / 'static'
+  # DJANGO_VITE_ASSETS_PATH = BASE_DIR / "app/dist"
+  # STATIC_URL = '/static/'
+  # STATIC_ROOT = BASE_DIR / 'static'
+  # STATICFILES_DIRS = [
+  #   DJANGO_VITE_ASSETS_PATH,
+  # ]
+  # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+  # MEDIA_URL = '/media/'
+
+  # Where ViteJS assets are built.   # aws settings
+  AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+  AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+  AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
+  AWS_DEFAULT_ACL = 'public-read'
+  AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+  AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
+
+  # s3 static settings
+  AWS_S3_FILE_OVERWRITE = False
+  AWS_LOCATION = 'static'
+  STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
+  STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+  # s3 public media settings
+  PUBLIC_MEDIA_LOCATION = 'media'
+  MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
+  DEFAULT_FILE_STORAGE = "reactool.aws_storages.MediaStorage"
+
+  # STATIC_ROOT = BASE_DIR / 'static'
+  DJANGO_VITE_ASSETS_PATH = BASE_DIR / "static"
+  # STATIC_ROOT = 'static'
+  # DJANGO_VITE_ASSETS_PATH = "static"
   STATICFILES_DIRS = [
     DJANGO_VITE_ASSETS_PATH,
   ]
-  MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-  MEDIA_URL = '/media/'
 else:
   # Where ViteJS assets are built.   # aws settings
   AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
@@ -203,8 +233,7 @@ else:
   DEFAULT_FILE_STORAGE = "reactool.aws_storages.MediaStorage"
 
   STATIC_ROOT = BASE_DIR / 'static'
-  DJANGO_VITE_ASSETS_PATH = STATIC_URL
-  print(STATIC_URL, DJANGO_VITE_ASSETS_PATH, "sskubilay")
+  DJANGO_VITE_ASSETS_PATH = BASE_DIR / "static"
   # STATIC_ROOT = 'static'
   # DJANGO_VITE_ASSETS_PATH = "static"
   STATICFILES_DIRS = [

@@ -5,7 +5,7 @@ from django.views.generic.base import TemplateView
 
 class IndexTemplateView(LoginRequiredMixin, TemplateView):
   def get_template_names(self):
-    if settings.DEBUG:
+    if settings.DEBUG is False:
       template = "index-dev.html"
     else:
       template = "index.html"
