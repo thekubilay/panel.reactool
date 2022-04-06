@@ -53,7 +53,7 @@ import {Routes} from "@/types/Routes";
 const {salons, projects, project} = useStore()
 const {setColorById, groupBy} = useUtils()
 const route = useRoute()
-const salonPart = ref<boolean>(true)
+const salonPart = ref<boolean>(false)
 const projectPart = ref<boolean>(true)
 
 const salonPartHeightClass = computed<string>(() => {

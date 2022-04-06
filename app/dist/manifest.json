@@ -405,7 +405,7 @@
       "_virtualscroller.esm.js"
     ],
     "css": [
-      "assets/Tutorials.css"
+      "assets/Tutorials2.css"
     ]
   },
   "src/views/admin/TutorialImages.vue": {
@@ -485,7 +485,7 @@
       "_vendor.js"
     ],
     "css": [
-      "assets/Tutorials2.css"
+      "assets/Tutorials.css"
     ]
   },
   "src/views/boards/Salon.vue": {
