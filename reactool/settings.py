@@ -3,9 +3,7 @@ from pathlib import Path
 from decouple import config
 from django.contrib.messages import constants as messages
 
-# BASE_DIR = Path(__file__).resolve().parent.parent
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config("SECRET_KEY")
 
 DEBUG = config("DEBUG", default=True, cast=bool)
@@ -90,7 +88,7 @@ ROOT_URLCONF = 'reactool.urls'
 TEMPLATES = [
   {
     'BACKEND': 'django.template.backends.django.DjangoTemplates',
-    'DIRS': [os.path.join(BASE_DIR, 'templates')]
+    'DIRS': [BASE_DIR / 'templates']
     ,
     'APP_DIRS': True,
     'OPTIONS': {
@@ -170,11 +168,10 @@ MESSAGE_TAGS = {
 }
 
 if DEBUG:
-  DJANGO_VITE_ASSETS_PATH = os.path.join(BASE_DIR, 'app/src')
-  # DJANGO_VITE_ASSETS_PATH = BASE_DIR / "app/src"
+  DJANGO_VITE_ASSETS_PATH = BASE_DIR / "app/src"
   STATIC_URL = '/static/'
   STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+    BASE_DIR / "static",
     DJANGO_VITE_ASSETS_PATH,
   ]
   MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -208,8 +205,8 @@ else:
   MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
   DEFAULT_FILE_STORAGE = "reactool.aws_storages.MediaStorage"
 
-  STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-  DJANGO_VITE_ASSETS_PATH = os.path.join(BASE_DIR, 'static')
+  STATIC_ROOT = STATIC_URL
+  DJANGO_VITE_ASSETS_PATH = STATIC_URL
 
   # DJANGO_VITE_ASSETS_PATH = STATIC_URL
   # STATIC_ROOT = STATIC_URL
