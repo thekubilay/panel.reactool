@@ -637,7 +637,7 @@
       "_rules.js"
     ],
     "css": [
-      "assets/ProjectRoutes.css"
+      "assets/ProjectLoan.css"
     ]
   },
   "src/views/boards/ProjectPermissions.vue": {
@@ -949,7 +949,7 @@
       "_overlayeventbus.esm.js"
     ],
     "css": [
-      "assets/ProjectRoutes.css"
+      "assets/ProjectLoan.css"
     ]
   },
   "src/views/boards/ProjectParkingFees.vue": {

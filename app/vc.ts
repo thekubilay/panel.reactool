@@ -37,44 +37,6 @@ export default defineConfig({
         entryFileNames: `[name].js`,
         chunkFileNames: `chunks/[name].js`,
         assetFileNames: `assets/[name].[ext]`,
-        // manualChunks: {
-        //   'main-route-group1': [
-        //     './src/views/admin/index.vue',
-        //     './src/views/boards/index.vue',
-        //   ],
-        //   'admin-route-group1': [
-        //     './src/views/admin/LogsError.vue',
-        //     './src/views/admin/News.vue',
-        //     './src/views/admin/ProjectPermissions.vue',
-        //   ],
-        //   'admin-route-group2': [
-        //     './src/views/admin/Routes.vue',
-        //     './src/views/admin/Rules.vue',
-        //     './src/views/admin/Salons.vue',
-        //     './src/views/admin/Users.vue',
-        //   ],
-        //   'project-route-group1': [
-        //     './src/views/boards/ProjectRoutes.vue',
-        //     './src/views/boards/ProjectPlaces.vue',
-        //     './src/views/boards/ProjectPlacesCategories.vue',
-        //     './src/views/boards/ProjectPlans.vue',
-        //     './src/views/boards/ProjectGallery.vue',
-        //
-        //     './src/views/boards/ProjectLinks.vue',
-        //     './src/views/boards/ProjectDocuments.vue',
-        //     './src/views/boards/ProjectDocumentsFolders.vue',
-        //     './src/views/boards/ProjectGeneralPlans.vue',
-        //     './src/views/boards/ProjectVistas.vue',
-        //
-        //     './src/views/boards/ProjectBuildingVr.vue',
-        //     './src/views/boards/ProjectBuilding.vue',
-        //     './src/views/boards/ProjectColorSimulator.vue',
-        //     './src/views/boards/ProjectRoomVrTypes.vue',
-        //   ],
-        //   'project-route-group2': [
-        //     './src/views/boards/ProjectRoomVrFloors.vue',
-        //   ]
-        // },
       },
     },
   },
