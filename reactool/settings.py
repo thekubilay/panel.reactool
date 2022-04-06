@@ -204,6 +204,7 @@ else:
 
   STATIC_ROOT = BASE_DIR / 'static'
   DJANGO_VITE_ASSETS_PATH = BASE_DIR / "static"
+  DJANGO_VITE_MANIFEST_PATH = BASE_DIR / "static/manifest.json"
   print(DJANGO_VITE_ASSETS_PATH, "kubilay")
   # STATIC_ROOT = 'static'
   # DJANGO_VITE_ASSETS_PATH = "static"
