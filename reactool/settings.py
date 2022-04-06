@@ -203,8 +203,7 @@ else:
   DEFAULT_FILE_STORAGE = "reactool.aws_storages.MediaStorage"
 
   STATIC_ROOT = BASE_DIR / 'static'
-  DJANGO_VITE_ASSETS_PATH = BASE_DIR / "static"
-  DJANGO_VITE_MANIFEST_PATH = BASE_DIR / "static/manifest.json"
+  DJANGO_VITE_ASSETS_PATH = STATIC_URL
   print(DJANGO_VITE_ASSETS_PATH, "kubilay")
   # STATIC_ROOT = 'static'
   # DJANGO_VITE_ASSETS_PATH = "static"
