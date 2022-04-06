@@ -27,7 +27,7 @@ export default function () {
   const dropdownItems = ref([
     {
       icon: "pi pi-plus",
-      label: '新規ルーム',
+      label: 'ルームを追加',
       command: () => {
         rm.value = false
         query.value = {
@@ -62,7 +62,7 @@ export default function () {
 
     {
       icon: "pi pi-bars",
-      label: 'ルーム並び替え',
+      label: 'ルームの並び替え',
       command: () => {
         rm.value = false
         reform.value = [[]]
@@ -78,7 +78,7 @@ export default function () {
 
     {
       icon: "pi pi-plus",
-      label: '新規ルームPART',
+      label: 'ルームパーツを追加',
       command: () => {
         images.value = []
         rm.value = false

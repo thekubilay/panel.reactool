@@ -120,7 +120,7 @@ const activeTab = ref<number>(0);
 const containerId = ref<string>("pin_input")
 const links = ref<ProjectRoutes[]>([])
 
-const tabs = ref<string[]>(['内容', '設定', '地図印', 'ロゴ画像',])
+const tabs = ref<string[]>(['詳細', '設定', '地図のピン', 'ロゴ画像',])
 const query = ref({})
 const items = ref<DropdownMenu[]>([
   {
@@ -129,7 +129,7 @@ const items = ref<DropdownMenu[]>([
     command: () => {
       onload.value = ""
       title.value = project.value?.name || ""
-      tabs.value = ['内容', '設定', '地図印', 'ロゴ画像',]
+      tabs.value = ['詳細', '設定', '地図のピン', 'ロゴ画像',]
       reform.value = FormProject
       if (!checkPermission(project.value?.permissions, "is_token") && !user.value?.is_superuser)
         reform.value = findAndUpdateFormElement(reform.value, "token_on", "disabled", true, 1)

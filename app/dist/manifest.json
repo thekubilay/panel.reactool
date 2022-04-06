@@ -93,7 +93,7 @@
       "_rules.js"
     ],
     "css": [
-      "assets/index.css"
+      "assets/index2.css"
     ]
   },
   "_FormQuery.js": {
@@ -210,7 +210,7 @@
       "_DialogDelete.js"
     ],
     "css": [
-      "assets/index2.css"
+      "assets/index.css"
     ]
   },
   "_BarTool.js": {
@@ -637,7 +637,7 @@
       "_rules.js"
     ],
     "css": [
-      "assets/ProjectRoutes.css"
+      "assets/ProjectLoan.css"
     ]
   },
   "src/views/boards/ProjectPermissions.vue": {
@@ -949,7 +949,7 @@
       "_overlayeventbus.esm.js"
     ],
     "css": [
-      "assets/ProjectRoutes.css"
+      "assets/ProjectLoan.css"
     ]
   },
   "src/views/boards/ProjectParkingFees.vue": {

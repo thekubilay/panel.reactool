@@ -11,7 +11,7 @@
     </div>
 
     <div class="bar-app-global-actions flex justify-end">
-      <router-link class="tutorials flex align-center justify-center" :to="{name:'BoardTutorials', params:{cid:route.params.cid}}"><i class="pi pi-question-circle"></i></router-link>
+      <router-link v-if="user.is_superuser" class="tutorials flex align-center justify-center" :to="{name:'BoardTutorials', params:{cid:route.params.cid}}"><i class="pi pi-question-circle"></i></router-link>
       <button @click="newsSummary=!newsSummary" class="news-button flex align-center justify-center relative">
         <span v-if="unseen>0" class="badge flex align-center justify-center text-center">{{ unseen }}</span>
         <i class="pi pi-bell" :class="{active:unseen>0}"></i>

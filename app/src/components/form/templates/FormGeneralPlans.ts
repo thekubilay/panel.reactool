@@ -1,4 +1,4 @@
-import {Form} from "../../../types/Form";
+import {Form} from "@/types/Form";
 import {isImageNone, isImageValid} from "../rules";
 
 export const form: Form[][] = [
@@ -38,7 +38,7 @@ export const form: Form[][] = [
           type: "text",
           model: null,
           label: "画像",
-          hint: ".jpeg, .png サポートされています",
+          hint: ".jpeg, .png がサポートされています",
           required: true,
           id: "general_plan_input",
           preview_text: "アップロードのため、クリックや画像ドロップしてください",

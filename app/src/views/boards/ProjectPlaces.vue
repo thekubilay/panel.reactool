@@ -4,7 +4,7 @@
 
     <BarTool class="justify-space-between">
       <div class="part-wrap">
-        <Button type="button" class="submit-button" icon="pi pi-plus" icon-pos="left" label="新規施設"
+        <Button type="button" class="submit-button" icon="pi pi-plus" icon-pos="left" label="施設を追加"
                 @click="create()"/>
         <Button type="button" class="submit-button icon-button" icon="pi pi-cog" icon-pos="left"
                 @click="openMapSettings()"/>
@@ -22,7 +22,7 @@
           <div class="sheet-cell handle flex align-center"></div>
           <div class="sheet-cell num flex align-center">順番</div>
           <div class="sheet-cell sheet-cell-long value flex align-center">施設名</div>
-          <div class="sheet-cell sheet-cell-long value flex align-center">住所</div>
+          <div class="sheet-cell sheet-cell-long value flex align-center">施設住所</div>
           <div class="sheet-cell value flex align-center">施設画像</div>
         </div>
       </div>
@@ -55,7 +55,7 @@
     </div>
 
 
-    <Dialog v-model="d" title="施設フォーム">
+    <Dialog v-model="d" title="地図表示設定フォーム">
       <FormQuery v-model="d"
                  v-model:dr="dr"
                  v-model:activeTab="activeTab"

@@ -4,7 +4,7 @@
 
     <BarTool class="justify-space-between">
       <div class="part-wrap">
-        <Button type="button" class="submit-button" icon="pi pi-plus" icon-pos="left" label="新規VRプラン"
+        <Button type="button" class="submit-button" icon="pi pi-plus" icon-pos="left" label="VRプラン追加"
                 @click="create()"/>
       </div>
       <div class="part-wrap part-end">
@@ -40,7 +40,7 @@
       </div>
     </div>
 
-    <Dialog v-model="d" title="ルートフォーム">
+    <Dialog v-model="d" title="間取りタイプフォーム">
       <FormQuery v-model="d"
                  v-model:dr="dr"
                  close-after

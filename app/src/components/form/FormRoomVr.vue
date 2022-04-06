@@ -4,10 +4,10 @@
     <form action="" @submit.prevent="false">
       <div class="row column-1 flex justify-space-between">
         <div class="flex-column column-2-space">
-          <span class="label flex">ベース<span class="required flex align-start">*必須</span></span>
+          <span class="label flex">デフォルト<span class="required flex align-start">*必須</span></span>
           <Dropdown class="cfec column-1"
                     v-model="requery.base"
-                    :options="[{name: 'ベース画像', value: true}, {name: '他', value: false}]"
+                    :options="[{name: 'する', value: true}, {name: 'しない', value: false}]"
                     optionLabel="name"
                     optionValue="value"
                     placeholder="選択"/>

@@ -45,7 +45,7 @@ export const request = (path: string, method: Method = "get", data: FormData | o
         })
       }
       if (error.response.status !== 403){
-        alert("予想外のエラー発生してしまいました。\nreactool デベロッパーに問題を今おしれしました。\n\nご理解のほどよろしくお願いいたします");
+        alert("エラーが発生しました。\n エラー内容をサポートチームに送信しました。\n\nご理解のほどよろしくお願いいたします");
         if (alert != null) {
           axios.request({
             method: "post",

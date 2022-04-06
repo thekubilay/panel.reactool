@@ -4,7 +4,7 @@
 
     <BarTool class="justify-space-between">
       <div class="part-wrap">
-        <Button type="button" class="submit-button" icon="pi pi-plus" icon-pos="left" label="新規駐車場"
+        <Button type="button" class="submit-button" icon="pi pi-plus" icon-pos="left" label="駐車場を追加"
                 @click="create()"/>
       </div>
     </BarTool>

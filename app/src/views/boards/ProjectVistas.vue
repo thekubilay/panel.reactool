@@ -4,7 +4,7 @@
 
     <BarTool class="justify-space-between">
       <div class="part-wrap">
-        <Button type="button" class="submit-button" icon="pi pi-plus" icon-pos="left" label="新規眺望F"
+        <Button type="button" class="submit-button" icon="pi pi-plus" icon-pos="left" label="階を追加"
                 @click="createOrUpdate()"/>
         <Button type="button" class="submit-button icon-button" icon="pi pi-cog" icon-pos="left"
                 @click="createOrUpdate('sim', project.vista_simulator)"/>
@@ -21,9 +21,9 @@
       <div class="sh-container ss-container">
         <div class="sheet-row sheet-row-header flex align-center">
           <div class="sheet-cell handle flex align-center"></div>
-          <div class="sheet-cell num flex align-center">階</div>
-          <div class="sheet-cell img flex align-center"><i class="pi pi-file"></i></div>
-          <div class="sheet-cell num flex align-center"><i class="pi pi-sun"></i></div>
+          <div class="sheet-cell num flex align-center">階数</div>
+          <div class="sheet-cell img flex align-center">画像</div>
+          <div class="sheet-cell num flex align-center">時間帯</div>
           <div class="sheet-cell value sheet-cell-long flex align-center">画像名</div>
           <div class="sheet-cell value flex align-center">間取りタイプ</div>
         </div>
@@ -67,7 +67,7 @@
         <div v-if="query.hasOwnProperty('project') ||
                    query.hasOwnProperty('plan_type') && reform[0][1].elements[1].model"
              class="slider-container">
-          <span class="label block">コンパス向き方</span>
+          <span class="label block">コンパスの向き</span>
           <Slider v-model="slider" :min="1" :max="360"/>
 
           <div v-if="project.vista_simulator.image" class="land-print relative overflow-hidden">
@@ -85,7 +85,7 @@
                 画像削除
               </button>
             </div>
-            <span class="hint">*ポインターをグラブしながら配置してください</span>
+            <span class="hint">*コンパスをドラッグで移動できます</span>
           </div>
         </div>
       </FormQuery>

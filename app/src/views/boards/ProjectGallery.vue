@@ -4,7 +4,7 @@
 
     <BarTool class="justify-space-between">
       <div class="part-wrap">
-        <Button type="button" class="submit-button" icon="pi pi-plus" icon-pos="left" label="新規画像"
+        <Button type="button" class="submit-button" icon="pi pi-plus" icon-pos="left" label="画像を追加"
                 @click="create()"/>
       </div>
     </BarTool>
@@ -15,7 +15,7 @@
           <div class="sheet-cell handle flex align-center"></div>
           <div class="sheet-cell num flex align-center">順番</div>
           <div class="sheet-cell value sheet-cell-long flex align-center">画像名</div>
-          <div class="sheet-cell value flex align-center">タイプ</div>
+<!--          <div class="sheet-cell value flex align-center">タイプ</div>-->
         </div>
       </div>
       <draggable tag="div"
@@ -36,7 +36,7 @@
                 {{ element.image.split("/", 6)[5].split(".")[0] }}
               </span>
             </div>
-            <div class="sheet-cell value flex align-center"><span class="text block">{{ element.type }}</span></div>
+<!--            <div class="sheet-cell value flex align-center"><span class="text block">{{ element.type }}</span></div>-->
           </div>
         </template>
       </draggable>

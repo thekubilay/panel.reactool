@@ -49,6 +49,6 @@ export function state(): State {
     content: true,
     onload: "ローディング",
     progress: 0,
-    notifyTopBar: true,
+    notifyTopBar: false,
   }
 }

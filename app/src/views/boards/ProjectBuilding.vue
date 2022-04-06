@@ -4,12 +4,12 @@
 
     <BarTool class="justify-space-between">
       <div class="part-wrap">
-        <Button type="button" class="submit-button" icon="pi pi-plus" icon-pos="left" label="新規階"
+        <Button type="button" class="submit-button" icon="pi pi-plus" icon-pos="left" label="階を追加"
                 @click="create()"/>
       </div>
       <div class="part-wrap part-end">
-        <Button @click="open()" type="button" class="tool-button" label="基本費設定"/>
-        <Button @click="toParkingFees()" type="button" class="tool-button" label="駐車場費一覧"/>
+        <Button @click="open()" type="button" class="tool-button" label="基本費用設定"/>
+        <Button @click="toParkingFees()" type="button" class="tool-button" label="駐車場費用一覧"/>
       </div>
     </BarTool>
 

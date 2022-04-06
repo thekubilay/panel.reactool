@@ -4,7 +4,7 @@
 
     <BarTool class="justify-space-between">
       <div class="part-wrap">
-        <Button type="button" class="submit-button" icon="pi pi-plus" icon-pos="left" label="新規金率"
+        <Button type="button" class="submit-button" icon="pi pi-plus" icon-pos="left" label="金利を追加"
                 @click="create()"/>
       </div>
     </BarTool>
@@ -15,7 +15,7 @@
           <div class="sheet-cell handle flex align-center"></div>
           <div class="sheet-cell num flex align-center">順番</div>
           <div class="sheet-cell sheet-cell-long flex align-center">銀行</div>
-          <div class="sheet-cell value flex align-center">金率</div>
+          <div class="sheet-cell value flex align-center">金利</div>
         </div>
       </div>
       <draggable tag="div"
@@ -37,7 +37,7 @@
       </draggable>
     </div>
 
-    <Dialog v-model="d" title="金率フォーム">
+    <Dialog v-model="d" title="金利フォーム">
       <FormQuery v-model="d"
                  v-model:dr="dr"
                  close-after

@@ -4,7 +4,7 @@
 
     <BarTool class="justify-space-between">
       <div class="part-wrap">
-        <Button type="button" class="submit-button" icon="pi pi-plus" icon-pos="left" label="新規ロー"
+        <Button type="button" class="submit-button" icon="pi pi-plus" icon-pos="left" label="行を追加"
                 @click="cr()"/>
       </div>
     </BarTool>
@@ -101,7 +101,7 @@
             </template>
           </Column>
         </DataTable>
-        <button v-if="dropdown" @click="co()" class="add-option">選択項目を追加する</button>
+        <button v-if="dropdown" @click="co()" class="add-option">選択項目を追加</button>
 
       </FormQuery>
       <DialogDelete v-model="dr">

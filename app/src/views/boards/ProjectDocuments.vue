@@ -4,7 +4,7 @@
 
     <BarTool class="justify-space-between">
       <div class="part-wrap">
-        <Button type="button" class="submit-button" icon="pi pi-plus" icon-pos="left" label="新規書類"
+        <Button type="button" class="submit-button" icon="pi pi-plus" icon-pos="left" label="書類を追加"
                 @click="create()"/>
       </div>
       <div class="part-wrap part-end">
@@ -112,14 +112,14 @@ const {payload, content, progress, project} = useStore()
 const rm = ref<boolean>(false)
 const loading = ref<boolean>(false)
 const folder = ref<number|null>(0)
-const folders = ref<DocumentFolder[]>([{name:"NO フォルダー", id: 0}])
+const folders = ref<DocumentFolder[]>([{name:"フォルダーなし", id: 0}])
 const documents = ref<Document[]>([])
 const reform = ref<Form[][]>(FormDocument)
 const query = ref<any>()
 
 
 onMounted((): void => {
-  folders.value = [...[{name:"NO フォルダー", id: 0}], ...project.value?.document_folders]
+  folders.value = [...[{name:"フォルダーなし", id: 0}], ...project.value?.document_folders]
   documents.value = project.value?.documents.filter(item => {
     return item.document_folder === null
   })

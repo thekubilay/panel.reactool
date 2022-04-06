@@ -4,7 +4,7 @@
 
     <BarTool class="justify-space-between">
       <div class="part-wrap">
-        <Button type="button" class="submit-button" icon="pi pi-plus" icon-pos="left" label="新規VR"
+        <Button type="button" class="submit-button" icon="pi pi-plus" icon-pos="left" label="VRを追加"
                 @click="create()"/>
       </div>
       <div class="part-wrap part-end">
@@ -55,7 +55,7 @@
       </div>
     </div>
 
-    <Dialog v-model="d">
+    <Dialog v-model="d" title="VRフォーム">
       <Spinner v-model="loading" text=""/>
       <FormRoomVr v-model="d"
                   v-model:dr="dr"
@@ -72,7 +72,7 @@
       </DialogDelete>
     </Dialog>
 
-    <DialogVR v-model="d2" width="100%" height="100%">
+    <DialogVR v-model="d2" width="100%" height="100%" title="VRフォーム">
       <Spinner v-model="loading" text="VR環境設定中..."/>
       <VRModule v-if="data"
                 v-model:degreeX="degreeX"

@@ -4,7 +4,7 @@
 
     <BarTool class="justify-space-between">
       <div class="part-wrap">
-        <Button type="button" class="submit-button" icon="pi pi-plus" icon-pos="left" label="新規プラン"
+        <Button type="button" class="submit-button" icon="pi pi-plus" icon-pos="left" label="プランを追加"
                 @click="create()"/>
       </div>
       <div class="part-wrap part-end">
@@ -19,9 +19,8 @@
           <div class="sheet-cell handle flex align-center"></div>
           <div class="sheet-cell num flex align-center">順番</div>
           <div class="sheet-cell img flex align-center"><i class="pi pi-file"></i></div>
-          <div class="sheet-cell value flex align-center">プラン名</div>
+          <div class="sheet-cell value flex align-center">種類</div>
           <div class="sheet-cell value sheet-cell-long flex align-center">画像名</div>
-          <div class="sheet-cell value flex align-center">タイプ</div>
         </div>
       </div>
       <draggable tag="div"
@@ -42,9 +41,6 @@
             <div class="sheet-cell value flex align-center"><span class="text block">{{ element.kind }}</span></div>
             <div class="sheet-cell value sheet-cell-long flex align-center">
               <span class="text block">{{ element.image.split("/", 6)[5].split(".")[0] }}</span>
-            </div>
-            <div class="sheet-cell value flex align-center">
-              <span class="text block">.{{ element.image.split("/", 6)[5].split(".")[1] }}</span>
             </div>
           </div>
         </template>

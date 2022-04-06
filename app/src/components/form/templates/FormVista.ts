@@ -12,7 +12,7 @@ export const form: Form[][] = [
           type: "text",
           model: null,
           label: "画像",
-          hint: ".jpeg, .png サポートされています",
+          hint: ".jpeg, .png がサポートされています",
           required: false,
           id: "image_input",
           preview_text: "アップロードのため、クリックや画像ドロップしてください",

@@ -2,10 +2,10 @@
   <div class="room-part-items-wrapper">
     <div class="sheet-row sheet-row_header flex align-center">
       <div class="short handle sheet-cell sheet-cell-header flex align-center"></div>
-      <div class="short sheet-cell sheet-cell-header flex align-center">PART<br>画像</div>
+      <div class="short sheet-cell sheet-cell-header flex align-center">パーツ<br>画像</div>
       <div class="short sheet-cell sheet-cell-header flex align-center">カラー<br>画像</div>
-      <div class="sheet-cell sheet-cell-header flex align-center">カラー</div>
-      <div class="short sheet-cell sheet-cell-header flex align-center">EXTRA</div>
+      <div class="sheet-cell sheet-cell-header flex align-center">カラーアイテム名</div>
+      <div class="short sheet-cell sheet-cell-header flex align-center">別売品</div>
       <div class="short sheet-cell sheet-cell-header flex align-center">モデル</div>
     </div>
     <draggable tag="div"

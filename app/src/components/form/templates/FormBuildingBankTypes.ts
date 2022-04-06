@@ -26,7 +26,7 @@ export const form: Form[][] = [
         db_column_name: "rate",
         type: "text",
         model: null,
-        label: "金率",
+        label: "金利",
         hint: null,
         placeholder: "0.345",
         required: false,
