@@ -168,23 +168,23 @@ MESSAGE_TAGS = {
 }
 
 if DEBUG:
-  # DJANGO_VITE_ASSETS_PATH = BASE_DIR / "app/src"
-  # STATIC_URL = '/static/'
-  # STATICFILES_DIRS = [
-  #   BASE_DIR / "static",
-  #   DJANGO_VITE_ASSETS_PATH,
-  # ]
-  # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-  # MEDIA_URL = '/media/'
-
-  DJANGO_VITE_ASSETS_PATH = BASE_DIR / "app/dist"
+  DJANGO_VITE_ASSETS_PATH = BASE_DIR / "app/src"
   STATIC_URL = '/static/'
-  STATIC_ROOT = BASE_DIR / 'static'
   STATICFILES_DIRS = [
+    BASE_DIR / "static",
     DJANGO_VITE_ASSETS_PATH,
   ]
   MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
   MEDIA_URL = '/media/'
+
+  # DJANGO_VITE_ASSETS_PATH = BASE_DIR / "app/dist"
+  # STATIC_URL = '/static/'
+  # STATIC_ROOT = BASE_DIR / 'static'
+  # STATICFILES_DIRS = [
+  #   DJANGO_VITE_ASSETS_PATH,
+  # ]
+  # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+  # MEDIA_URL = '/media/'
 else:
   # Where ViteJS assets are built.   # aws settings
   AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
@@ -205,10 +205,10 @@ else:
   MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
   DEFAULT_FILE_STORAGE = "reactool.aws_storages.MediaStorage"
 
-  # STATIC_ROOT = BASE_DIR / 'static'
-  # DJANGO_VITE_ASSETS_PATH = BASE_DIR / "static"
+  STATIC_ROOT = BASE_DIR / 'static'
+  DJANGO_VITE_ASSETS_PATH = BASE_DIR / "static"
 
-  DJANGO_VITE_ASSETS_PATH = STATIC_URL
-  STATIC_ROOT = STATIC_URL
+  # DJANGO_VITE_ASSETS_PATH = STATIC_URL
+  # STATIC_ROOT = STATIC_URL
 
   STATICFILES_DIRS = [DJANGO_VITE_ASSETS_PATH]
