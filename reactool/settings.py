@@ -204,7 +204,7 @@ else:
 
   STATIC_ROOT = BASE_DIR / 'static'
   DJANGO_VITE_ASSETS_PATH = STATIC_URL
-  print(DJANGO_VITE_ASSETS_PATH, "kubilay")
+  print(STATIC_URL, DJANGO_VITE_ASSETS_PATH, "sskubilay")
   # STATIC_ROOT = 'static'
   # DJANGO_VITE_ASSETS_PATH = "static"
   STATICFILES_DIRS = [
