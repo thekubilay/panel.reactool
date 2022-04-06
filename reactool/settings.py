@@ -15,7 +15,10 @@ ALLOWED_HOSTS = [
   "bucket-reactool-test.s3.amazonaws.com"
 ]
 CORS_ORIGIN_ALLOW_ALL = False
-CORS_ORIGIN_WHITELIST = ['http://localhost:3000', "https://app.reactool.jp"]
+CORS_ORIGIN_WHITELIST = [
+  "http://localhost:3000",
+  "https://app.reactool.jp"
+]
 X_FRAME_OPTIONS = 'ALLOWALL'
 XS_SHARING_ALLOWED_METHODS = ['POST', 'GET', 'OPTIONS', 'PUT', 'DELETE']
 
@@ -201,6 +204,7 @@ else:
 
   STATIC_ROOT = BASE_DIR / 'static'
   DJANGO_VITE_ASSETS_PATH = BASE_DIR / "static"
+  print(DJANGO_VITE_ASSETS_PATH, "kubilay")
   # STATIC_ROOT = 'static'
   # DJANGO_VITE_ASSETS_PATH = "static"
   STATICFILES_DIRS = [
