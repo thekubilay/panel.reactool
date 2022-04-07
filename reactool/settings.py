@@ -9,16 +9,12 @@ SECRET_KEY = config("SECRET_KEY")
 DEBUG = config("DEBUG", default=True, cast=bool)
 
 ALLOWED_HOSTS = [
-  "127.0.0.1",
-  "127.0.0.1:8000",
-  "192.168.100.36",
   "panel-test-env.eba-92hkwvtp.ap-northeast-1.elasticbeanstalk.com",
+  "test-panel.reactool.jp",
   "bucket-reactool-test.s3.amazonaws.com"
 ]
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = [
-  "http://127.0.0.1",
-  "http://127.0.0.1:8000",
   "http://localhost:3000",
   "https://app.reactool.jp"
 ]
