@@ -177,6 +177,8 @@ AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
 AWS_S3_FILE_OVERWRITE = False
 AWS_LOCATION = 'static'
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 if DEBUG:
   DJANGO_VITE_ASSETS_PATH = BASE_DIR / "app/src"
   STATIC_URL = '/static/'
@@ -197,9 +199,6 @@ else:
   DJANGO_VITE_STATIC_URL = STATIC_URL
   DJANGO_VITE_ASSETS_PATH = "reactool/static"
   # STATIC_ROOT = BASE_DIR / "static"
-
-  print(DJANGO_VITE_ASSETS_PATH, "kubilay")
-  print(DJANGO_VITE_DEV_MODE, "vite in production mode")
 
   STATICFILES_DIRS = [
     DJANGO_VITE_ASSETS_PATH

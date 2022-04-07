@@ -27,4 +27,4 @@ urlpatterns = [
 urlpatterns += [
                  re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
                  re_path(r'^.*$', IndexTemplateView.as_view(), name="entry-point"),
-               ] + static(settings.MEDIA_ROOT, document_root=settings.MEDIA_ROOT)
+               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
