@@ -167,6 +167,9 @@ MESSAGE_TAGS = {
   messages.INFO: 'info',
 }
 
+DJANGO_VITE_STATIC_URL = None
+DJANGO_VITE_ASSETS_PATH = BASE_DIR / "static"
+
 if DEBUG:
   DJANGO_VITE_ASSETS_PATH = BASE_DIR / "app/src"
   STATIC_URL = '/static/'
@@ -205,6 +208,7 @@ else:
   MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
   DEFAULT_FILE_STORAGE = "reactool.aws_storages.MediaStorage"
 
+  DJANGO_VITE_STATIC_URL = STATIC_URL
   STATIC_ROOT = BASE_DIR / "static"
   DJANGO_VITE_ASSETS_PATH = BASE_DIR / "static"
 
