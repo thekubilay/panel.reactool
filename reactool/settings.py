@@ -198,7 +198,7 @@ else:
 
   DJANGO_VITE_STATIC_URL = STATIC_URL
   DJANGO_VITE_ASSETS_PATH = "reactool/static"
-  # STATIC_ROOT = "static"
+  STATIC_ROOT = "static"
 
   STATICFILES_DIRS = [
     DJANGO_VITE_ASSETS_PATH
