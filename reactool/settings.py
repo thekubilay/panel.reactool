@@ -196,6 +196,7 @@ else:
   MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
   DEFAULT_FILE_STORAGE = "reactool.aws_storages.MediaStorage"
 
+  DJANGO_VITE_STATIC_URL_PREFIX = ""
   DJANGO_VITE_STATIC_URL = STATIC_URL
   DJANGO_VITE_ASSETS_PATH = "reactool/static"
   STATIC_ROOT = BASE_DIR / "static"
