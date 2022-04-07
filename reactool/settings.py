@@ -177,10 +177,6 @@ AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
 AWS_S3_FILE_OVERWRITE = False
 AWS_LOCATION = 'static'
 
-DJANGO_VITE_STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
-DJANGO_VITE_ASSETS_PATH = str(f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/')
-print(DJANGO_VITE_ASSETS_PATH, "kubilay")
-
 if DEBUG:
   DJANGO_VITE_ASSETS_PATH = BASE_DIR / "app/src"
   STATIC_URL = '/static/'
@@ -199,7 +195,11 @@ else:
   DEFAULT_FILE_STORAGE = "reactool.aws_storages.MediaStorage"
 
   DJANGO_VITE_STATIC_URL = STATIC_URL
+  DJANGO_VITE_ASSETS_PATH = str(STATIC_URL)
   STATIC_ROOT = BASE_DIR / "static"
+
+  print(DJANGO_VITE_ASSETS_PATH, "kubilay")
+  print(DJANGO_VITE_DEV_MODE, "vite in production mode")
 
   STATICFILES_DIRS = [
     DJANGO_VITE_ASSETS_PATH
