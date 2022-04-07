@@ -26,6 +26,7 @@ X_FRAME_OPTIONS = 'ALLOWALL'
 XS_SHARING_ALLOWED_METHODS = ['POST', 'GET', 'OPTIONS', 'PUT', 'DELETE']
 
 INSTALLED_APPS = [
+  "django_vite",
   'django.contrib.admin',
   'django.contrib.auth',
   'django.contrib.contenttypes',
@@ -34,7 +35,7 @@ INSTALLED_APPS = [
   'django.contrib.staticfiles',
   'django.contrib.sites',
 
-  "django_vite", "companies", "accounts", "salons", "projects", "routes", "sumaipad", "permissions", "logs", "news",
+  "companies", "accounts", "salons", "projects", "routes", "sumaipad", "permissions", "logs", "news",
   "rest_framework", 'rest_framework_simplejwt', 'crispy_forms', "tutorials",
   "corsheaders", "django_cleanup.apps.CleanupConfig", "storages",
 
