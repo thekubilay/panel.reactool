@@ -34,9 +34,9 @@ INSTALLED_APPS = [
   'django.contrib.staticfiles',
   'django.contrib.sites',
 
-  "companies", "accounts", "salons", "projects", "routes", "sumaipad", "permissions", "logs", "news",
+  "django_vite", "companies", "accounts", "salons", "projects", "routes", "sumaipad", "permissions", "logs", "news",
   "rest_framework", 'rest_framework_simplejwt', 'crispy_forms', "tutorials",
-  "corsheaders", "django_cleanup.apps.CleanupConfig", "django_vite", "storages",
+  "corsheaders", "django_cleanup.apps.CleanupConfig", "storages",
 
 ]
 SITE_ID = 1
