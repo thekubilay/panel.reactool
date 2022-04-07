@@ -195,8 +195,8 @@ else:
   DEFAULT_FILE_STORAGE = "reactool.aws_storages.MediaStorage"
 
   DJANGO_VITE_STATIC_URL = STATIC_URL
-  DJANGO_VITE_ASSETS_PATH = str(STATIC_URL)
-  STATIC_ROOT = BASE_DIR / "static"
+  DJANGO_VITE_ASSETS_PATH = "reactool/static"
+  # STATIC_ROOT = BASE_DIR / "static"
 
   print(DJANGO_VITE_ASSETS_PATH, "kubilay")
   print(DJANGO_VITE_DEV_MODE, "vite in production mode")
