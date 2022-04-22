@@ -1,5 +1,5 @@
-import {Form} from "../../../types/Form";
-import useStore from "../../../stores/main";
+import {Form} from "@/types/Form";
+import useStore from "@/stores/main";
 export const form: Form[][] = [
   [ // tab 3
     { // form row
@@ -18,7 +18,7 @@ export const form: Form[][] = [
           id: "name_input",
           rules: [],
           disabled: !useStore().user.is_staff,
-          props: ["placeholder", "required", "disabled"],
+          props: ["placeholder", "required"],
           classes: ["flex-column", "column-1"],
         },
       ],

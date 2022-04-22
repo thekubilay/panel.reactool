@@ -108,6 +108,8 @@ onClickOutside(dropdown, (e: any): void => {
   height: 28px;
   padding-left: 30px;
   font-size: .7rem;
+  color: #f1f1f1;
+  background-color: #2b3233;
 }
 .app-filter-wrapper .input-wrapper i {
   font-size: 1rem;

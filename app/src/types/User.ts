@@ -10,6 +10,7 @@ export interface CreateOrUpdateUser {
   company?: number|null,
   email: string|null,
   last_name: string|null
+  company_owner?: boolean,
   first_name: string|null,
   username: string|null,
   password?: any,
@@ -21,6 +22,7 @@ export interface User {
   email: string|null,
   first_name: string|null,
   id: number|null,
+  company_owner: boolean,
   is_staff: boolean|null,
   is_superuser: boolean|null,
   last_name: string|null

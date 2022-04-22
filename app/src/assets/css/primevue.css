@@ -208,6 +208,31 @@
   width: 2rem;
 }
 
+/* multiselect*/
+.p-multiselect-panel .p-multiselect-header,
+.p-multiselect-panel {
+  border-radius: 0;
+}
+.p-multiselect .p-multiselect-label,
+.p-multiselect-panel .p-multiselect-items {
+  font-size: .8rem;
+}
+.p-multiselect {
+  border-radius: 0;
+  font-size: .85rem;
+  height: 38px;
+  padding: 0 10px;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  margin-bottom: 0;
+}
+.p-multiselect  {
+  padding: 0;
+  font-size: .8rem;
+}
+
+
 
 /* calendar */
 .p-datepicker {
@@ -252,3 +277,5 @@
   transition: box-shadow 0.2s;
   border: 1px solid transparent;
 }
+
+

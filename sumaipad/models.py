@@ -170,9 +170,9 @@ class PlanMenu(models.Model):
 class GeneralPlan(models.Model):
   project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="general_plans")
   kind = models.CharField(max_length=20, null=False, blank=False)
-  image = models.ImageField(null=True, blank=False, upload_to=makeDynamicDirectProjectPath)
-  thumbnail = ResizedImageField(size=[400, 400], null=True, blank=False,
-                                upload_to=makeDynamicDirectProjectPath)
+  image = models.FileField(null=True, blank=False, upload_to=makeDynamicDirectProjectPath)
+  # thumbnail = ResizedImageField(size=[400, 400], null=True, blank=False,
+  #                               upload_to=makeDynamicDirectProjectPath)
   order_id = models.IntegerField(null=True, blank=False)
 
   class Meta:

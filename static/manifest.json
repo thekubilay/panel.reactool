@@ -52,7 +52,6 @@
       "assets/main2.css"
     ],
     "assets": [
-      "assets/logo.gif",
       "assets/Inter-Light.woff2",
       "assets/Inter-Light.woff",
       "assets/Inter-Regular.woff2",
@@ -88,12 +87,13 @@
       "src/main.ts",
       "_FormUserUpdate.js",
       "_useUtils.js",
+      "_plugin-vue_export-helper.js",
       "_menu.esm.js",
       "_overlayeventbus.esm.js",
       "_rules.js"
     ],
     "css": [
-      "assets/index.css"
+      "assets/index2.css"
     ]
   },
   "_FormQuery.js": {
@@ -101,11 +101,13 @@
     "imports": [
       "_vendor.js",
       "src/main.ts",
-      "_useFormRequestBuilder.js"
+      "_useFormRequestBuilder.js",
+      "_plugin-vue_export-helper.js"
     ],
     "dynamicImports": [
       "_vendor.js",
       "node_modules/primevue/dropdown/dropdown.esm.js",
+      "node_modules/primevue/multiselect/multiselect.esm.js",
       "node_modules/primevue/checkbox/checkbox.esm.js",
       "node_modules/primevue/password/password.esm.js",
       "node_modules/primevue/textarea/textarea.esm.js",
@@ -137,8 +139,10 @@
       "src/components/icons/pin.vue",
       "src/components/icons/reactool.vue",
       "src/components/icons/reactool_black.vue",
+      "src/components/icons/reservation.vue",
       "src/components/icons/setting.vue",
       "src/components/icons/upload.vue",
+      "src/components/icons/users.vue",
       "src/components/icons/video.vue"
     ]
   },
@@ -156,6 +160,7 @@
     "file": "chunks/useFormRequestBuilder.js",
     "imports": [
       "_vendor.js",
+      "_plugin-vue_export-helper.js",
       "src/main.ts"
     ],
     "css": [
@@ -190,6 +195,9 @@
   "_rules.js": {
     "file": "chunks/rules.js"
   },
+  "_plugin-vue_export-helper.js": {
+    "file": "chunks/plugin-vue_export-helper.js"
+  },
   "_overlayeventbus.esm.js": {
     "file": "chunks/overlayeventbus.esm.js",
     "imports": [
@@ -207,10 +215,11 @@
       "_useFormRequestBuilder.js",
       "_BarTool.js",
       "_FormQuery.js",
-      "_DialogDelete.js"
+      "_DialogDelete.js",
+      "_plugin-vue_export-helper.js"
     ],
     "css": [
-      "assets/index2.css"
+      "assets/index.css"
     ]
   },
   "_BarTool.js": {
@@ -245,8 +254,10 @@
       "_FormUserUpdate.js",
       "src/main.ts",
       "_BarTool.js",
+      "_useUtils.js",
       "_overlayeventbus.esm.js",
-      "_virtualscroller.esm.js"
+      "_virtualscroller.esm.js",
+      "_plugin-vue_export-helper.js"
     ]
   },
   "node_modules/primevue/dropdown/dropdown.esm.js": {
@@ -280,7 +291,8 @@
       "_FormSalon.js",
       "src/main.ts",
       "_overlayeventbus.esm.js",
-      "_virtualscroller.esm.js"
+      "_virtualscroller.esm.js",
+      "_plugin-vue_export-helper.js"
     ]
   },
   "_vuedraggable.umd.js": {
@@ -309,6 +321,7 @@
       "_useUtils.js",
       "_overlayeventbus.esm.js",
       "_virtualscroller.esm.js",
+      "_plugin-vue_export-helper.js",
       "_rules.js"
     ]
   },
@@ -332,6 +345,7 @@
       "_BarTool.js",
       "src/main.ts",
       "_FormRoute.js",
+      "_plugin-vue_export-helper.js",
       "_rules.js"
     ]
   },
@@ -354,6 +368,7 @@
       "src/main.ts",
       "_FormProjectPermission.js",
       "_useUtils.js",
+      "_plugin-vue_export-helper.js",
       "_rules.js"
     ]
   },
@@ -376,7 +391,8 @@
       "_BarTool.js",
       "src/main.ts",
       "_overlayeventbus.esm.js",
-      "_virtualscroller.esm.js"
+      "_virtualscroller.esm.js",
+      "_plugin-vue_export-helper.js"
     ],
     "css": [
       "assets/News.css"
@@ -402,10 +418,11 @@
       "_BarTool.js",
       "src/main.ts",
       "_overlayeventbus.esm.js",
-      "_virtualscroller.esm.js"
+      "_virtualscroller.esm.js",
+      "_plugin-vue_export-helper.js"
     ],
     "css": [
-      "assets/Tutorials.css"
+      "assets/Tutorials2.css"
     ]
   },
   "src/views/admin/TutorialImages.vue": {
@@ -422,7 +439,8 @@
       "_BarTool.js",
       "src/main.ts",
       "_overlayeventbus.esm.js",
-      "_virtualscroller.esm.js"
+      "_virtualscroller.esm.js",
+      "_plugin-vue_export-helper.js"
     ]
   },
   "src/views/admin/LogsError.vue": {
@@ -440,7 +458,7 @@
     "src": "src/views/boards/Dashboard.vue",
     "isDynamicEntry": true,
     "imports": [
-      "src/main.ts",
+      "_plugin-vue_export-helper.js",
       "_vendor.js"
     ],
     "css": [
@@ -470,8 +488,7 @@
     "src": "src/views/boards/Users.vue",
     "isDynamicEntry": true,
     "imports": [
-      "src/main.ts",
-      "_vendor.js"
+      "_plugin-vue_export-helper.js"
     ]
   },
   "src/views/boards/Tutorials.vue": {
@@ -482,10 +499,11 @@
       "_BarTool.js",
       "src/main.ts",
       "_Icon.js",
+      "_plugin-vue_export-helper.js",
       "_vendor.js"
     ],
     "css": [
-      "assets/Tutorials2.css"
+      "assets/Tutorials.css"
     ]
   },
   "src/views/boards/Salon.vue": {
@@ -503,6 +521,7 @@
       "_FormSalon.js",
       "_rules.js",
       "_FormSalonPlaces.js",
+      "_plugin-vue_export-helper.js",
       "_menu.esm.js",
       "_overlayeventbus.esm.js",
       "_Icon.js"
@@ -540,7 +559,8 @@
       "_Icon.js",
       "_ContextImagesThumbnailContainer.js",
       "_vendor.js",
-      "_rules.js"
+      "_rules.js",
+      "_plugin-vue_export-helper.js"
     ]
   },
   "src/views/boards/SalonPlaces.vue": {
@@ -560,6 +580,7 @@
       "_useRightClickHandler.js",
       "_vendor.js",
       "_overlayeventbus.esm.js",
+      "_plugin-vue_export-helper.js",
       "_rules.js"
     ],
     "css": [
@@ -592,6 +613,7 @@
       "node_modules/primevue/dropdown/dropdown.esm.js",
       "_overlayeventbus.esm.js",
       "_virtualscroller.esm.js",
+      "_plugin-vue_export-helper.js",
       "_menu.esm.js",
       "_Icon.js",
       "_rules.js"
@@ -634,6 +656,7 @@
       "src/main.ts",
       "_useRightClickHandler.js",
       "_overlayeventbus.esm.js",
+      "_plugin-vue_export-helper.js",
       "_rules.js"
     ],
     "css": [
@@ -651,6 +674,7 @@
       "src/main.ts",
       "_useUtils.js",
       "_vendor.js",
+      "_plugin-vue_export-helper.js",
       "_rules.js"
     ],
     "css": [
@@ -676,7 +700,8 @@
       "_rules.js",
       "_useUtils.js",
       "_overlayeventbus.esm.js",
-      "_virtualscroller.esm.js"
+      "_virtualscroller.esm.js",
+      "_plugin-vue_export-helper.js"
     ],
     "css": [
       "assets/ProjectPlaces.css"
@@ -698,6 +723,7 @@
       "_useRightClickHandler.js",
       "_DialogDelete.js",
       "_overlayeventbus.esm.js",
+      "_plugin-vue_export-helper.js",
       "_Icon.js"
     ],
     "css": [
@@ -723,7 +749,8 @@
       "_DialogDelete.js",
       "_overlayeventbus.esm.js",
       "node_modules/primevue/dropdown/dropdown.esm.js",
-      "_virtualscroller.esm.js"
+      "_virtualscroller.esm.js",
+      "_plugin-vue_export-helper.js"
     ],
     "css": [
       "assets/ProjectPlans.css"
@@ -744,7 +771,8 @@
       "_useRightClickHandler.js",
       "_FormQuery.js",
       "_rules.js",
-      "_overlayeventbus.esm.js"
+      "_overlayeventbus.esm.js",
+      "_plugin-vue_export-helper.js"
     ],
     "css": [
       "assets/ProjectGallery.css"
@@ -767,7 +795,8 @@
       "src/main.ts",
       "_useRightClickHandler.js",
       "_rules.js",
-      "_overlayeventbus.esm.js"
+      "_overlayeventbus.esm.js",
+      "_plugin-vue_export-helper.js"
     ],
     "css": [
       "assets/ProjectLinks.css"
@@ -792,7 +821,8 @@
       "_rules.js",
       "_useUtils.js",
       "_overlayeventbus.esm.js",
-      "_virtualscroller.esm.js"
+      "_virtualscroller.esm.js",
+      "_plugin-vue_export-helper.js"
     ],
     "css": [
       "assets/ProjectDocuments.css"
@@ -812,7 +842,8 @@
       "_DialogDelete.js",
       "src/main.ts",
       "_useRightClickHandler.js",
-      "_overlayeventbus.esm.js"
+      "_overlayeventbus.esm.js",
+      "_plugin-vue_export-helper.js"
     ],
     "css": [
       "assets/ProjectDocumentsFolders.css"
@@ -836,7 +867,8 @@
       "_rules.js",
       "_useUtils.js",
       "_overlayeventbus.esm.js",
-      "_virtualscroller.esm.js"
+      "_virtualscroller.esm.js",
+      "_plugin-vue_export-helper.js"
     ],
     "css": [
       "assets/ProjectGeneralPlans.css"
@@ -861,7 +893,8 @@
       "_useUtils.js",
       "_useGrabAndMoveHandler.js",
       "_overlayeventbus.esm.js",
-      "_virtualscroller.esm.js"
+      "_virtualscroller.esm.js",
+      "_plugin-vue_export-helper.js"
     ],
     "css": [
       "assets/ProjectVistas.css"
@@ -904,7 +937,8 @@
       "_DialogDelete.js",
       "_FormNested.js",
       "_overlayeventbus.esm.js",
-      "_virtualscroller.esm.js"
+      "_virtualscroller.esm.js",
+      "_plugin-vue_export-helper.js"
     ],
     "css": [
       "assets/ProjectBuildingVr.css"
@@ -926,6 +960,7 @@
       "_Icon.js",
       "src/main.ts",
       "_useRightClickHandler.js",
+      "_plugin-vue_export-helper.js",
       "_overlayeventbus.esm.js"
     ],
     "css": [
@@ -946,7 +981,8 @@
       "_BarTool.js",
       "src/main.ts",
       "_useRightClickHandler.js",
-      "_overlayeventbus.esm.js"
+      "_overlayeventbus.esm.js",
+      "_plugin-vue_export-helper.js"
     ],
     "css": [
       "assets/ProjectRoutes.css"
@@ -966,7 +1002,8 @@
       "_BarTool.js",
       "src/main.ts",
       "_useRightClickHandler.js",
-      "_overlayeventbus.esm.js"
+      "_overlayeventbus.esm.js",
+      "_plugin-vue_export-helper.js"
     ],
     "css": [
       "assets/ProjectParkingFees.css"
@@ -993,7 +1030,8 @@
       "_Icon.js",
       "_useUtils.js",
       "_overlayeventbus.esm.js",
-      "_virtualscroller.esm.js"
+      "_virtualscroller.esm.js",
+      "_plugin-vue_export-helper.js"
     ],
     "css": [
       "assets/ProjectColorSimulator.css"
@@ -1014,7 +1052,8 @@
       "_Icon.js",
       "src/main.ts",
       "_useRightClickHandler.js",
-      "_overlayeventbus.esm.js"
+      "_overlayeventbus.esm.js",
+      "_plugin-vue_export-helper.js"
     ],
     "css": [
       "assets/ProjectRoomVrTypes.css"
@@ -1039,7 +1078,8 @@
       "node_modules/primevue/slider/slider.esm.js",
       "_useGrabAndMoveHandler.js",
       "_overlayeventbus.esm.js",
-      "_virtualscroller.esm.js"
+      "_virtualscroller.esm.js",
+      "_plugin-vue_export-helper.js"
     ],
     "css": [
       "assets/ProjectRoomVrFloors.css"
@@ -1070,12 +1110,14 @@
       "_main.js",
       "node_modules/primevue/calendar/calendar.esm.js",
       "_editor.esm.js",
-      "_overlayeventbus.esm.js",
-      "_virtualscroller.esm.js",
+      "node_modules/primevue/multiselect/multiselect.esm.js",
       "_useFormRequestBuilder.js",
       "_DialogDelete.js",
       "src/main.ts",
-      "_useUtils.js"
+      "_useUtils.js",
+      "_overlayeventbus.esm.js",
+      "_virtualscroller.esm.js",
+      "_plugin-vue_export-helper.js"
     ],
     "css": [
       "assets/ProjectCalendar.css"
@@ -1090,12 +1132,22 @@
       "_overlayeventbus.esm.js"
     ]
   },
+  "node_modules/primevue/multiselect/multiselect.esm.js": {
+    "file": "chunks/multiselect.esm.js",
+    "src": "node_modules/primevue/multiselect/multiselect.esm.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor.js",
+      "_overlayeventbus.esm.js",
+      "_virtualscroller.esm.js"
+    ]
+  },
   "src/views/boards/Frame1.vue": {
     "file": "chunks/Frame1.js",
     "src": "src/views/boards/Frame1.vue",
     "isDynamicEntry": true,
     "imports": [
-      "src/main.ts",
+      "_plugin-vue_export-helper.js",
       "_vendor.js"
     ]
   },
@@ -1104,7 +1156,7 @@
     "src": "src/views/boards/Frame2.vue",
     "isDynamicEntry": true,
     "imports": [
-      "src/main.ts",
+      "_plugin-vue_export-helper.js",
       "_vendor.js"
     ]
   },
@@ -1113,7 +1165,7 @@
     "src": "src/components/icons/close.vue",
     "isDynamicEntry": true,
     "imports": [
-      "src/main.ts",
+      "_plugin-vue_export-helper.js",
       "_vendor.js"
     ]
   },
@@ -1122,7 +1174,7 @@
     "src": "src/components/icons/csv.vue",
     "isDynamicEntry": true,
     "imports": [
-      "src/main.ts",
+      "_plugin-vue_export-helper.js",
       "_vendor.js"
     ]
   },
@@ -1131,7 +1183,7 @@
     "src": "src/components/icons/empty.vue",
     "isDynamicEntry": true,
     "imports": [
-      "src/main.ts",
+      "_plugin-vue_export-helper.js",
       "_vendor.js"
     ]
   },
@@ -1140,7 +1192,7 @@
     "src": "src/components/icons/file.vue",
     "isDynamicEntry": true,
     "imports": [
-      "src/main.ts",
+      "_plugin-vue_export-helper.js",
       "_vendor.js"
     ]
   },
@@ -1149,7 +1201,7 @@
     "src": "src/components/icons/folder-empty.vue",
     "isDynamicEntry": true,
     "imports": [
-      "src/main.ts",
+      "_plugin-vue_export-helper.js",
       "_vendor.js"
     ]
   },
@@ -1158,7 +1210,7 @@
     "src": "src/components/icons/folder.vue",
     "isDynamicEntry": true,
     "imports": [
-      "src/main.ts",
+      "_plugin-vue_export-helper.js",
       "_vendor.js"
     ]
   },
@@ -1167,7 +1219,7 @@
     "src": "src/components/icons/image.vue",
     "isDynamicEntry": true,
     "imports": [
-      "src/main.ts",
+      "_plugin-vue_export-helper.js",
       "_vendor.js"
     ]
   },
@@ -1176,7 +1228,7 @@
     "src": "src/components/icons/pdf.vue",
     "isDynamicEntry": true,
     "imports": [
-      "src/main.ts",
+      "_plugin-vue_export-helper.js",
       "_vendor.js"
     ]
   },
@@ -1185,7 +1237,7 @@
     "src": "src/components/icons/pdf2.vue",
     "isDynamicEntry": true,
     "imports": [
-      "src/main.ts",
+      "_plugin-vue_export-helper.js",
       "_vendor.js"
     ]
   },
@@ -1194,7 +1246,7 @@
     "src": "src/components/icons/pin.vue",
     "isDynamicEntry": true,
     "imports": [
-      "src/main.ts",
+      "_plugin-vue_export-helper.js",
       "_vendor.js"
     ]
   },
@@ -1203,7 +1255,7 @@
     "src": "src/components/icons/reactool.vue",
     "isDynamicEntry": true,
     "imports": [
-      "src/main.ts",
+      "_plugin-vue_export-helper.js",
       "_vendor.js"
     ],
     "css": [
@@ -1215,11 +1267,20 @@
     "src": "src/components/icons/reactool_black.vue",
     "isDynamicEntry": true,
     "imports": [
-      "src/main.ts",
+      "_plugin-vue_export-helper.js",
       "_vendor.js"
     ],
     "css": [
       "assets/reactool_black.css"
+    ]
+  },
+  "src/components/icons/reservation.vue": {
+    "file": "chunks/reservation.js",
+    "src": "src/components/icons/reservation.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_plugin-vue_export-helper.js",
+      "_vendor.js"
     ]
   },
   "src/components/icons/setting.vue": {
@@ -1227,7 +1288,7 @@
     "src": "src/components/icons/setting.vue",
     "isDynamicEntry": true,
     "imports": [
-      "src/main.ts",
+      "_plugin-vue_export-helper.js",
       "_vendor.js"
     ]
   },
@@ -1236,11 +1297,20 @@
     "src": "src/components/icons/upload.vue",
     "isDynamicEntry": true,
     "imports": [
-      "src/main.ts",
+      "_plugin-vue_export-helper.js",
       "_vendor.js"
     ],
     "css": [
       "assets/upload.css"
+    ]
+  },
+  "src/components/icons/users.vue": {
+    "file": "chunks/users3.js",
+    "src": "src/components/icons/users.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_plugin-vue_export-helper.js",
+      "_vendor.js"
     ]
   },
   "src/components/icons/video.vue": {
@@ -1248,7 +1318,7 @@
     "src": "src/components/icons/video.vue",
     "isDynamicEntry": true,
     "imports": [
-      "src/main.ts",
+      "_plugin-vue_export-helper.js",
       "_vendor.js"
     ]
   },

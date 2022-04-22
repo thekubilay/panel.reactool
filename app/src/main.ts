@@ -3,7 +3,10 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 import PrimeVue from 'primevue/config';
+import AppEntryService from "@/services/AppEntryService";
 import InputNumber from "primevue/inputnumber";
+import {createSplash as splash} from "@/helpers/useSplash";
+
 
 import '@fullcalendar/core/vdom' // solves problem with Vite
 
@@ -25,17 +28,22 @@ import "./assets/css/card-sheet.css"
 import "./assets/css/buttons.css"
 import Tooltip from 'primevue/tooltip';
 
-
 const app = createApp(App)
 const pinia = createPinia()
+const service = new AppEntryService()
 
 
+/* create splash screen */
+// splash()
 
 app.component("InputNumber", InputNumber)
 app.directive('tooltip', Tooltip)
-app.use(PrimeVue)
 app.use(pinia)
+app.use(PrimeVue)
 app.use(router)
-app.provide("host", "dataasdas")
-
 app.mount('#app')
+/* set app data */
+// service.getAll().then((response) => {
+//
+// })
+

@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts" setup>
-import {shallowRef, watch, reactive, defineProps} from "vue";
+import {shallowRef, watch, reactive} from "vue";
 
 const props = defineProps({
   svg: String,

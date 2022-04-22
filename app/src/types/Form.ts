@@ -82,6 +82,28 @@ interface Dropdown {
   classes: string[]
 }
 
+
+interface MultiSelect {
+  component: any,
+  name: string,
+  db_column_name: string,
+  type: string|null
+  model: any,
+  label: string,
+  hint: string | null,
+  required: boolean,
+  id: string | null,
+  disabled: boolean,
+  rules: any[],
+  placeholder?: string,
+  appendTo: string,
+  options: any[],
+  optionLabel: string|null,
+  optionValue: any,
+  props: string[],
+  classes: string[]
+}
+
 interface Checkbox {
   component: any,
   name: string,
@@ -193,7 +215,7 @@ interface CalendarInput {
   props: string[],
   classes: string[]
 }
-type Types = TextInput|NumberInput|Dropdown|Checkbox|RadioButton|Password|Textarea|FileInput|SliderInput|CalendarInput;
+type Types = TextInput|NumberInput|Dropdown|Checkbox|RadioButton|Password|Textarea|FileInput|SliderInput|CalendarInput|MultiSelect;
 
 export interface Form {
   classes: string[],

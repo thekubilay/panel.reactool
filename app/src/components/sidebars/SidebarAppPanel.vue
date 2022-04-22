@@ -1,42 +1,46 @@
 <template>
   <div id="sidebar_app">
     <nav>
-      <div class="part part1" :style="{height:salonPartHeightClass}">
-        <div @click="salonPart=!salonPart" class="header pointer">
-          サロン
-          <i style="top:1px;" :class="'pi pi-angle-'+ (salonPart ? 'up' : 'down')"></i>
-        </div>
-        <transition name="slideDown">
-          <div v-if="salonPart" class="body custom-sb custom-sb-invert">
-            <router-link v-for="salon in salons"
-                         :key="salon.id"
-                         :to="{name:'SalonProjects', params:{cid:route.params.cid, dynid: salon.id}}"
-                         class="nav-item flex align-center"
-                         active-class="active">
-              <span class="color block" :style="{backgroundColor:setColorById(salon.id)}"></span>
-              <div>{{ salon.name }}</div>
-            </router-link>
+      <div class="ctr2 overflow-y">
+        <div class="part part1" :style="{height:salonPartHeightClass}">
+          <div @click="salonPart=!salonPart" class="header pointer">
+            サロン
+            <i style="top:1px;" :class="'pi pi-angle-'+ (salonPart ? 'up' : 'down')"></i>
           </div>
-        </transition>
-      </div>
-      <div class="part part2" :style="{height:projectPartHeightClass}">
-        <div @click="projectPart=!projectPart" class="header pointer">
-          プロジェクト
-          <i style="top:1px" :class="'pi pi-angle-'+ (projectPart ? 'up' : 'down')"></i>
+          <transition name="slideDown">
+            <div v-if="salonPart" class="body custom-sb custom-sb-invert">
+              <router-link v-for="salon in salons"
+                           :key="salon.id"
+                           :to="{name:'SalonProjects', params:{cid:route.params.cid, dynid: salon.id}}"
+                           class="nav-item flex align-center"
+                           active-class="active">
+                <span class="color block" :style="{backgroundColor:setColorById(salon.id)}"></span>
+                <div>{{ salon.name }}</div>
+              </router-link>
+            </div>
+          </transition>
         </div>
-        <transition name="slideDown">
-          <div v-if="projectPart" class="body custom-sb custom-sb-invert">
-            <router-link v-for="project in projects"
-                         :key="project.id"
-                         :to="{name:routeFinder(project.id, route.name+''), params:{cid:route.params.cid, dynid:project.id}}"
-                         class="nav-item flex align-center"
-                         active-class="active">
-              <span class="color block" :style="{backgroundColor:setColorById(project.id)}"></span>
-              <div>{{ project.name.replaceAll("<br>", "") }}</div>
-            </router-link>
+        <div class="part part2" :style="{height:projectPartHeightClass}">
+          <div @click="projectPart=!projectPart" class="header pointer">
+            プロジェクト
+            <i style="top:1px" :class="'pi pi-angle-'+ (projectPart ? 'up' : 'down')"></i>
           </div>
-        </transition>
+          <transition name="slideDown">
+            <div v-if="projectPart" class="body custom-sb custom-sb-invert">
+              <router-link v-for="project in projects"
+                           :key="project.id"
+                           @click.native="content=true"
+                           :to="{name:routeFinder(project.id, route.name+''), params:{cid:route.params.cid, dynid:project.id}}"
+                           class="nav-item flex align-center"
+                           active-class="active">
+                <span class="color block" :style="{backgroundColor:setColorById(project.id)}"></span>
+                <div>{{ project.name.replaceAll("<br>", "") }}</div>
+              </router-link>
+            </div>
+          </transition>
+        </div>
       </div>
+
     </nav>
   </div>
 </template>
@@ -45,12 +49,12 @@
 
 import useStore from "@/helpers/useStore";
 import useUtils from "@/common/useUtils";
-import {RouteRecordName, useRoute} from "vue-router";
+import {useRoute} from "vue-router";
 import {computed, ref} from "vue";
-import {Routes} from "@/types/Routes";
+import Icon from "@/components/icons/Icon.vue";
 
 
-const {salons, projects, project} = useStore()
+const {salons, projects, project, content} = useStore()
 const {setColorById, groupBy} = useUtils()
 const route = useRoute()
 const salonPart = ref<boolean>(false)
@@ -89,7 +93,28 @@ const routeFinder = (id: number, rn: string): string => {
   padding-top: 24px;
 }
 
-#sidebar_app > nav .part .header {
+/* part 0 */
+#sidebar_app > nav .ctr1 {
+  margin-bottom: 10px;
+}
+
+#sidebar_app > nav .ctr1 a {
+  padding: 0 14px;
+  color: #f1f1f1;
+  height: 28px;
+}
+
+#sidebar_app > nav .ctr1 a > span.icon-wrapper {
+//width: 40px; margin-right: 10px;
+}
+
+#sidebar_app > nav .ctr1 .part0 a.active {
+  background-color: rgba(99, 102, 241, 0.4);
+}
+
+
+/* part 1-2 */
+#sidebar_app > nav .ctr2 .part .header {
   font-size: .8rem;
   font-weight: 400;
   color: #969595;
@@ -97,18 +122,18 @@ const routeFinder = (id: number, rn: string): string => {
   padding: 0 14px;
 }
 
-#sidebar_app > nav .part .body a:hover {
+#sidebar_app > nav .ctr2 .part .body a:hover {
   background-color: rgba(241, 241, 241, 0.1);
 }
 
-#sidebar_app > nav .part .body {
+#sidebar_app > nav .ctr2 .part .body {
   position: relative;
   height: calc(100% - 30px);
   overflow-y: scroll;
   overflow-x: hidden;
 }
 
-#sidebar_app > nav .part .body a.nav-item {
+#sidebar_app > nav .ctr2 .part .body a.nav-item {
   position: relative;
   min-height: 28px;
   font-size: .7rem;
@@ -118,7 +143,7 @@ const routeFinder = (id: number, rn: string): string => {
   padding-right: 22px;
 }
 
-#sidebar_app > nav .part .body a.nav-item > span.color {
+#sidebar_app > nav .ctr2 .part .body a.nav-item > span.color {
   position: relative;
   top: 1px;
   margin-right: 8px;
@@ -126,21 +151,21 @@ const routeFinder = (id: number, rn: string): string => {
   height: 8px;
 }
 
-#sidebar_app > nav .part .body a.nav-item > div {
+#sidebar_app > nav .ctr2 .part .body a.nav-item > div {
   flex-grow: 1;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-#sidebar_app > nav .part .body a.anchor-title.active,
-#sidebar_app > nav .part .body a.nav-item.active {
+#sidebar_app > nav .ctr2 .part .body a.anchor-title.active,
+#sidebar_app > nav .ctr2 .part .body a.nav-item.active {
   color: #ffffff;
   background-color: rgba(99, 102, 241, 0.4);
 }
 
-#sidebar_app > nav .part .body a.anchor-title.active::after,
-#sidebar_app > nav .part .body a.nav-item.active::after {
+#sidebar_app > nav .ctr2 .part .body a.anchor-title.active::after,
+#sidebar_app > nav .ctr2 .part .body a.nav-item.active::after {
   position: absolute;
   content: "";
   right: -2px;
@@ -149,7 +174,7 @@ const routeFinder = (id: number, rn: string): string => {
   height: 100%;
 }
 
-#sidebar_app > nav .part .body button.more {
+#sidebar_app > nav .ctr2 .part .body button.more {
   padding: 4px 10px;
   height: auto;
   color: #969595;

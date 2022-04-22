@@ -1,4 +1,4 @@
-import {Form} from "../../../types/Form";
+import {Form} from "@/types/Form";
 import {isMail} from "@/components/form/rules";
 
 export const update: Form[][] = [

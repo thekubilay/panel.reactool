@@ -171,10 +171,10 @@ export const form: Form[][] = [
         },
         { // columns in row
           component: null,
-          name: "InputNumber",
+          name: "InputText",
           db_column_name: "price",
           type: "text",
-          model: null,
+          model: "",
           label: "金額",
           hint: "数字飲みで、単位を万円として入力してください",
           placeholder: "ー",

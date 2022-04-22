@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from projects.models import (Project, Permission, ApiToken, PRoute, Calendar, CalendarEvent)
+from projects.models import (Project, Permission, ApiToken, PRoute, Calendar, CalendarEvent, Role)
 from sumaipad.routes.serializers import (PlanFieldSerializer, PlanContentSerializer,
                                          BuildingSerializer, GallerySerializer,
                                          DocumentFoldersSerializer, ColorSimulatorRoomSerializer, MapCategorySerializer,
@@ -24,7 +24,8 @@ class ProjectForSalonSerializer(serializers.ModelSerializer):
   class Meta:
     model = Project
     depth = 1
-    fields = ("id", "order_id", "archive", "legacy", "gallery", "name", "logo", "logo_width", "logo_height", "logo_place")
+    fields = ("id", "order_id", "archive", "legacy", "gallery", "name", "logo", "logo_width", "logo_height",
+              "logo_place")
 
 
 class ProjectPermissionSerializer(serializers.ModelSerializer):
@@ -65,6 +66,12 @@ class CalendarSerializer(serializers.ModelSerializer):
     fields = "__all__"
 
 
+class RoleSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = Role
+    fields = '__all__'
+
+
 class ProjectDetailsSerializer(serializers.ModelSerializer):
   routes = RouteSerializer(many=True, required=False)
   map_settings = MapSettingSerializer(required=False)
@@ -88,4 +95,5 @@ class ProjectDetailsSerializer(serializers.ModelSerializer):
 
   class Meta:
     model = Project
-    exclude = ("user",)
+    fields = "__all__"
+    # exclude = ("users",)

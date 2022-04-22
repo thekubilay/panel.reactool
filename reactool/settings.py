@@ -9,14 +9,17 @@ SECRET_KEY = config("SECRET_KEY")
 DEBUG = config("DEBUG", default=True, cast=bool)
 
 ALLOWED_HOSTS = [
-  "panel-test-env.eba-92hkwvtp.ap-northeast-1.elasticbeanstalk.com",
+  "127.0.0.1",
   "test-panel.reactool.jp",
-  "bucket-reactool-test.s3.amazonaws.com"
+  "panel.reactool.jp",
+  "reservation.reactool.jp",
+  "bucket-reactool-test.s3.amazonaws.com",
 ]
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = [
   "http://localhost:3000",
-  "https://app.reactool.jp"
+  "https://test.reactool.jp",
+  "https://app.reactool.jp",
 ]
 X_FRAME_OPTIONS = 'ALLOWALL'
 XS_SHARING_ALLOWED_METHODS = ['POST', 'GET', 'OPTIONS', 'PUT', 'DELETE']
@@ -176,14 +179,20 @@ AWS_LOCATION = 'static'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 if DEBUG:
-  DJANGO_VITE_ASSETS_PATH = BASE_DIR / "app/src"
-  STATIC_URL = '/static/'
+  DJANGO_VITE_ASSETS_PATH = BASE_DIR / "app/dist"
+  STATIC_ROOT = "static"
+
+  # DJANGO_VITE_ASSETS_PATH = BASE_DIR / "app/src"
   STATICFILES_DIRS = [
-    BASE_DIR / "static",
+    # BASE_DIR / "static",
     DJANGO_VITE_ASSETS_PATH,
   ]
+
+  STATIC_URL = '/static/'
+
   MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
   MEDIA_URL = '/media/'
+
 
 else:
   STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'

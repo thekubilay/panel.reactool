@@ -1,13 +1,11 @@
 <template>
   <router-view v-slot="{ Component }">
-    <LoadingLogo v-model="app"/>
     <transition name="scale" mode="out-in">
       <component :is="Component"/>
     </transition>
   </router-view>
 </template>
 <script lang="ts" setup>
-import LoadingLogo from "@/components/loading/LoadingLogo.vue";
 import useStore from "@/helpers/useStore";
 import {usePrimeVue} from "primevue/config";
 import {onMounted} from "vue";
@@ -32,4 +30,5 @@ const changeDateToJapanese = (): void => {
 onMounted(() => {
   changeDateToJapanese();
 })
+
 </script>

@@ -38,11 +38,12 @@
       </div>
     </div>
 
-    <Dialog v-model="d" title="ユーザーフォーム">
+    <Dialog v-model="d" title="ユーザーフォーム" overflow>
       <FormQuery v-model="d"
                  v-model:dr="dr"
+                 v-model:form="reform"
+                 v-model:response="response"
                  close-after
-                 :form="reform"
                  :query="{company: route.params.cid}"
                  :data="data"
                  :remove="rm"
@@ -77,16 +78,19 @@ import useHelpers from "@/common/useHelpers";
 import useFormRequestBuilder from "@/helpers/useFormRequestBuilder";
 import BarTool from "@/components/bars/BarTool.vue";
 import APIexecutor from "@/services/APIexecutor";
-import validation from "@/components/form/validation";
+import useUtils from "@/common/useUtils";
 
-const {get} = APIexecutor()
+const {get, save} = APIexecutor()
 const route = useRoute()
 const router = useRouter()
 const {store, progress, user, companies, company, users, content} = useStore()
+const {findAndUpdateFormElement} = useUtils()
 const {d, dr, data, useToggle} = useHelpers()
 const {submit, remove} = useFormRequestBuilder()
 const reform = ref<Form[][]>(userCreateForm)
 const rm = ref<boolean>(false)
+const response = ref<any>(null)
+const selectedProjects = ref<number[]>([])
 
 const setCompany = computed({
   set(val: number) {
@@ -105,6 +109,7 @@ function create(): void {
   rm.value = false
   reform.value = userCreateForm
   reform.value[0][0].elements[1].model = new Date()
+  reform.value = findAndUpdateFormElement(reform.value, "project_roles", "options", company.value?.projects)
   useToggle({
     method: "post",
     endpoints: ['users', 'companies/' + route.params.cid],
@@ -113,8 +118,10 @@ function create(): void {
 }
 
 function open(element: User): void {
+  selectedProjects.value = element.project_roles as number[]
   rm.value = true
   reform.value = userUpdateForm
+  reform.value = findAndUpdateFormElement(reform.value, "project_roles", "options", company.value?.projects)
   useToggle({
     method: "patch",
     endpoints: ['users/' + element.id, 'companies/' + route.params.cid],
@@ -133,4 +140,24 @@ function removeItem() {
     })
   })
 }
+
+
+watch(() => reform.value[0][2].elements[0].model, val => {
+  selectedProjects.value = val
+})
+watch(response, (val) => {
+  if (val) {
+    let removes: number[] = company.value?.projects?.map(item => {
+      if(!selectedProjects.value.includes(item.id))
+        return item.id
+    }) as number[]
+    removes = removes.filter(item => item)
+    save("roles", {user: val.id, create: selectedProjects.value, remove: removes}).then(() => {
+      get("companies/" + company.value?.id, "company").then(() => {
+        content.value = false
+      })
+    })
+  }
+})
+
 </script>

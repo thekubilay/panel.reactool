@@ -203,6 +203,13 @@ function updateNavLinks(): void {
     links.value.unshift({panel_name: "ProjectRoutes", title: "ルート"})
     links.value.unshift({panel_name: "ProjectScopePermissions", title: "パーミッション"})
   }
+
+  /* tokyu fdou dake  */
+  if (!user.value?.company_owner && user.value?.company === 29499988) {
+    links.value = links.value.filter(item => {
+      return !["ColorSimulator", "Plans", "VistaSimulator"].includes(item.name as string)
+    })
+  }
 }
 
 function removeImage() {

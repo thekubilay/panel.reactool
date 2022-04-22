@@ -14,6 +14,7 @@ class CustomUser(AbstractUser):
   is_company_manager = models.BooleanField(default=False)
   is_remove_scheduled = models.BooleanField(default=False)
   remove_date = models.DateField(null=True, blank=False)
+  company_owner = models.BooleanField(default=True)
 
   def __str__(self):
     return self.username

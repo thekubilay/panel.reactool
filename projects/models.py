@@ -22,7 +22,7 @@ class Project(models.Model):
   salon = models.ForeignKey(Salon, on_delete=models.SET_NULL, related_name="projects", null=True)
   company = models.ForeignKey(Company, on_delete=models.SET_NULL, related_name="projects", null=True)
   salon_view = models.BooleanField(default=True)
-  user = models.ManyToManyField(CustomUser, through='Role')
+  users = models.ManyToManyField(CustomUser, through='Role', related_name=u'project_roles')
   order_id = models.IntegerField(null=True, blank=False)
   archive = models.BooleanField(default=False)
   legacy = models.BooleanField(default=False)
@@ -118,12 +118,14 @@ class CalendarEvent(models.Model):
 
 
 class Role(models.Model):
-  user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="project_roles")
-  project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="project_roles")
-  permission = models.ForeignKey(UserPermission, on_delete=models.CASCADE, related_name="user_permissions")
+  user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+  project = models.ForeignKey(Project, on_delete=models.CASCADE)
+  read = models.BooleanField(default=True)
+  edit = models.BooleanField(default=True)
+  # permission = models.ForeignKey(UserPermission, null=True, on_delete=models.CASCADE, related_name="user_permissions")
 
-  def __str__(self):
-    return self.user
+  # def __str__(self):
+  #   return self.user
 
   def save(self, *args, **kwargs):
     new_id = random.randint(100000000, 999999999)

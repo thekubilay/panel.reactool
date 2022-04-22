@@ -1,6 +1,5 @@
 import {Form} from "@/types/Form";
 import {isImageNone, isImageValid} from "../rules";
-import useStore from "../../../stores/main"
 
 export const form:Form[][] = [
   [ // tab
@@ -13,7 +12,7 @@ export const form:Form[][] = [
           db_column_name: "map_category",
           type: "text",
           //@ts-ignore
-          model: useStore().project.map_categories.length ? useStore().project.map_categories[0].id : null,
+          model: null,
           label: "カテゴリー",
           hint: null,
           required: false,

@@ -1,9 +1,7 @@
 import json
 import datetime
 
-from reactool.settings import DEBUG
-from django.utils import timezone
-from common.api_token_permission import api_token_project_permission, api_token_salon_permission
+from common.api_token_permission import api_token_project_permission
 from django.shortcuts import get_object_or_404
 from rest_framework import viewsets
 from rest_framework import generics
@@ -11,9 +9,9 @@ from rest_framework.permissions import IsAuthenticated
 from salons.models import Salon
 from salons.routes.serializers import SalonSerializer
 from projects.routes.permissions import (IsSuperAdmin, IsAdmin, IsCompanyManager, ReadOnly)
-from projects.models import (Project, ApiToken, PRoute, Permission, Calendar, CalendarEvent)
+from projects.models import (Project, ApiToken, PRoute, Permission, Calendar, CalendarEvent, Role)
 from projects.routes.serializers import (ProjectsSerializer, ProjectDetailsSerializer, ProjectForSalonSerializer,
-                                         CalendarSerializer, CalendarEventSerializer,
+                                         CalendarSerializer, CalendarEventSerializer, RoleSerializer,
                                          ProjectApiTokenSerializer, ProjectApiTokenListSerializer, RouteSerializer,
                                          ProjectPermissionSerializer)
 from rest_framework.response import Response
@@ -46,7 +44,15 @@ class ProjectsViewSet(viewsets.ModelViewSet):
     if user.is_superuser or user.is_staff:
       projects = Project.objects.all()
     else:
-      projects = Project.objects.filter(salon__company=user.company)
+      if user.company_owner:
+        projects = Project.objects.filter(salon__company=user.company)
+      else:
+        project_roles = Role.objects.filter(user_id=user.id)
+        roles = []
+        for r in project_roles:
+          roles.append(int(r.project_id))
+
+        projects = Project.objects.filter(salon__company=user.company, pk__in=roles)
 
     return projects
 
@@ -139,21 +145,6 @@ class CalendarEventViewSet(viewsets.ModelViewSet):
       serializer.save()
 
     return Response(serializer.data)
-  #
-  # def partial_update(self, request, *args, **kwargs):
-  #   instance = self.queryset.get(pk=kwargs.get('pk'))
-  #   serializer = self.serializer_class(instance, data=request.data, partial=True)
-  #   serializer.is_valid(raise_exception=True)
-  #   event = serializer.save()
-  #   event.save()
-  #
-  #   local_start = timezone.localtime(event.start)
-  #   local_end = timezone.localtime(event.end)
-  #   event.start = local_start
-  #   event.end = local_end
-  #   event.save()
-  #
-  #   return Response(serializer.data)
 
 
 class PermissionViewSet(viewsets.ModelViewSet):
@@ -166,6 +157,44 @@ class PermissionViewSet(viewsets.ModelViewSet):
     serializer.is_valid(raise_exception=True)
     serializer.save()
     return Response(serializer.data)
+
+
+class RoleViewSet(viewsets.ModelViewSet):
+  queryset = Role.objects.all()
+  serializer_class = RoleSerializer
+
+  def get_permissions(self):
+    permission_classes = [ReadOnly]
+    if self.action == "create":
+      permission_classes = [IsSuperAdmin | IsAdmin]
+    elif self.action == "update":
+      permission_classes = [IsSuperAdmin | IsAdmin]
+    elif self.action == "partial_update":
+      permission_classes = [IsSuperAdmin | IsAdmin]
+    elif self.action == "destroy":
+      permission_classes = [IsSuperAdmin | IsAdmin]
+    elif self.action == "list":
+      permission_classes = [IsAuthenticated]
+    elif self.action == "retrieve":
+      permission_classes = [ReadOnly]
+
+    return [permission() for permission in permission_classes]
+
+  def create(self, request, *args, **kwargs):
+    if "create" in request.data:
+      for item in request.data["create"]:
+        Role.objects.get_or_create(project_id=int(item), user_id=request.data["user"])
+
+    if "remove" in request.data and "user" in request.data:
+      for item in request.data["remove"]:
+        try:
+          if item != "null" or item is not None:
+            Role.objects.get(project_id=int(item), user_id=request.data["user"]).delete()
+
+        except Role.DoesNotExist:
+          pass
+
+    return Response(status=200)
 
 
 class ProjectDetailsViewSet(generics.RetrieveAPIView):

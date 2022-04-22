@@ -438,5 +438,9 @@ fabric.properties
 /app/tsconfig.json
 /app/vite.config.ts
 /app/.idea/
-/static/
 /app/
+/static/admin/
+/static/css/
+/static/img/
+/static/js/
+/static/svg/

@@ -4,6 +4,7 @@ from projects.routes import views
 
 router = DefaultRouter()
 router.register(r"projects", views.ProjectsViewSet, basename="projects")
+router.register(r"roles", views.RoleViewSet, basename="roles")
 router.register(r"app/routes", views.RouteViewSet, basename="app_routes")
 router.register(r"app/permissions", views.PermissionViewSet, basename="app_permissions")
 router.register(r"app/calendars", views.CalendarViewSet, basename="app_calendars")

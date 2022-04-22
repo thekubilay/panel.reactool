@@ -116,18 +116,17 @@ export default function () {
 
     let dates: Date[] = []
 
-    const months :number = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+    const months: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
     months.forEach(month => {
-      const lastDayOfMonth = new Date(year, month , 0).getDate();
+      const lastDayOfMonth = new Date(year, month, 0).getDate();
       for (let i = 1; i < lastDayOfMonth + 1; i++) {
-        if(day === new Date(year, month - 1, i).getDay()) {
+        if (day === new Date(year, month - 1, i).getDay()) {
           dates.push(new Date(year, month - 1, i))
         }
       }
     })
     return dates
   }
-
 
   return {
     setColorById,

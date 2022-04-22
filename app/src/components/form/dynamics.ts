@@ -24,6 +24,11 @@ export default function () {
                 column.component = shallowRef<any>(component.default)
               })
             }
+            if (column.name === "MultiSelect") {
+              import("primevue/multiselect").then((component) => {
+                column.component = shallowRef<any>(component.default)
+              })
+            }
             if (column.name === "Checkbox") {
               import("primevue/checkbox").then((component) => {
                 column.component = shallowRef<any>(component.default)
