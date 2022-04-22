@@ -440,7 +440,6 @@ fabric.properties
 /app/.idea/
 /app/
 /static/admin/
-/static/css/
 /static/img/
 /static/js/
 /static/svg/
