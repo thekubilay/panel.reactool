@@ -14,7 +14,7 @@ ALLOWED_HOSTS = [
   "panel.reactool.jp",
   "reservation.reactool.jp",
   "panel-env.eba-wvnskzvw.ap-northeast-1.elasticbeanstalk.com",
-  "bucket-reactool-test.s3.amazonaws.com",
+  "bucket-reactool-dev.s3.amazonaws.com",
   "bucket-reactool.s3.amazonaws.com",
 ]
 CORS_ORIGIN_ALLOW_ALL = False
@@ -111,9 +111,9 @@ if 'RDS_DB_NAME' in os.environ:
   DATABASES = {
     'default': {
       'ENGINE': 'mysql.connector.django',
-      'NAME': "reactool",
+      'NAME': config("DATABASE_NAME"),
       'USER': "reactool",
-      'PASSWORD': "rKWGszjn45x",
+      'PASSWORD': config("DATABASE_PASSWORD"),
       'HOST': "aa1gieme6hahx5c.ckh4r4vbpxv4.ap-northeast-1.rds.amazonaws.com",
       'PORT': 3306,
     }
@@ -169,7 +169,6 @@ MESSAGE_TAGS = {
   messages.SUCCESS: 'success',
   messages.INFO: 'info',
 }
-
 
 AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
