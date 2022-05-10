@@ -13,13 +13,17 @@ ALLOWED_HOSTS = [
   "test-panel.reactool.jp",
   "panel.reactool.jp",
   "reservation.reactool.jp",
+  "panel-env.eba-wvnskzvw.ap-northeast-1.elasticbeanstalk.com",
   "bucket-reactool-test.s3.amazonaws.com",
+  "bucket-reactool.s3.amazonaws.com",
 ]
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = [
   "http://localhost:3000",
   "https://test.reactool.jp",
   "https://app.reactool.jp",
+  "https://vr.reactool.jp",
+  "https://colors.reactool.jp",
 ]
 X_FRAME_OPTIONS = 'ALLOWALL'
 XS_SHARING_ALLOWED_METHODS = ['POST', 'GET', 'OPTIONS', 'PUT', 'DELETE']

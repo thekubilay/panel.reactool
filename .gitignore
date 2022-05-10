@@ -441,5 +441,7 @@ fabric.properties
 /app/
 /static/admin/
 /static/img/
+/static/rest_framework/
 /static/js/
 /static/svg/
+/static/css/
