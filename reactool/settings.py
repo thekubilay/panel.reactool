@@ -111,10 +111,10 @@ if 'RDS_DB_NAME' in os.environ:
   DATABASES = {
     'default': {
       'ENGINE': 'mysql.connector.django',
-      'NAME': "rds_reactool_test",
-      'USER': "reactool1",
+      'NAME': "reactool",
+      'USER': "reactool",
       'PASSWORD': "rKWGszjn45x",
-      'HOST': "aa1fteqqu3lxe3r.ckh4r4vbpxv4.ap-northeast-1.rds.amazonaws.com",
+      'HOST': "aa1gieme6hahx5c.ckh4r4vbpxv4.ap-northeast-1.rds.amazonaws.com",
       'PORT': 3306,
     }
   }
