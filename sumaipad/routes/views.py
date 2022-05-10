@@ -293,7 +293,7 @@ class PlanContextViewSet(viewsets.ModelViewSet):
     serializer = PlanContextSerializer(instance, data=request.data, partial=True)
     serializer.is_valid(raise_exception=True)
     context = serializer.save()
-    print(context)
+
     if context.plan_field.name == "距離画像":
       image_data = calculate_ppm(context.image)
       context.ppm = image_data["ppm"]
