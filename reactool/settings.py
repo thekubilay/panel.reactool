@@ -14,6 +14,7 @@ ALLOWED_HOSTS = [
   "panel.reactool.jp",
   "reservation.reactool.jp",
   "panel-env.eba-wvnskzvw.ap-northeast-1.elasticbeanstalk.com",
+  "panel-dev-env.ap-northeast-1.elasticbeanstalk.com",
   "bucket-reactool-dev.s3.amazonaws.com",
   "bucket-reactool.s3.amazonaws.com",
 ]
