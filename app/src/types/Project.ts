@@ -14,6 +14,7 @@ import {ApiToken} from "@/types/ApiToken";
 import {RoomVr} from "@/types/RoomVr";
 import {ProjectPermission} from "@/types/ProjectPermission";
 import {ProjectCalendar} from "@/types/Calendar";
+import {RoomVrVendor} from "@/types/RoomVrVendor";
 
 interface Items {
   salon_view: boolean,
@@ -50,7 +51,8 @@ interface Items {
   room_vr: RoomVr[],
   api_tokens: ApiToken[]
   permissions: ProjectPermission[],
-  calendar: ProjectCalendar
+  calendar: ProjectCalendar,
+  room_vr_vendors: RoomVrVendor[],
   token_on: boolean,
   legacy: boolean,
 }

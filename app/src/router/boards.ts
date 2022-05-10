@@ -150,6 +150,11 @@ export default [
         component: () => import(/* webpackChunkName: "project-route-group2" */ '../views/boards/ProjectRoomVrFloors.vue')
       },
       {
+        path: '/:cid/:dynid/room-vr-floors',
+        name: 'ProjectRoomVrVendors',
+        component: () => import(/* webpackChunkName: "project-route-group2" */ '../views/boards/ProjectRoomVrVendors.vue')
+      },
+      {
         path: '/:cid/:dynid/calendar',
         name: 'ProjectCalendar',
         component: () => import(/* webpackChunkName: "project-route-group3" */ '../views/boards/ProjectCalendar.vue')

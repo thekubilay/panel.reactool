@@ -41,6 +41,7 @@ router.register(r"color_simulator_rooms", views.ColorSimulatorRoomViewSet, basen
 router.register(r"color_simulator_room_parts", views.ColorSimulatorRoomPartViewSet, basename="app_color_simulator_room_parts")
 router.register(r"color_simulator_room_part_items", views.ColorSimulatorRoomPartItemViewSet, basename="app_color_simulator_room_part_items")
 
+router.register(r"room_vr_vendors", views.RoomVrVendorViewSet, basename="app_room_vr_vendors")
 router.register(r"room_vrs", views.RoomVrViewSet, basename="app_room_vrs")
 router.register(r"room_vr_floors", views.RoomVrFloorViewSet, basename="app_room_vr_floors")
 router.register(r"room_vr_next_rooms", views.RoomVrNextRoomViewSet, basename="app_room_vr_next_rooms")

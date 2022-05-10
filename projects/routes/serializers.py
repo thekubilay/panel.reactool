@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from projects.models import (Project, Permission, ApiToken, PRoute, Calendar, CalendarEvent, Role)
 from sumaipad.routes.serializers import (PlanFieldSerializer, PlanContentSerializer,
-                                         BuildingSerializer, GallerySerializer,
+                                         BuildingSerializer, GallerySerializer, RoomVrVendorSerializer,
                                          DocumentFoldersSerializer, ColorSimulatorRoomSerializer, MapCategorySerializer,
                                          MapSettingSerializer, GeneralPlanSerializer,
                                          BuildingVrSerializer, RoomVrSerializer, BuildingBankTypeSerializer,
@@ -88,6 +88,7 @@ class ProjectDetailsSerializer(serializers.ModelSerializer):
   building_vr = BuildingVrSerializer(required=False)
   color_simulator_rooms = ColorSimulatorRoomSerializer(many=True, required=False)
   room_vr = RoomVrSerializer(many=True, required=False)
+  room_vr_vendors = RoomVrVendorSerializer(many=True, required=False)
   permissions = ProjectPermissionSerializer(many=True, required=False)
   api_tokens = ProjectApiTokenSerializer(many=True, required=False)
   calendar = CalendarSerializer(required=False)

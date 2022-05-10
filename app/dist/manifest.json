@@ -42,6 +42,7 @@
       "src/views/boards/ProjectColorSimulator.vue",
       "src/views/boards/ProjectRoomVrTypes.vue",
       "src/views/boards/ProjectRoomVrFloors.vue",
+      "src/views/boards/ProjectRoomVrVendors.vue",
       "src/views/boards/ProjectCalendar.vue",
       "src/views/boards/Frame1.vue",
       "src/views/boards/Frame2.vue",
@@ -660,7 +661,7 @@
       "_rules.js"
     ],
     "css": [
-      "assets/ProjectRoutes.css"
+      "assets/ProjectLoan.css"
     ]
   },
   "src/views/boards/ProjectPermissions.vue": {
@@ -985,7 +986,7 @@
       "_plugin-vue_export-helper.js"
     ],
     "css": [
-      "assets/ProjectRoutes.css"
+      "assets/ProjectLoan.css"
     ]
   },
   "src/views/boards/ProjectParkingFees.vue": {
@@ -1099,6 +1100,29 @@
     ],
     "css": [
       "assets/FileInput.css"
+    ]
+  },
+  "src/views/boards/ProjectRoomVrVendors.vue": {
+    "file": "chunks/ProjectRoomVrVendors.js",
+    "src": "src/views/boards/ProjectRoomVrVendors.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_vuedraggable.umd.js",
+      "_vendor.js",
+      "_menu.esm.js",
+      "_useFormRequestBuilder.js",
+      "_BarTool.js",
+      "_FormQuery.js",
+      "_DialogDelete.js",
+      "_ContextImagesThumbnailContainer.js",
+      "_Icon.js",
+      "src/main.ts",
+      "_useRightClickHandler.js",
+      "_overlayeventbus.esm.js",
+      "_plugin-vue_export-helper.js"
+    ],
+    "css": [
+      "assets/ProjectRoomVrVendors.css"
     ]
   },
   "src/views/boards/ProjectCalendar.vue": {

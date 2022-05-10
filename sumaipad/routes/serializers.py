@@ -7,7 +7,7 @@ from sumaipad.models import (ColorSimulatorRoom, ColorSimulatorRoomPart,
                              RoomVr, RoomVrFloor, MapSetting, RoomVrNextRoom,
                              BuildingVr, BuildingVrDirection, BuildingVrDirectionImage,
                              DocumentFolder, Link, Gallery, BuildingBankType, MapCategory,
-                             BuildingParkingFee)
+                             BuildingParkingFee, RoomVrVendor)
 
 
 class LinkSerializer(serializers.ModelSerializer):
@@ -212,4 +212,10 @@ class RoomVrSerializer(serializers.ModelSerializer):
 
   class Meta:
     model = RoomVr
+    fields = "__all__"
+
+
+class RoomVrVendorSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = RoomVrVendor
     fields = "__all__"

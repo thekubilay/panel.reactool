@@ -9,6 +9,7 @@
       </div>
       <div class="part-wrap part-end">
         <Button style="margin-left: 5px" @click="toPlans()" type="button" class="tool-button" label="VR一覧へ"/>
+        <Button v-if="user.is_superuser" style="margin-left: 5px" @click="toVendors()" type="button" class="tool-button" label="ベンダVR一覧へ"/>
       </div>
     </BarTool>
 
@@ -94,7 +95,7 @@ const {get, save} = APIexecutor()
 const {submit, submitRowReorder, remove} = useFormRequestBuilder()
 const {d, dr, data, images, useToggle} = useHelpers()
 const {rcm, rcmOpened, isRCOn} = useRightClickHandler(data)
-const {payload, content, progress, project} = useStore()
+const {user, payload, content, progress, project} = useStore()
 const types = ref<RoomVr[]>([])
 const rm = ref<boolean>(false)
 const loading = ref<boolean>(false)
@@ -171,6 +172,10 @@ function removeItem() {
 
 const toPlans = (): void => {
   router.push({name: "ProjectRoomVrFloors", params: {cid: route.params.cid, dynid: route.params.dynid}})
+}
+
+const toVendors = (): void => {
+  router.push({name: "ProjectRoomVrVendors", params: {cid: route.params.cid, dynid: route.params.dynid}})
 }
 
 watch(() => project.value?.room_vr, val => {

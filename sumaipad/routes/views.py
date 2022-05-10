@@ -10,7 +10,7 @@ from sumaipad.models import (PlanField, PlanContent, PlanContext, PlanFieldOptio
                              BuildingFloor, BuildingFloorRoom, Link, Gallery, BuildingParkingFee, BuildingBankType,
                              VistaSimulatorContent, BuildingVr, BuildingVrDirection, BuildingVrDirectionImage,
                              DocumentFolder, RoomVrNextRoom,
-                             MapCategory, RoomVr, RoomVrFloor, PlanMenu, MapSetting,
+                             MapCategory, RoomVr, RoomVrFloor, PlanMenu, MapSetting, RoomVrVendor,
                              Slideshow, Building)
 
 from sumaipad.routes.serializers import (PlanFieldSerializer, PlanContentSerializer, PlanContextSerializer,
@@ -20,7 +20,7 @@ from sumaipad.routes.serializers import (PlanFieldSerializer, PlanContentSeriali
                                          DocumentFoldersSerializer, MapCategorySerializer, MapSettingSerializer,
                                          GallerySerializer, PlanFieldOptionSerializer,
                                          VistaSimulatorSerializer, MapPlaceImageSerializer,
-                                         LinkSerializer,
+                                         LinkSerializer, RoomVrVendorSerializer,
                                          ColorSimulatorRoomSerializer, ColorSimulatorRoomPartSerializer,
                                          ColorSimulatorRoomPartItemSerializer,
                                          RoomVrSerializer, RoomVrFloorSerializer, GeneralPlanSerializer,
@@ -226,7 +226,8 @@ class PlanFieldOptionViewSet(viewsets.ModelViewSet):
   def create(self, request, *args, **kwargs):
     updates = request.data["update"] or []
     for item in updates:
-      PlanFieldOption.objects.filter(id=item["id"]).update(id=int(item["id"]), order_id=item["order_id"], name=item["name"])
+      PlanFieldOption.objects.filter(id=item["id"]).update(id=int(item["id"]), order_id=item["order_id"],
+                                                           name=item["name"])
 
     creates = request.data["create"] or []
     for item in creates:
@@ -564,6 +565,25 @@ class ColorSimulatorRoomPartItemViewSet(viewsets.ModelViewSet):
 class RoomVrViewSet(viewsets.ModelViewSet):
   queryset = RoomVr.objects.all()
   serializer_class = RoomVrSerializer
+
+
+class RoomVrVendorViewSet(viewsets.ModelViewSet):
+  queryset = RoomVrVendor.objects.all()
+  serializer_class = RoomVrVendorSerializer
+
+  def create(self, request, *args, **kwargs):
+    if "reordered" in request.data:
+      items = request.data["reordered"]
+      for item in items:
+        RoomVrVendor.objects.filter(id=int(item["id"])).update(order_id=item["order_id"])
+
+      return Response(status=200)
+
+    else:
+      serializer = RoomVrVendorSerializer(data=request.data)
+      serializer.is_valid(raise_exception=True)
+      serializer.save()
+      return Response(serializer.data)
 
 
 class RoomVrFloorViewSet(viewsets.ModelViewSet):

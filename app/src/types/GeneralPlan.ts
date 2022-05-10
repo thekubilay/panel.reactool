@@ -4,5 +4,6 @@ export interface GeneralPlan {
   order_id: number | null,
   kind: string | null,
   image: string | null,
+  html_code: string | null,
   thumbnail: string | null,
 }

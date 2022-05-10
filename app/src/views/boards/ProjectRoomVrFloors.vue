@@ -17,6 +17,9 @@
         <Button style="margin-left: 5px"
                 @click="router.push({name: 'ProjectRoomVrTypes', params: {cid: route.params.cid, dynid: route.params.dynid}})"
                 type="button" class="tool-button" label="間取りタイプ一覧へ"/>
+        <Button v-if="user.is_superuser" style="margin-left: 5px"
+                @click="router.push({name: 'ProjectRoomVrVendors', params: {cid: route.params.cid, dynid: route.params.dynid}})"
+                type="button" class="tool-button" label="ベンダーVR一覧へ"/>
       </div>
     </BarTool>
 
@@ -150,7 +153,7 @@ const {submit, remove} = useFormRequestBuilder()
 const {d, d2, dr, dw, data, images, useToggle} = useHelpers()
 const {dataEnsureOnFind, groupBy} = useUtils()
 const {rcm, rcmOpened, isRCOn} = useRightClickHandler(data)
-const {payload, content, progress, project, onload} = useStore()
+const {user, payload, content, progress, project, onload} = useStore()
 const router = useRouter()
 const route = useRoute()
 const cautionText = ref<string>("")

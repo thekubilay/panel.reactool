@@ -20,6 +20,7 @@
           <div class="sheet-cell num flex align-center">順番</div>
           <div class="sheet-cell img flex align-center"><i class="pi pi-file"></i></div>
           <div class="sheet-cell value flex align-center">種類</div>
+          <div class="sheet-cell value flex align-center">HTMLコード</div>
           <div class="sheet-cell value sheet-cell-long flex align-center">画像名</div>
         </div>
       </div>
@@ -39,6 +40,7 @@
               <Icon svg="image"/>
             </div>
             <div class="sheet-cell value flex align-center"><span class="text block">{{ element.kind }}</span></div>
+            <div class="sheet-cell value flex align-center"><span class="text block">{{ element.html_code }}</span></div>
             <div class="sheet-cell value sheet-cell-long flex align-center">
               <span class="text block">{{ element.image.split("/", 6)[5].split(".")[0] }}</span>
             </div>
@@ -47,12 +49,12 @@
       </draggable>
     </div>
 
-    <Dialog v-model="d" title="一般図フォーム">
+    <Dialog v-model="d" title="一般図フォーム" overflow>
       <FormQuery v-model="d"
                  close-after
-                 topProgress
                  :progress="progress"
                  :form="form"
+                 :data="data"
                  :query="{project:project.id}"
                  :submit="submit"/>
     </Dialog>
@@ -139,7 +141,7 @@ function open(element:Gallery): void {
     method: 'patch',
     endpoints: ['app/general_plans/'+element.id, 'project_details/' + project.value?.id],
     state: "project"
-  })
+  }, element)
 }
 
 watch(() => kind.value, val => {

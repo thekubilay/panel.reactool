@@ -171,6 +171,7 @@ class GeneralPlan(models.Model):
   project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="general_plans")
   kind = models.CharField(max_length=20, null=False, blank=False)
   image = models.FileField(null=True, blank=False, upload_to=makeDynamicDirectProjectPath)
+  html_code = models.TextField(null=True, blank=True)
   # thumbnail = ResizedImageField(size=[400, 400], null=True, blank=False,
   #                               upload_to=makeDynamicDirectProjectPath)
   order_id = models.IntegerField(null=True, blank=False)
@@ -452,6 +453,28 @@ class BuildingVrDirectionImage(models.Model):
   def save(self, *args, **kwargs):
     new_id = random.randint(100000000, 999999999)
     if not BuildingVrDirectionImage.objects.filter(id=self.id).exists():
+      self.id = new_id
+    super().save(*args, **kwargs)
+
+
+class RoomVrVendor(models.Model):
+  project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="room_vr_vendors")
+  order_id = models.IntegerField(null=True)
+  title = models.CharField(max_length=255, null=True, blank=False)
+  sub_title = models.CharField(max_length=255, null=True, blank=True)
+  url = models.CharField(max_length=255, null=True, blank=False)
+  image = ResizedImageField(size=[400, 400], null=True, blank=True,
+                            upload_to=makeDynamicRoomVrImagePath)
+
+  class Meta:
+    ordering = ["order_id"]
+
+  def __str__(self):
+    return self.title
+
+  def save(self, *args, **kwargs):
+    new_id = random.randint(100000000, 999999999)
+    if not RoomVrVendor.objects.filter(id=self.id).exists():
       self.id = new_id
     super().save(*args, **kwargs)
 
