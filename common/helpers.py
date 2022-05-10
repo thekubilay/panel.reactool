@@ -2,6 +2,7 @@ import requests
 import cv2
 import mojimoji
 
+from decouple import config
 from reactool.settings import DEBUG
 from PIL import Image
 from pytesseract import pytesseract
@@ -31,6 +32,9 @@ def get_sliced_lists_with_range(source, step):
 
 
 def get_image_px_sizes(image_path):
+  AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
+  AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+
   context = {
     'width': None,
     'height': None,
@@ -38,11 +42,11 @@ def get_image_px_sizes(image_path):
   }
 
   try:
-    current_site = "https://test-panel.reactool.jp"
-    if DEBUG:
-      current_site = "http://127.0.0.1:8000"
+    img = Image.open(requests.get(f'https://{AWS_S3_CUSTOM_DOMAIN}/media/' + str(image_path), stream=True).raw)
 
-    img = Image.open(requests.get(current_site + "/media/" + str(image_path), stream=True).raw)
+    if DEBUG:
+      img = Image.open(requests.get("http://127.0.0.1:8000/media/" + str(image_path), stream=True).raw)
+
     print(img.size)
     w, h = img.size
     context = {
