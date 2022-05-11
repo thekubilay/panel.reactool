@@ -423,7 +423,7 @@
       "_plugin-vue_export-helper.js"
     ],
     "css": [
-      "assets/Tutorials2.css"
+      "assets/Tutorials.css"
     ]
   },
   "src/views/admin/TutorialImages.vue": {
@@ -504,7 +504,7 @@
       "_vendor.js"
     ],
     "css": [
-      "assets/Tutorials.css"
+      "assets/Tutorials2.css"
     ]
   },
   "src/views/boards/Salon.vue": {
@@ -661,7 +661,7 @@
       "_rules.js"
     ],
     "css": [
-      "assets/ProjectRoutes.css"
+      "assets/ProjectLoan.css"
     ]
   },
   "src/views/boards/ProjectPermissions.vue": {
@@ -986,7 +986,7 @@
       "_plugin-vue_export-helper.js"
     ],
     "css": [
-      "assets/ProjectRoutes.css"
+      "assets/ProjectLoan.css"
     ]
   },
   "src/views/boards/ProjectParkingFees.vue": {
