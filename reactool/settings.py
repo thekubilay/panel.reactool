@@ -115,7 +115,7 @@ if 'RDS_DB_NAME' in os.environ:
       'NAME': config("DATABASE_NAME"),
       'USER': "reactool",
       'PASSWORD': config("DATABASE_PASSWORD"),
-      'HOST': "aa1gieme6hahx5c.ckh4r4vbpxv4.ap-northeast-1.rds.amazonaws.com",
+      'HOST': config("DATABASE_HOST"),
       'PORT': 3306,
     }
   }
