@@ -64,7 +64,9 @@ export default function () {
         if (query[key] || typeof query[key] === "boolean") {
           fd.append(key, query[key])
           if (key === "image") {
-            fd.append("thumbnail", query[key])
+            let thumbnail = query[key]
+            thumbnail.name = thumbnail.name+"thumbnail"
+            fd.append("thumbnail", thumbnail)
             if (!keys.includes("building_floor")) {
               fd.append("type", query[key].type)
             }
