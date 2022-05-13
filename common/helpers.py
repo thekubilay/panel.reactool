@@ -53,7 +53,6 @@ def get_image_px_sizes(image_path):
       'width': w,
       'height': h,
     }
-
   except cv2.error as e:
     print(e, "cv error")
 
