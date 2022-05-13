@@ -1,5 +1,5 @@
 import requests
-# import cv2
+import cv2
 import mojimoji
 
 from decouple import config
