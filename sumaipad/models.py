@@ -41,6 +41,10 @@ def makeDynamicVistaImagePath(instance, filename):
   return f"{instance.vista_simulator.project.path}/images/vistas/{filename}"
 
 
+def makeDynamicVistaThumbnailImagePath(instance, filename):
+  return f"{instance.vista_simulator.project.path}/images/vistas/thumbnails/{filename}"
+
+
 def makeDynamicMapCategoryImagePath(instance, filename):
   return f"{instance.project.path}/images/map-category-pins/{filename}"
 
@@ -287,7 +291,7 @@ class VistaSimulatorContent(models.Model):
   compass_left = models.IntegerField(null=True, blank=False, default=0)
   image = models.ImageField(null=True, blank=False, upload_to=makeDynamicVistaImagePath)
   thumbnail = ResizedImageField(size=[400, 400], null=True, blank=False,
-                                upload_to=makeDynamicVistaImagePath)
+                                upload_to=makeDynamicVistaThumbnailImagePath)
 
   def __str__(self):
     return self.floor_num + "F"
