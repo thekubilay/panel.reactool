@@ -363,6 +363,7 @@ class LoanSetting(models.Model):
   interest_rate_max = models.CharField(max_length=255, null=True, default=10)
   deposit = models.CharField(max_length=255, null=True, default=10)
   deposit_max = models.CharField(max_length=255, null=True, default=10)
+  deposit_step = models.CharField(max_length=255, null=True, default=10)
 
   def __str__(self):
     return self.project.name
