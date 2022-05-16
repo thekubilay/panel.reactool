@@ -32,18 +32,17 @@ const app = createApp(App)
 const pinia = createPinia()
 const service = new AppEntryService()
 
-
-/* create splash screen */
-// splash()
+splash()
 
 app.component("InputNumber", InputNumber)
 app.directive('tooltip', Tooltip)
 app.use(pinia)
 app.use(PrimeVue)
-app.use(router)
-app.mount('#app')
-/* set app data */
-// service.getAll().then((response) => {
-//
-// })
+
+
+service.getAll().then((response) => {
+  app.use(router)
+  app.mount('#app')
+})
+
 

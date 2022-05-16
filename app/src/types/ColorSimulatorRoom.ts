@@ -24,6 +24,7 @@ interface ColorSimulatorRoom {
   project: number | null,
   order_id: number | null,
   name: string | null,
+  option_context: string | null,
   image: string | null,
   thumbnail: string | null,
   room_parts?: ColorSimulatorRoomPart[],

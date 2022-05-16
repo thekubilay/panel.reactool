@@ -6,6 +6,8 @@
       <div class="part-wrap">
         <Button type="button" class="submit-button" icon="pi pi-plus" icon-pos="left" label="プランを追加"
                 @click="create()"/>
+        <Button type="button" class="submit-button icon-button" icon="pi pi-cog" icon-pos="left"
+                @click="openGeneralPlanSettings(project.general_plan_settings)"/>
       </div>
       <div class="part-wrap part-end">
         <Dropdown style="margin-left: 0; width: 120px" class="dropdown" v-model="kind" :options="kinds"
@@ -53,7 +55,7 @@
       <FormQuery v-model="d"
                  close-after
                  :progress="progress"
-                 :form="form"
+                 :form="reform"
                  :data="data"
                  :query="{project:project.id}"
                  :submit="submit"/>
@@ -80,7 +82,8 @@ import useStore from "@/helpers/useStore";
 import {computed, onMounted, ref, watch} from "vue";
 import FormQuery from "@/components/form/FormQuery.vue";
 import {form} from "@/components/form/templates/FormGeneralPlans"
-import {GeneralPlan} from "@/types/GeneralPlan";
+import {form as FormGeneralPlanSettings} from "@/components/form/templates/FormGeneralPlanSettings"
+import {GeneralPlan, GeneralPlanSetting} from "@/types/GeneralPlan";
 import useUtils from "@/common/useUtils";
 import {Form} from "@/types/Form";
 import {Gallery} from "@/types/Gallery";
@@ -140,6 +143,15 @@ function open(element:Gallery): void {
   useToggle({
     method: 'patch',
     endpoints: ['app/general_plans/'+element.id, 'project_details/' + project.value?.id],
+    state: "project"
+  }, element)
+}
+
+function openGeneralPlanSettings(element:GeneralPlanSetting): void {
+  reform.value = FormGeneralPlanSettings
+  useToggle({
+    method: 'patch',
+    endpoints: ['app/general_plan_settings/'+element.id, 'project_details/' + project.value?.id],
     state: "project"
   }, element)
 }

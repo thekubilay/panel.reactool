@@ -338,7 +338,7 @@ export const update: Form[][] = [
           db_column_name: "logo_place",
           type: "text",
           model: null,
-          label: "配置",
+          label: "ランディングロゴ配置",
           hint: null,
           required: false,
           rules: [],
@@ -394,6 +394,55 @@ export const update: Form[][] = [
         },
       ],
     },
+
+    { // form row
+      classes: ["flex", "justify-space-between"],
+      elements: [ // columns
+        { // columns in row
+          component: null,
+          name: "Dropdown",
+          db_column_name: "tab_logo_view",
+          type: "text",
+          model: true,
+          label: "タブメニューロゴ",
+          hint: null,
+          required: false,
+          rules: [],
+          id: "tab_logo_text_input",
+          disabled: false,
+          options: [{name: "ロゴあり", value: true}, {name: "ロゴなし", value: false}],
+          optionLabel: "name",
+          optionValue: "value",
+          placeholder: "タブロゴ表示",
+          appendTo: "body",
+          props: ["placeholder", "required", "disabled", "options", "optionLabel", "optionValue", "appendTo"],
+          classes: ["flex-column", "column-2-space", "relative"],
+        },
+      ],
+    },
+
+    { // form row
+      classes: ["flex", "justify-space-between"],
+      elements: [ // columns
+        { // columns in row
+          component: null,
+          name: "InputText",
+          db_column_name: "tab_logo_text",
+          type: "text",
+          model: null,
+          label: "タイトル",
+          hint: null,
+          placeholder: "　ホーム",
+          required: true,
+          id: "tab_logo_text_input",
+          rules: [],
+          disabled: false,
+          props: ["placeholder", "required", "disabled"],
+          classes: ["flex-column", "column-1"],
+        },
+      ],
+    },
+
     { // form row
       classes: ["flex"],
       elements: [ // columns
@@ -420,58 +469,58 @@ export const update: Form[][] = [
     },
   ],
 
-  [ // tab 4
-    { // form row
-      classes: ["flex", "justify-space-between"],
-      elements: [ // columns
-        { // columns in row
-          component: null,
-          name: "Dropdown",
-          db_column_name: "logo_place",
-          type: "text",
-          model: null,
-          label: "配置",
-          hint: null,
-          required: false,
-          rules: [],
-          id: "logo_place_input",
-          disabled: false,
-          options: [{name: "左上", value: 1}, {name: "左下", value: 2}, {name: "右上", value: 3}, {
-            name: "右下",
-            value: 4
-          }, {name: "中央", value: 5},],
-          optionLabel: "name",
-          optionValue: "value",
-          placeholder: "サロン選択",
-          appendTo: "body",
-          props: ["placeholder", "required", "disabled", "options", "optionLabel", "optionValue", "appendTo"],
-          classes: ["flex-column", "column-2-space", "relative"],
-        },
-        { // columns in row
-          component: null,
-          name: "Dropdown",
-          db_column_name: "logo_place",
-          type: "text",
-          model: null,
-          label: "",
-          hint: null,
-          required: false,
-          rules: [],
-          id: "logo_place_input",
-          disabled: false,
-          options: [{name: "左上", value: 1}, {name: "左下", value: 2}, {name: "右上", value: 3}, {
-            name: "右下",
-            value: 4
-          }, {name: "中央", value: 5},],
-          optionLabel: "name",
-          optionValue: "value",
-          placeholder: "サロン選択",
-          appendTo: "body",
-          props: ["placeholder", "required", "disabled", "options", "optionLabel", "optionValue", "appendTo"],
-          classes: ["flex-column", "column-2-space", "relative"],
-        },
-      ],
-    },
-  ],
+  // [ // tab 4
+  //   { // form row
+  //     classes: ["flex", "justify-space-between"],
+  //     elements: [ // columns
+  //       { // columns in row
+  //         component: null,
+  //         name: "Dropdown",
+  //         db_column_name: "logo_place",
+  //         type: "text",
+  //         model: null,
+  //         label: "配置",
+  //         hint: null,
+  //         required: false,
+  //         rules: [],
+  //         id: "logo_place_input",
+  //         disabled: false,
+  //         options: [{name: "左上", value: 1}, {name: "左下", value: 2}, {name: "右上", value: 3}, {
+  //           name: "右下",
+  //           value: 4
+  //         }, {name: "中央", value: 5},],
+  //         optionLabel: "name",
+  //         optionValue: "value",
+  //         placeholder: "サロン選択",
+  //         appendTo: "body",
+  //         props: ["placeholder", "required", "disabled", "options", "optionLabel", "optionValue", "appendTo"],
+  //         classes: ["flex-column", "column-2-space", "relative"],
+  //       },
+  //       { // columns in row
+  //         component: null,
+  //         name: "Dropdown",
+  //         db_column_name: "logo_place",
+  //         type: "text",
+  //         model: null,
+  //         label: "",
+  //         hint: null,
+  //         required: false,
+  //         rules: [],
+  //         id: "logo_place_input",
+  //         disabled: false,
+  //         options: [{name: "左上", value: 1}, {name: "左下", value: 2}, {name: "右上", value: 3}, {
+  //           name: "右下",
+  //           value: 4
+  //         }, {name: "中央", value: 5},],
+  //         optionLabel: "name",
+  //         optionValue: "value",
+  //         placeholder: "サロン選択",
+  //         appendTo: "body",
+  //         props: ["placeholder", "required", "disabled", "options", "optionLabel", "optionValue", "appendTo"],
+  //         classes: ["flex-column", "column-2-space", "relative"],
+  //       },
+  //     ],
+  //   },
+  // ],
 ]
 

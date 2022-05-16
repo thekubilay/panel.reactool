@@ -6,7 +6,7 @@ import {ProjectMapSettings} from "@/types/MapSettings";
 import {MapPlace} from "@/types/MapPlace"
 import {MapCategory} from "@/types/MapCategory"
 import {PlanContent, PlanField} from "@/types/Plans";
-import {GeneralPlan} from "@/types/GeneralPlan";
+import {GeneralPlan, GeneralPlanSetting} from "@/types/GeneralPlan";
 import {Building} from "@/types/Building";
 import {Vista} from "@/types/Vista";
 import {BuildingVr} from "@/types/BuildingVr";
@@ -15,6 +15,7 @@ import {RoomVr} from "@/types/RoomVr";
 import {ProjectPermission} from "@/types/ProjectPermission";
 import {ProjectCalendar} from "@/types/Calendar";
 import {RoomVrVendor} from "@/types/RoomVrVendor";
+import {LoanSetting} from "@/types/LoanSetting";
 
 interface Items {
   salon_view: boolean,
@@ -33,9 +34,12 @@ interface Items {
   logo_width: string | null,
   logo_height: null,
   logo_place: number,
+  tab_logo_view: boolean,
+  tab_logo_text: string,
   routes: Routes[],
   gallery: Gallery[],
   links: Links[],
+  loan_settings: LoanSetting,
   document_folders: DocumentFolder[],
   documents: Document[],
   map_settings: ProjectMapSettings
@@ -44,6 +48,7 @@ interface Items {
   plan_fields: PlanField[],
   plan_contents: PlanContent[],
   general_plans: GeneralPlan[],
+  general_plan_settings: GeneralPlanSetting,
   building: Building,
   building_vr: BuildingVr,
   vista_simulator: Vista,

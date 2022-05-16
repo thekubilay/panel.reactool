@@ -1,9 +1,9 @@
 from rest_framework import serializers
 from projects.models import (Project, Permission, ApiToken, PRoute, Calendar, CalendarEvent, Role)
-from sumaipad.routes.serializers import (PlanFieldSerializer, PlanContentSerializer,
+from sumaipad.routes.serializers import (PlanFieldSerializer, PlanContentSerializer, LoanSettingSerializer,
                                          BuildingSerializer, GallerySerializer, RoomVrVendorSerializer,
                                          DocumentFoldersSerializer, ColorSimulatorRoomSerializer, MapCategorySerializer,
-                                         MapSettingSerializer, GeneralPlanSerializer,
+                                         MapSettingSerializer, GeneralPlanSerializer, GeneralPlanSettingSerializer,
                                          BuildingVrSerializer, RoomVrSerializer, BuildingBankTypeSerializer,
                                          VistaSimulatorSerializer, LinkSerializer, DocumentsSerializer)
 
@@ -25,7 +25,7 @@ class ProjectForSalonSerializer(serializers.ModelSerializer):
     model = Project
     depth = 1
     fields = ("id", "order_id", "archive", "legacy", "gallery", "name", "logo", "logo_width", "logo_height",
-              "logo_place")
+              "logo_place", "tab_logo_view", "tab_logo_text")
 
 
 class ProjectPermissionSerializer(serializers.ModelSerializer):
@@ -83,6 +83,7 @@ class ProjectDetailsSerializer(serializers.ModelSerializer):
   documents = DocumentsSerializer(many=True, required=False)
   document_folders = DocumentFoldersSerializer(many=True, required=False)
   general_plans = GeneralPlanSerializer(many=True, required=False)
+  general_plan_settings = GeneralPlanSettingSerializer(required=False)
   building = BuildingSerializer(required=False)
   vista_simulator = VistaSimulatorSerializer(required=False)
   building_vr = BuildingVrSerializer(required=False)
@@ -92,6 +93,7 @@ class ProjectDetailsSerializer(serializers.ModelSerializer):
   permissions = ProjectPermissionSerializer(many=True, required=False)
   api_tokens = ProjectApiTokenSerializer(many=True, required=False)
   calendar = CalendarSerializer(required=False)
+  loan_settings = LoanSettingSerializer(required=False)
   bank_types = BuildingBankTypeSerializer(many=True, required=False)
 
   class Meta:

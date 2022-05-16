@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts" setup>
-import {onMounted, PropType, ref, watch} from "vue";
+import {nextTick, onMounted, PropType, ref, watch} from "vue";
 import Icon from "@/components/icons/Icon.vue";
 
 const props = defineProps({
@@ -37,6 +37,7 @@ function initImage(time: number = 50) {
 }
 
 onMounted((): void => {
+  nextTick()
   initImage()
 })
 

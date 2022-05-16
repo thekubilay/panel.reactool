@@ -193,10 +193,25 @@ class GeneralPlan(models.Model):
     super().save(*args, **kwargs)
 
 
+class GeneralPlanSetting(models.Model):
+  project = models.OneToOneField(Project, on_delete=models.CASCADE, related_name="general_plan_settings")
+  position = models.IntegerField(null=True, default=1)
+
+  def __str__(self):
+    return self.project.name
+
+  def save(self, *args, **kwargs):
+    new_id = random.randint(100000000, 999999999)
+    if not GeneralPlanSetting.objects.filter(id=self.id).exists():
+      self.id = new_id
+    super().save(*args, **kwargs)
+
+
 class ColorSimulatorRoom(models.Model):
   project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="color_simulator_rooms")
   order_id = models.IntegerField(null=True, blank=False)
   name = models.CharField(max_length=255, null=True, blank=False)
+  option_context = models.CharField(max_length=255, null=True, blank=True)
   image = models.ImageField(null=True, blank=False, upload_to=makeDynamicBaseSimImagePath, default=None)
   thumbnail = ResizedImageField(size=[200, 200], null=True, blank=False, default=None,
                                 upload_to=makeDynamicBaseSimImagePath)
@@ -341,6 +356,23 @@ class BuildingParkingFee(models.Model):
     super().save(*args, **kwargs)
 
 
+class LoanSetting(models.Model):
+  project = models.OneToOneField(Project, on_delete=models.CASCADE, related_name="loan_settings")
+  price = models.CharField(max_length=255, null=True, default=10)
+  interest_rate = models.CharField(max_length=255, null=True, default=10)
+  interest_rate_max = models.CharField(max_length=255, null=True, default=10)
+  deposit = models.CharField(max_length=255, null=True, default=10)
+  deposit_max = models.CharField(max_length=255, null=True, default=10)
+
+  def __str__(self):
+    return self.project.name
+
+  def save(self, *args, **kwargs):
+    new_id = random.randint(100000000, 999999999)
+    if not LoanSetting.objects.filter(id=self.id).exists():
+      self.id = new_id
+    super().save(*args, **kwargs)
+
 class BuildingBankType(models.Model):
   building = models.ForeignKey(Building, on_delete=models.CASCADE, related_name="bank_types")
   order_id = models.IntegerField(null=True, blank=False)
@@ -398,7 +430,7 @@ class BuildingFloorRoom(models.Model):
 
   def __str__(self):
     if self.number is not None:
-      return self.number+""
+      return self.number + ""
     else:
       return "no_room_context"
 

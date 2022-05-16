@@ -28,6 +28,30 @@ export const form: Form[][] = [
       elements: [ // columns
         { // columns in row
           component: null,
+          name: "Textarea",
+          db_column_name: "option_context",
+          type: "text",
+          model: null,
+          label: "オプション内容",
+          hint:null,
+          placeholder: "〇〇オプション",
+          required: false,
+          autoResize: false,
+          rows: "40",
+          cols: "30",
+          id: "option_context_input",
+          rules: [],
+          disabled: false,
+          props: ["placeholder", "required", "disabled", "autoResize"],
+          classes: ["flex-column", "column-1"],
+        },
+      ],
+    },
+    { // form row
+      classes: ["flex"],
+      elements: [ // columns
+        { // columns in row
+          component: null,
           name: "FileInput",
           db_column_name: "image",
           type: "text",

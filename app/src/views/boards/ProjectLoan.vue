@@ -6,6 +6,8 @@
       <div class="part-wrap">
         <Button type="button" class="submit-button" icon="pi pi-plus" icon-pos="left" label="金利を追加"
                 @click="create()"/>
+        <Button type="button" class="submit-button icon-button" icon="pi pi-cog" icon-pos="left"
+                @click="openLoanSettings(project.loan_settings)"/>
       </div>
     </BarTool>
 
@@ -43,7 +45,7 @@
                  close-after
                  topProgress
                  :progress="progress"
-                 :form="form"
+                 :form="reform"
                  :data="data"
                  :remove="rm"
                  :query="{building:project.building.id}"
@@ -72,6 +74,7 @@ import BarTool from "@/components/bars/BarTool.vue";
 
 import {ProjectRoutes} from "@/types/Routes";
 import {form} from "@/components/form/templates/FormBuildingBankTypes";
+import {form as FormLoanSettings} from "@/components/form/templates/FormLoanSettings";
 import useFormRequestBuilder from "@/helpers/useFormRequestBuilder";
 import useHelpers from "@/common/useHelpers";
 import useStore from "@/helpers/useStore";
@@ -80,6 +83,8 @@ import {reactive, ref, watch} from "vue";
 import useRightClickHandler from "@/helpers/useRightClickHandler";
 import APIexecutor from "@/services/APIexecutor";
 import {LoanBankType} from "@/types/LoanBankType";
+import {LoanSetting} from "@/types/LoanSetting";
+import {Form} from "@/types/Form";
 
 
 const {get, save} = APIexecutor()
@@ -91,17 +96,30 @@ const {payload, content, progress, project} = useStore()
 const rm = ref<boolean>(false)
 const loading = ref<boolean>(false)
 const bank_types = ref<LoanBankType[]>(project.value?.building.bank_types || [])
+const reform = ref<Form[][]>([])
 
 function create() {
+  reform.value = form
   rm.value = false
   useToggle({method: 'post', endpoints: ['app/bank_types', 'project_details/' + project.value?.id], state: "project"})
 }
 
 function open(element: ProjectRoutes) {
+  reform.value = form
   rm.value = true
   useToggle({
     method: 'patch',
     endpoints: ['app/bank_types/' + element.id, 'project_details/' + project.value?.id],
+    state: "project"
+  }, element)
+}
+
+function openLoanSettings(element: LoanSetting) {
+  reform.value = FormLoanSettings
+  rm.value = false
+  useToggle({
+    method: 'patch',
+    endpoints: ['app/loan_settings/' + element.id, 'project_details/' + project.value?.id],
     state: "project"
   }, element)
 }

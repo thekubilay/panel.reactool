@@ -53,7 +53,7 @@
 </template>
 
 <script lang="ts" setup>
-import {onMounted, PropType, ref, onBeforeUnmount, watch, computed, Prop} from "vue";
+import {onMounted, PropType, ref, onBeforeUnmount, watch, computed, Prop, nextTick} from "vue";
 import {Payload} from "@/types/Payload";
 import {Form} from "@/types/Form";
 import useInit from "./init"
@@ -113,6 +113,7 @@ const imported = ref<boolean>(false)
 const tab = ref<number>(0)
 
 onMounted(() => {
+  nextTick()
   tab.value = props.activeTab
   document.addEventListener("keydown", inner_scope_submit)
   if (props.activeTab === 0) {

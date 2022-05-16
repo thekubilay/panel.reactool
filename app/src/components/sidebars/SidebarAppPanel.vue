@@ -2,7 +2,7 @@
   <div id="sidebar_app">
     <nav>
       <div class="ctr2 overflow-y">
-        <div class="part part1" :style="{height:salonPartHeightClass}">
+        <div v-if="user.is_superuser" class="part part1" :style="{height:salonPartHeightClass}">
           <div @click="salonPart=!salonPart" class="header pointer">
             サロン
             <i style="top:1px;" :class="'pi pi-angle-'+ (salonPart ? 'up' : 'down')"></i>
@@ -29,9 +29,8 @@
             <div v-if="projectPart" class="body custom-sb custom-sb-invert">
               <router-link v-for="project in projects"
                            :key="project.id"
-                           @click.native="content=true"
                            :to="{name:routeFinder(project.id, route.name+''), params:{cid:route.params.cid, dynid:project.id}}"
-                           class="nav-item flex align-center"
+                           class="p-nav-item nav-item flex align-center"
                            active-class="active">
                 <span class="color block" :style="{backgroundColor:setColorById(project.id)}"></span>
                 <div>{{ project.name.replaceAll("<br>", "") }}</div>
@@ -50,16 +49,15 @@
 import useStore from "@/helpers/useStore";
 import useUtils from "@/common/useUtils";
 import {useRoute} from "vue-router";
-import {computed, ref} from "vue";
-import Icon from "@/components/icons/Icon.vue";
+import {computed, nextTick, onMounted, ref} from "vue";
 
 
-const {salons, projects, project, content} = useStore()
+const {user, salons, projects, project, content} = useStore()
 const {setColorById, groupBy} = useUtils()
 const route = useRoute()
 const salonPart = ref<boolean>(false)
 const projectPart = ref<boolean>(true)
-
+const collection = ref<HTMLCollectionOf<HTMLElement>>()
 const salonPartHeightClass = computed<string>(() => {
   if (!salonPart.value) return "40px"
   else if (salonPart.value && !projectPart.value) return "auto"
@@ -76,6 +74,10 @@ const routeFinder = (id: number, rn: string): string => {
   return "ProjectPlaces"
 }
 
+onMounted(() => {
+  nextTick()
+  collection.value = document.getElementsByClassName("nav-item") as HTMLCollectionOf<HTMLElement>
+})
 
 </script>
 

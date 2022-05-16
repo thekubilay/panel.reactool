@@ -2,8 +2,8 @@ from rest_framework import serializers
 from sumaipad.models import (ColorSimulatorRoom, ColorSimulatorRoomPart,
                              ColorSimulatorRoomPartItem, PlanContent, PlanField,
                              VistaSimulator, VistaSimulatorContent, MapPlace, MapPlaceImage, Building, BuildingFloor,
-                             BuildingFloorRoom,
-                             Document, PlanContext, PlanFieldOption, GeneralPlan,
+                             BuildingFloorRoom, LoanSetting,
+                             Document, PlanContext, PlanFieldOption, GeneralPlan, GeneralPlanSetting,
                              RoomVr, RoomVrFloor, MapSetting, RoomVrNextRoom,
                              BuildingVr, BuildingVrDirection, BuildingVrDirectionImage,
                              DocumentFolder, Link, Gallery, BuildingBankType, MapCategory,
@@ -54,6 +54,18 @@ class PlanContentSerializer(serializers.ModelSerializer):
 class GeneralPlanSerializer(serializers.ModelSerializer):
   class Meta:
     model = GeneralPlan
+    fields = "__all__"
+
+
+class GeneralPlanSettingSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = GeneralPlanSetting
+    fields = "__all__"
+
+
+class LoanSettingSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = LoanSetting
     fields = "__all__"
 
 

@@ -21,12 +21,14 @@ router.register(r"plan_contexts", views.PlanContextViewSet, basename="app_plan_c
 router.register(r"plan_field_options", views.PlanFieldOptionViewSet, basename="app_plan_field_options")
 
 router.register(r"general_plans", views.GeneralPlanViewSet, basename="app_general_plans")
+router.register(r"general_plan_settings", views.GeneralPlanSettingViewSet, basename="app_general_plan_settings")
 
 router.register(r"building", views.BuildingViewSet, basename="app_building")
 router.register(r"building_floors", views.BuildingFloorViewSet, basename="app_building_floors")
 router.register(r"building_floor_rooms", views.BuildingFloorRoomViewSet, basename="app_building_floor_rooms")
 
 
+router.register(r"loan_settings", views.LoanSettingViewSet, basename="app_loan_settings")
 router.register(r"bank_types", views.LoanBankTypeViewSet, basename="app_building_bank_types")
 router.register(r"parking_fees", views.ParkingFeeViewSet, basename="app_building_parking_fees")
 

@@ -36,6 +36,8 @@ class Project(models.Model):
   pin = models.FileField(null=True, blank=False, upload_to=makeDynamicPinImagePath)
   pin_width = models.CharField(null=True, blank=False, max_length=255, default="25")
   pin_height = models.CharField(null=True, blank=False, max_length=255, default="25")
+  tab_logo_view = models.BooleanField(default=True)
+  tab_logo_text = models.CharField(null=True, blank=False, max_length=255, default="ホーム")
   logo = models.FileField(null=True, blank=False, upload_to=makeDynamicLogoImagePath)
   logo_width = models.CharField(null=True, blank=False, max_length=255, default="200px")
   logo_height = models.CharField(null=True, blank=False, max_length=255, default="auto")

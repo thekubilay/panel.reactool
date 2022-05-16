@@ -293,7 +293,9 @@ watch(() => activeTab.value, val => {
       archive: project.value?.archive,
       token_on: project.value?.token_on,
       salon_view: project.value?.salon_view,
-      legacy: project.value?.legacy
+      legacy: project.value?.legacy,
+      tab_logo_view: project.value?.tab_logo_view,
+      tab_logo_text: project.value?.tab_logo_text,
     }
   } else if (val === 1) {
     images.value = []
@@ -302,6 +304,8 @@ watch(() => activeTab.value, val => {
       salon_view: project.value?.salon_view,
       archive: project.value?.archive,
       token_on: project.value?.token_on,
+      tab_logo_view: project.value?.tab_logo_view,
+      tab_logo_text: project.value?.tab_logo_text,
     }
   } else if (val === 2) {
     query.value = {
@@ -312,7 +316,9 @@ watch(() => activeTab.value, val => {
       archive: project.value?.archive,
       token_on: project.value?.token_on,
       salon_view: project.value?.salon_view,
-      legacy: project.value?.legacy
+      legacy: project.value?.legacy,
+      tab_logo_view: project.value?.tab_logo_view,
+      tab_logo_text: project.value?.tab_logo_text,
     }
     images.value = project.value?.pin ? [{image: project.value.pin}] : []
     containerId.value = "pin_input"
@@ -326,6 +332,7 @@ watch(() => activeTab.value, val => {
       salon_view: project.value?.salon_view,
       legacy: project.value?.legacy
     }
+
     images.value = project.value?.logo ? [{image: project.value.logo}] : []
     containerId.value = "logo_input"
   }

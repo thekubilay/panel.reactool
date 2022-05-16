@@ -9,18 +9,18 @@ from sumaipad.models import (PlanField, PlanContent, PlanContext, PlanFieldOptio
                              Document,
                              BuildingFloor, BuildingFloorRoom, Link, Gallery, BuildingParkingFee, BuildingBankType,
                              VistaSimulatorContent, BuildingVr, BuildingVrDirection, BuildingVrDirectionImage,
-                             DocumentFolder, RoomVrNextRoom,
+                             DocumentFolder, RoomVrNextRoom, GeneralPlanSetting, LoanSetting,
                              MapCategory, RoomVr, RoomVrFloor, PlanMenu, MapSetting, RoomVrVendor,
                              Slideshow, Building)
 
 from sumaipad.routes.serializers import (PlanFieldSerializer, PlanContentSerializer, PlanContextSerializer,
                                          MapPlaceSerializer, BuildingFloorSerializer, BuildingFloorRoomSerializer,
                                          DocumentsSerializer, BuildingVrSerializer, BuildingVrDirectionSerializer,
-                                         BuildingVrDirectionImageSerializer,
+                                         BuildingVrDirectionImageSerializer, LoanSettingSerializer,
                                          DocumentFoldersSerializer, MapCategorySerializer, MapSettingSerializer,
                                          GallerySerializer, PlanFieldOptionSerializer,
                                          VistaSimulatorSerializer, MapPlaceImageSerializer,
-                                         LinkSerializer, RoomVrVendorSerializer,
+                                         LinkSerializer, RoomVrVendorSerializer, GeneralPlanSettingSerializer,
                                          ColorSimulatorRoomSerializer, ColorSimulatorRoomPartSerializer,
                                          ColorSimulatorRoomPartItemSerializer,
                                          RoomVrSerializer, RoomVrFloorSerializer, GeneralPlanSerializer,
@@ -336,6 +336,34 @@ class GeneralPlanViewSet(viewsets.ModelViewSet):
       return Response(serializer.data)
 
 
+class GeneralPlanSettingViewSet(viewsets.ModelViewSet):
+  queryset = GeneralPlanSetting.objects.all()
+  serializer_class = GeneralPlanSettingSerializer
+
+  def create(self, request, *args, **kwargs):
+    pass
+
+  def delete(self, request, *args, **kwargs):
+    pass
+
+  def list(self, request, *args, **kwargs):
+    pass
+
+
+class LoanSettingViewSet(viewsets.ModelViewSet):
+  queryset = LoanSetting.objects.all()
+  serializer_class = LoanSettingSerializer
+
+  def create(self, request, *args, **kwargs):
+    pass
+
+  def delete(self, request, *args, **kwargs):
+    pass
+
+  def list(self, request, *args, **kwargs):
+    pass
+
+
 class BuildingVrViewSet(viewsets.ModelViewSet):
   queryset = BuildingVr.objects.all()
   serializer_class = BuildingVrSerializer
@@ -511,6 +539,18 @@ class ColorSimulatorRoomViewSet(viewsets.ModelViewSet):
       serializer.is_valid(raise_exception=True)
       serializer.save()
       return Response(serializer.data)
+
+  def partial_update(self, request, *args, **kwargs):
+    if "option_context" not in request.data:
+      request.data._mutable = True
+      request.data["option_context"] = None
+
+    instance = self.queryset.get(pk=kwargs.get('pk'))
+    serializer = ColorSimulatorRoomSerializer(instance, data=request.data, partial=True)
+    serializer.is_valid(raise_exception=True)
+    serializer.save()
+
+    return Response(serializer.data)
 
 
 class ColorSimulatorRoomPartViewSet(viewsets.ModelViewSet):

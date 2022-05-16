@@ -85,6 +85,7 @@
       "_ButtonDropdown.js",
       "_useFormRequestBuilder.js",
       "node_modules/primevue/password/password.esm.js",
+      "_Spinner.js",
       "src/main.ts",
       "_FormUserUpdate.js",
       "_useUtils.js",
@@ -102,7 +103,7 @@
     "imports": [
       "_vendor.js",
       "src/main.ts",
-      "_useFormRequestBuilder.js",
+      "_Spinner.js",
       "_plugin-vue_export-helper.js"
     ],
     "dynamicImports": [
@@ -161,7 +162,6 @@
     "file": "chunks/useFormRequestBuilder.js",
     "imports": [
       "_vendor.js",
-      "_plugin-vue_export-helper.js",
       "src/main.ts"
     ],
     "css": [
@@ -176,6 +176,16 @@
   },
   "_useUtils.js": {
     "file": "chunks/useUtils.js"
+  },
+  "_Spinner.js": {
+    "file": "chunks/Spinner.js",
+    "imports": [
+      "_vendor.js",
+      "_plugin-vue_export-helper.js"
+    ],
+    "css": [
+      "assets/Spinner.css"
+    ]
   },
   "_menu.esm.js": {
     "file": "chunks/menu.esm.js",
@@ -213,8 +223,9 @@
       "_vendor.js",
       "_Icon.js",
       "src/main.ts",
-      "_useFormRequestBuilder.js",
+      "_Spinner.js",
       "_BarTool.js",
+      "_useFormRequestBuilder.js",
       "_FormQuery.js",
       "_DialogDelete.js",
       "_plugin-vue_export-helper.js"
@@ -258,6 +269,7 @@
       "_useUtils.js",
       "_overlayeventbus.esm.js",
       "_virtualscroller.esm.js",
+      "_Spinner.js",
       "_plugin-vue_export-helper.js"
     ]
   },
@@ -293,6 +305,7 @@
       "src/main.ts",
       "_overlayeventbus.esm.js",
       "_virtualscroller.esm.js",
+      "_Spinner.js",
       "_plugin-vue_export-helper.js"
     ]
   },
@@ -322,6 +335,7 @@
       "_useUtils.js",
       "_overlayeventbus.esm.js",
       "_virtualscroller.esm.js",
+      "_Spinner.js",
       "_plugin-vue_export-helper.js",
       "_rules.js"
     ]
@@ -346,6 +360,7 @@
       "_BarTool.js",
       "src/main.ts",
       "_FormRoute.js",
+      "_Spinner.js",
       "_plugin-vue_export-helper.js",
       "_rules.js"
     ]
@@ -369,6 +384,7 @@
       "src/main.ts",
       "_FormProjectPermission.js",
       "_useUtils.js",
+      "_Spinner.js",
       "_plugin-vue_export-helper.js",
       "_rules.js"
     ]
@@ -391,6 +407,7 @@
       "_DialogDelete.js",
       "_BarTool.js",
       "src/main.ts",
+      "_Spinner.js",
       "_overlayeventbus.esm.js",
       "_virtualscroller.esm.js",
       "_plugin-vue_export-helper.js"
@@ -420,10 +437,11 @@
       "src/main.ts",
       "_overlayeventbus.esm.js",
       "_virtualscroller.esm.js",
+      "_Spinner.js",
       "_plugin-vue_export-helper.js"
     ],
     "css": [
-      "assets/Tutorials.css"
+      "assets/Tutorials2.css"
     ]
   },
   "src/views/admin/TutorialImages.vue": {
@@ -441,6 +459,7 @@
       "src/main.ts",
       "_overlayeventbus.esm.js",
       "_virtualscroller.esm.js",
+      "_Spinner.js",
       "_plugin-vue_export-helper.js"
     ]
   },
@@ -459,6 +478,8 @@
     "src": "src/views/boards/Dashboard.vue",
     "isDynamicEntry": true,
     "imports": [
+      "_Spinner.js",
+      "src/main.ts",
       "_plugin-vue_export-helper.js",
       "_vendor.js"
     ],
@@ -504,7 +525,7 @@
       "_vendor.js"
     ],
     "css": [
-      "assets/Tutorials2.css"
+      "assets/Tutorials.css"
     ]
   },
   "src/views/boards/Salon.vue": {
@@ -522,6 +543,7 @@
       "_FormSalon.js",
       "_rules.js",
       "_FormSalonPlaces.js",
+      "_Spinner.js",
       "_plugin-vue_export-helper.js",
       "_menu.esm.js",
       "_overlayeventbus.esm.js",
@@ -556,6 +578,7 @@
       "src/main.ts",
       "_useFormRequestBuilder.js",
       "_vuedraggable.umd.js",
+      "_Spinner.js",
       "_FormQuery.js",
       "_Icon.js",
       "_ContextImagesThumbnailContainer.js",
@@ -572,6 +595,7 @@
       "_vuedraggable.umd.js",
       "_menu.esm.js",
       "_useFormRequestBuilder.js",
+      "_Spinner.js",
       "_Icon.js",
       "_DialogDelete.js",
       "_ContextImagesThumbnailContainer.js",
@@ -614,8 +638,9 @@
       "node_modules/primevue/dropdown/dropdown.esm.js",
       "_overlayeventbus.esm.js",
       "_virtualscroller.esm.js",
-      "_plugin-vue_export-helper.js",
       "_menu.esm.js",
+      "_Spinner.js",
+      "_plugin-vue_export-helper.js",
       "_Icon.js",
       "_rules.js"
     ],
@@ -637,7 +662,7 @@
     "imports": [
       "_vendor.js",
       "_FormQuery.js",
-      "_useFormRequestBuilder.js",
+      "_Spinner.js",
       "src/main.ts"
     ]
   },
@@ -652,6 +677,7 @@
       "_useFormRequestBuilder.js",
       "_FormQuery.js",
       "_DialogDelete.js",
+      "_Spinner.js",
       "_BarTool.js",
       "_FormRoute.js",
       "src/main.ts",
@@ -661,7 +687,7 @@
       "_rules.js"
     ],
     "css": [
-      "assets/ProjectRoutes.css"
+      "assets/ProjectLoan.css"
     ]
   },
   "src/views/boards/ProjectPermissions.vue": {
@@ -671,6 +697,7 @@
     "imports": [
       "_useFormRequestBuilder.js",
       "_FormQuery.js",
+      "_Spinner.js",
       "_FormProjectPermission.js",
       "src/main.ts",
       "_useUtils.js",
@@ -695,6 +722,7 @@
       "_BarTool.js",
       "_FormQuery.js",
       "_ContextImagesThumbnailContainer.js",
+      "_Spinner.js",
       "_Icon.js",
       "src/main.ts",
       "_useRightClickHandler.js",
@@ -716,8 +744,9 @@
       "_vuedraggable.umd.js",
       "_vendor.js",
       "_menu.esm.js",
-      "_useFormRequestBuilder.js",
+      "_Spinner.js",
       "_BarTool.js",
+      "_useFormRequestBuilder.js",
       "_FormQuery.js",
       "_ContextImagesThumbnailContainer.js",
       "src/main.ts",
@@ -741,6 +770,7 @@
       "_menu.esm.js",
       "_column.esm.js",
       "_useFormRequestBuilder.js",
+      "_Spinner.js",
       "_BarTool.js",
       "_Icon.js",
       "_useRightClickHandler.js",
@@ -766,6 +796,7 @@
       "_vendor.js",
       "_menu.esm.js",
       "_useFormRequestBuilder.js",
+      "_Spinner.js",
       "_BarTool.js",
       "_Icon.js",
       "src/main.ts",
@@ -788,6 +819,7 @@
       "_vuedraggable.umd.js",
       "_menu.esm.js",
       "_useFormRequestBuilder.js",
+      "_Spinner.js",
       "_BarTool.js",
       "_Icon.js",
       "_FormQuery.js",
@@ -815,6 +847,7 @@
       "_useFormRequestBuilder.js",
       "_FormQuery.js",
       "_DialogDelete.js",
+      "_Spinner.js",
       "_BarTool.js",
       "_Icon.js",
       "src/main.ts",
@@ -837,8 +870,9 @@
       "_vuedraggable.umd.js",
       "_vendor.js",
       "_menu.esm.js",
-      "_useFormRequestBuilder.js",
+      "_Spinner.js",
       "_BarTool.js",
+      "_useFormRequestBuilder.js",
       "_FormQuery.js",
       "_DialogDelete.js",
       "src/main.ts",
@@ -860,6 +894,7 @@
       "_menu.esm.js",
       "node_modules/primevue/dropdown/dropdown.esm.js",
       "_useFormRequestBuilder.js",
+      "_Spinner.js",
       "_BarTool.js",
       "_Icon.js",
       "src/main.ts",
@@ -885,6 +920,7 @@
       "node_modules/primevue/dropdown/dropdown.esm.js",
       "node_modules/primevue/slider/slider.esm.js",
       "_useFormRequestBuilder.js",
+      "_Spinner.js",
       "_BarTool.js",
       "_Icon.js",
       "_FormQuery.js",
@@ -928,6 +964,7 @@
       "_menu.esm.js",
       "_column.esm.js",
       "_BarTool.js",
+      "_Spinner.js",
       "_useFormRequestBuilder.js",
       "src/main.ts",
       "_useRightClickHandler.js",
@@ -951,10 +988,11 @@
     "isDynamicEntry": true,
     "imports": [
       "_vendor.js",
-      "_useFormRequestBuilder.js",
+      "_Spinner.js",
       "_BarTool.js",
       "_vuedraggable.umd.js",
       "_menu.esm.js",
+      "_useFormRequestBuilder.js",
       "_FormNested.js",
       "_FormQuery.js",
       "_ContextImagesThumbnailContainer.js",
@@ -979,6 +1017,7 @@
       "_useFormRequestBuilder.js",
       "_FormQuery.js",
       "_DialogDelete.js",
+      "_Spinner.js",
       "_BarTool.js",
       "src/main.ts",
       "_useRightClickHandler.js",
@@ -986,7 +1025,7 @@
       "_plugin-vue_export-helper.js"
     ],
     "css": [
-      "assets/ProjectRoutes.css"
+      "assets/ProjectLoan.css"
     ]
   },
   "src/views/boards/ProjectParkingFees.vue": {
@@ -1000,6 +1039,7 @@
       "_useFormRequestBuilder.js",
       "_FormQuery.js",
       "_DialogDelete.js",
+      "_Spinner.js",
       "_BarTool.js",
       "src/main.ts",
       "_useRightClickHandler.js",
@@ -1021,6 +1061,7 @@
       "_menu.esm.js",
       "_column.esm.js",
       "_useFormRequestBuilder.js",
+      "_Spinner.js",
       "_BarTool.js",
       "_FormQuery.js",
       "_ContextImagesThumbnailContainer.js",
@@ -1045,9 +1086,10 @@
     "imports": [
       "_vendor.js",
       "_menu.esm.js",
-      "_useFormRequestBuilder.js",
+      "_Spinner.js",
       "_BarTool.js",
       "_FormQuery.js",
+      "_useFormRequestBuilder.js",
       "_DialogDelete.js",
       "_ContextImagesThumbnailContainer.js",
       "_Icon.js",
@@ -1068,9 +1110,10 @@
       "_vendor.js",
       "_menu.esm.js",
       "node_modules/primevue/dropdown/dropdown.esm.js",
-      "_useFormRequestBuilder.js",
+      "_Spinner.js",
       "_BarTool.js",
       "_Icon.js",
+      "_useFormRequestBuilder.js",
       "src/main.ts",
       "_useUtils.js",
       "_useRightClickHandler.js",
@@ -1110,9 +1153,10 @@
       "_vuedraggable.umd.js",
       "_vendor.js",
       "_menu.esm.js",
-      "_useFormRequestBuilder.js",
+      "_Spinner.js",
       "_BarTool.js",
       "_FormQuery.js",
+      "_useFormRequestBuilder.js",
       "_DialogDelete.js",
       "_ContextImagesThumbnailContainer.js",
       "_Icon.js",
@@ -1139,6 +1183,7 @@
       "_DialogDelete.js",
       "src/main.ts",
       "_useUtils.js",
+      "_Spinner.js",
       "_overlayeventbus.esm.js",
       "_virtualscroller.esm.js",
       "_plugin-vue_export-helper.js"
