@@ -202,44 +202,44 @@ class ProjectDetailsViewSet(generics.RetrieveAPIView):
   serializer_class = ProjectDetailsSerializer
   permission_classes = [ReadOnly]
 
-  def retrieve(self, request, *args, **kwargs):
-    content = {"status": 200, "salon": None, "project": None}
-    token = self.request.query_params.get('token')
+  # def retrieve(self, request, *args, **kwargs):
+    # content = {"status": 200, "salon": None, "project": None}
+    # token = self.request.query_params.get('token')
+    #
+    # if self.request.user.is_anonymous:
+    #   if Project.objects.filter(id=self.kwargs['pk']).exists():
+    #     project = get_object_or_404(self.queryset, pk=self.kwargs['pk'])
+    #     permission_check = api_token_project_permission(project, token)
+    #
+    #     if permission_check:
+    #       serializer = ProjectDetailsSerializer(project)
+    #       content["project"] = serializer.data
+    #       if project.salon is not None:
+    #         projects = Project.objects.filter(salon=project.salon, archive=False, salon_view=True)
+    #         content["salon"] = []
+    #         for p in projects:
+    #           s = ProjectForSalonSerializer(p)
+    #           content["salon"].append(s.data)
+    #     else:
+    #       content["status"] = 401
+    #
+    #   # salon id
+    #   elif Salon.objects.filter(id=self.kwargs["pk"]).exists():
+    #     salon = get_object_or_404(Salon.objects.all(), pk=self.kwargs['pk'])
+    #     permission_check = api_token_project_permission(salon, token)
+    #
+    #     if permission_check:
+    #       serializer = SalonSerializer(salon)
+    #       content["salon"] = serializer.data
+    #     else:
+    #       content["status"] = 401
+    #
+    # else:
+    #   project = get_object_or_404(self.queryset, pk=self.kwargs['pk'])
+    #   serializer = ProjectDetailsSerializer(project)
+    #   return Response(serializer.data)
 
-    if self.request.user.is_anonymous:
-      if Project.objects.filter(id=self.kwargs['pk']).exists():
-        project = get_object_or_404(self.queryset, pk=self.kwargs['pk'])
-        permission_check = api_token_project_permission(project, token)
-
-        if permission_check:
-          serializer = ProjectDetailsSerializer(project)
-          content["project"] = serializer.data
-          if project.salon is not None:
-            projects = Project.objects.filter(salon=project.salon, archive=False, salon_view=True)
-            content["salon"] = []
-            for p in projects:
-              s = ProjectForSalonSerializer(p)
-              content["salon"].append(s.data)
-        else:
-          content["status"] = 401
-
-      # salon id
-      elif Salon.objects.filter(id=self.kwargs["pk"]).exists():
-        salon = get_object_or_404(Salon.objects.all(), pk=self.kwargs['pk'])
-        permission_check = api_token_project_permission(salon, token)
-
-        if permission_check:
-          serializer = SalonSerializer(salon)
-          content["salon"] = serializer.data
-        else:
-          content["status"] = 401
-
-    else:
-      project = get_object_or_404(self.queryset, pk=self.kwargs['pk'])
-      serializer = ProjectDetailsSerializer(project)
-      return Response(serializer.data)
-
-    return Response(content)
+    # return Response(content)
 
 
 class ProjectApiTokenViewSet(viewsets.ModelViewSet):
