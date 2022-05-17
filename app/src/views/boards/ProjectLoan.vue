@@ -39,7 +39,7 @@
       </draggable>
     </div>
 
-    <Dialog v-model="d" title="金利フォーム">
+    <Dialog v-model="d" title="ローンフォーム">
       <FormQuery v-model="d"
                  v-model:dr="dr"
                  close-after

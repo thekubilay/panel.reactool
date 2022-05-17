@@ -64,8 +64,10 @@ export default function () {
         if (query[key] || typeof query[key] === "boolean") {
           fd.append(key, query[key])
           if (key === "image") {
-            // if (!keys.includes("vista_simulator")) {
-              fd.append("thumbnail", query[key])
+            const name = new Date().toISOString()+"."+query[key].type.split("/")[1]
+            const thumbnail = new File([query[key]], name, {type: query[key].type});
+
+            fd.append("thumbnail", thumbnail)
             // }
             if (!keys.includes("building_floor")) {
               fd.append("type", query[key].type)
