@@ -12,7 +12,6 @@ ALLOWED_HOSTS = [
   "127.0.0.1",
   "test-panel.reactool.jp",
   "panel.reactool.jp",
-  "reservation.reactool.jp",
   "panel-env.eba-wvnskzvw.ap-northeast-1.elasticbeanstalk.com",
   "panel-dev-env.ap-northeast-1.elasticbeanstalk.com",
   "bucket-reactool-dev.s3.amazonaws.com",
@@ -22,6 +21,7 @@ CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = [
   "http://localhost:3000",
   "https://test.reactool.jp",
+  "https://www.test.reactool.jp",
   "https://testv1-05.d1vfpwmx5ce0v3.amplifyapp.com",
   "https://app.reactool.jp",
   "https://vr.reactool.jp",
