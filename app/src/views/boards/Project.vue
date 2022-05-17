@@ -84,14 +84,12 @@
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 import BarTool from "@/components/bars/BarTool.vue";
-import Dialog from "@/components/dialog/Dialog.vue";
 import ButtonDropdown from "@/components/buttons/ButtonDropdown.vue";
 import FormQuery from "@/components/form/FormQuery.vue";
 import ContextImagesThumbnailContainer from "@/components/contexts/ContextImagesThumbnailContainer.vue";
 import FormNested from "@/components/form/FormNested.vue";
 
-
-import {onMounted, nextTick, ref, watch} from "vue";
+import {onMounted, nextTick, ref, watch, defineAsyncComponent} from "vue";
 import useFormRequestBuilder from "@/helpers/useFormRequestBuilder";
 import useStore from "@/helpers/useStore";
 import useHelpers from "@/common/useHelpers";
@@ -103,6 +101,7 @@ import useUtils from "@/common/useUtils";
 import APIexecutor from "@/services/APIexecutor";
 import {ProjectRoutes, Routes} from "@/types/Routes";
 
+const Dialog = defineAsyncComponent(() => import("@/components/dialog/Dialog.vue"))
 const {get} = APIexecutor()
 const {submit, remove} = useFormRequestBuilder()
 const {payload, user, project, progress, onload,} = useStore()

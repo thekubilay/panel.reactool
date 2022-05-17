@@ -7,6 +7,7 @@
         <router-link :to="{name:'BoardTutorials', params:{cid:user.company}}">ツートーリアルを見る！</router-link>
       </p>
     </NotifyTopBar>
+
     <BarApp class="bar-board container flex align-center"/>
 
     <main class="flex column-1" :class="{'notify-on': notifyTopBar}">
@@ -23,11 +24,12 @@
 </template>
 
 <script lang="ts" setup>
-import BarApp from "@/components/bars/BarAppPanel.vue";
-import SidebarApp from "@/components/sidebars/SidebarAppPanel.vue";
-import NotifyTopBar from "@/components/notifications/NotifyTopBar.vue";
 import useStore from "@/helpers/useStore";
+import {defineAsyncComponent} from "vue";
 
+const BarApp = defineAsyncComponent(() => import("@/components/bars/BarAppPanel.vue"))
+const SidebarApp = defineAsyncComponent(() => import("@/components/sidebars/SidebarAppPanel.vue"))
+const NotifyTopBar = defineAsyncComponent(() => import("@/components/notifications/NotifyTopBar.vue"))
 const {notifyTopBar,user} = useStore()
 
 </script>

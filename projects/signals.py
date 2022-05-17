@@ -2,7 +2,8 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from projects.models import (Project, Permission, PRoute, Calendar)
 from routes.models import Route as MainRoute
-from sumaipad.models import (Building, VistaSimulator, MapSetting, BuildingVr, BuildingVrDirection)
+from sumaipad.models import (Building, VistaSimulator, MapSetting, BuildingVr, BuildingVrDirection, LoanSetting,
+                             GeneralPlanSetting)
 
 
 @receiver(post_save, sender=Project)
@@ -53,10 +54,22 @@ def createVistaSimulator(sender, instance, created, **kwargs):
 @receiver(post_save, sender=Project)
 def createMapSetting(sender, instance, created, **kwargs):
   if created:
-    MapSetting.objects.create(project=instance)\
+    MapSetting.objects.create(project=instance)
 
 
 @receiver(post_save, sender=Project)
 def createCalendar(sender, instance, created, **kwargs):
   if created:
     Calendar.objects.create(project=instance)
+
+
+@receiver(post_save, sender=Project)
+def createLoanSetting(sender, instance, created, **kwargs):
+  if created:
+    LoanSetting.objects.create(project=instance)
+
+
+@receiver(post_save, sender=Project)
+def createGeneralPlanSetting(sender, instance, created, **kwargs):
+  if created:
+    GeneralPlanSetting.objects.create(project=instance)

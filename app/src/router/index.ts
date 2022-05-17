@@ -39,7 +39,7 @@ router.beforeEach(async (to, from) => {
   const {get} = APIexecutor()
   if (to.name === "Entry") {
     return {name: "Dashboard", params: {cid: user.value?.company}}
-  } else if (to.params.dynid !== from.params.dynid) {
+  } else if (to.params.dynid !== from.params.dynid && !to.path.match("admin")) {
     content.value = true
     if (to.params.dynid !== from.params.dynid) {
       await isDynidExists(to.params.dynid as string, salons.value, projects.value, get as Function).then(() => {})
