@@ -82,12 +82,15 @@ import draggable from "vuedraggable";
 import Menu from "primevue/menu";
 import Button from "primevue/button";
 import Dropdown from "primevue/dropdown";
+import Dialog from "@/components/dialog/Dialog.vue";
+import BarTool from "@/components/bars/BarTool.vue";
+import FormQuery from "@/components/form/FormQuery.vue";
 import ContextImagesThumbnailContainer from "@/components/contexts/ContextImagesThumbnailContainer.vue";
 import Spinner from "@/components/loading/Spinner.vue";
 import Icon from "@/components/icons/Icon.vue";
 
 
-import {defineAsyncComponent, onMounted, ref, watch} from "vue";
+import {onMounted, ref, watch} from "vue";
 import useFormRequestBuilder from "@/helpers/useFormRequestBuilder";
 import useStore from "@/helpers/useStore";
 import useHelpers from "@/common/useHelpers";
@@ -100,10 +103,6 @@ import {form as FormProjectMapSettings} from "@/components/form/templates/FormPr
 import {Form} from "@/types/Form";
 import useUtils from "@/common/useUtils";
 
-
-const Dialog = defineAsyncComponent(() => import("@/components/dialog/Dialog.vue"))
-const BarTool = defineAsyncComponent(() => import("@/components/bars/BarTool.vue"))
-const FormQuery = defineAsyncComponent(() => import("@/components/form/FormQuery.vue"))
 
 const route = useRoute()
 const router = useRouter()
