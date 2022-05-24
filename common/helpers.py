@@ -1,5 +1,5 @@
 import requests
-import cv2
+# import cv2
 import mojimoji
 
 from decouple import config
@@ -41,20 +41,20 @@ def get_image_px_sizes(image_path):
     'channel': None
   }
 
-  try:
-    print(f'https://{AWS_S3_CUSTOM_DOMAIN}/media/' + str(image_path), "kubilay")
-    img = Image.open(requests.get(f'https://{AWS_S3_CUSTOM_DOMAIN}/media/' + str(image_path), stream=True).raw)
-    print("kubilay")
-    if DEBUG:
-      img = Image.open(requests.get("http://127.0.0.1:8000/media/" + str(image_path), stream=True).raw)
-
-    w, h = img.size
-    context = {
-      'width': w,
-      'height': h,
-    }
-  except cv2.error as e:
-    print(e, "cv error")
+  # try:
+  #   print(f'https://{AWS_S3_CUSTOM_DOMAIN}/media/' + str(image_path), "kubilay")
+  #   img = Image.open(requests.get(f'https://{AWS_S3_CUSTOM_DOMAIN}/media/' + str(image_path), stream=True).raw)
+  #   print("kubilay")
+  #   if DEBUG:
+  #     img = Image.open(requests.get("http://127.0.0.1:8000/media/" + str(image_path), stream=True).raw)
+  #
+  #   w, h = img.size
+  #   context = {
+  #     'width': w,
+  #     'height': h,
+  #   }
+  # except cv2.error as e:
+  #   print(e, "cv error")
 
   return context
 
