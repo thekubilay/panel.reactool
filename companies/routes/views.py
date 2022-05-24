@@ -47,31 +47,31 @@ class CompanyViewSet(viewsets.ModelViewSet):
       validated = ProjectsForCompanySerializer(project).data
       validated["company"] = int(pk)
       project_arr.append(validated)
-      overview["projects"].append({
-        "id": project.id,
-        "name": project.name,
-        "sales": 0,
-        "rooms": 0,
-        "completed": 0,
-        "uncompleted": 0,
-      })
-      try:
-        rooms = BuildingFloorRoom.objects.filter(building_floor__building__project=project)
-        overview["total_rooms"] += len(rooms)
-        for room in rooms:
-          overview["projects"][i]["rooms"] += 1
-          if room.status == "完売済":
-            overview["projects"][i]["completed"] += 1
-            overview["total_completed"] += 1
-          if room is not None and room.price and room.status == "完売済":
-            overview["projects"][i]["sales"] += int(room.price)
-            overview["total_sales"] += int(room.price)
-          if room.status != "完売済":
-            overview["projects"][i]["uncompleted"] += 1
-            overview["total_uncompleted"] += 1
-
-      except Building.DoesNotExist:
-        pass
+      # overview["projects"].append({
+      #   "id": project.id,
+      #   "name": project.name,
+      #   "sales": 0,
+      #   "rooms": 0,
+      #   "completed": 0,
+      #   "uncompleted": 0,
+      # })
+      # try:
+      #   rooms = BuildingFloorRoom.objects.filter(building_floor__building__project=project)
+      #   overview["total_rooms"] += len(rooms)
+      #   for room in rooms:
+      #     overview["projects"][i]["rooms"] += 1
+      #     if room.status == "完売済":
+      #       overview["projects"][i]["completed"] += 1
+      #       overview["total_completed"] += 1
+      #     if room is not None and room.price and room.status == "完売済":
+      #       overview["projects"][i]["sales"] += int(room.price)
+      #       overview["total_sales"] += int(room.price)
+      #     if room.status != "完売済":
+      #       overview["projects"][i]["uncompleted"] += 1
+      #       overview["total_uncompleted"] += 1
+      #
+      # except Building.DoesNotExist:
+      #   pass
 
     data = {
       "id": CompanySerializer(companies).data["id"],
