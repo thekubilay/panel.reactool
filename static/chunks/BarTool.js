@@ -1,1 +1,1 @@
-import{a,b as n,q as o,K as r,H as l}from"./vendor.js";const c=a({props:{height:String},setup(e){return(t,s)=>(n(),o("div",{style:l({height:e.height}),class:"toolbar flex container align-center"},[r(t.$slots,"default")],4))}});export{c as default};
+import{a,b as n,q as o,K as r,H as s}from"./vendor.js";const _=a({props:{height:String},setup(e){return(t,l)=>(n(),o("div",{style:s({height:e.height}),class:"toolbar flex container align-center"},[r(t.$slots,"default")],4))}});export{_};
