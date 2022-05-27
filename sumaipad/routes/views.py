@@ -294,11 +294,11 @@ class PlanContextViewSet(viewsets.ModelViewSet):
     serializer.is_valid(raise_exception=True)
     context = serializer.save()
 
-    if context.plan_field.name == "距離画像":
-      image_data = calculate_ppm(context.image)
-      context.ppm = image_data["ppm"]
-
-      context.save()
+    # if context.plan_field.name == "距離画像":
+    #   image_data = calculate_ppm(context.image)
+    #   context.ppm = image_data["ppm"]
+    #
+    #   context.save()
 
     return Response(serializer.data)
 
@@ -307,10 +307,10 @@ class PlanContextViewSet(viewsets.ModelViewSet):
     serializer = PlanContextSerializer(instance, data=request.data)
     serializer.is_valid(raise_exception=True)
     context = serializer.save()
-    if context.plan_field.name == "距離画像":
-      image_data = calculate_ppm(context.image)
-      context.ppm = image_data["ppm"]
-      context.save()
+    # if context.plan_field.name == "距離画像":
+    #   image_data = calculate_ppm(context.image)
+    #   context.ppm = image_data["ppm"]
+    #   context.save()
 
     return Response(serializer.data)
 
