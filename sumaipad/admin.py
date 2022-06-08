@@ -1,11 +1,13 @@
 from django.contrib import admin
 from sumaipad.models import (ColorSimulatorRoom, ColorSimulatorRoomPart, ColorSimulatorRoomPartItem, MapSetting,
                              PlanContext, BuildingVr, GeneralPlan, GeneralPlanSetting, LoanSetting,
-                             BuildingVrDirection, BuildingVrDirectionImage)
+                             BuildingVrDirection, BuildingVrDirectionImage, VistaSimulator, VistaSimulatorContent)
 
 admin.site.register(ColorSimulatorRoom)
 admin.site.register(ColorSimulatorRoomPart)
 admin.site.register(ColorSimulatorRoomPartItem)
+admin.site.register(VistaSimulator)
+admin.site.register(VistaSimulatorContent)
 admin.site.register(MapSetting)
 admin.site.register(PlanContext)
 admin.site.register(BuildingVr)
