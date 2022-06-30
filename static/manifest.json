@@ -691,7 +691,7 @@
       "_rules.js"
     ],
     "css": [
-      "assets/ProjectLoan.css"
+      "assets/ProjectRoutes.css"
     ]
   },
   "src/views/boards/ProjectPermissions.vue": {
@@ -1042,7 +1042,7 @@
       "_plugin-vue_export-helper.js"
     ],
     "css": [
-      "assets/ProjectLoan.css"
+      "assets/ProjectRoutes.css"
     ]
   },
   "src/views/boards/ProjectParkingFees.vue": {
