@@ -23,7 +23,7 @@
           <div class="sheet-cell img flex align-center"><i class="pi pi-file"></i></div>
           <div class="sheet-cell value flex align-center">種類</div>
           <div class="sheet-cell value flex align-center">HTMLコード</div>
-          <div class="sheet-cell value sheet-cell-long flex align-center">画像名</div>
+<!--          <div class="sheet-cell value sheet-cell-long flex align-center">画像名</div>-->
         </div>
       </div>
       <draggable tag="div"
@@ -43,9 +43,9 @@
             </div>
             <div class="sheet-cell value flex align-center"><span class="text block">{{ element.kind }}</span></div>
             <div class="sheet-cell value flex align-center"><span class="text block">{{ element.html_code }}</span></div>
-            <div class="sheet-cell value sheet-cell-long flex align-center">
-              <span class="text block">{{ element.image.split("/", 6)[5].split(".")[0] }}</span>
-            </div>
+<!--            <div class="sheet-cell value sheet-cell-long flex align-center">-->
+<!--              <span class="text block">{{ element.image.split("/", 6)[5].split(".")[0] }}</span>-->
+<!--            </div>-->
           </div>
         </template>
       </draggable>
