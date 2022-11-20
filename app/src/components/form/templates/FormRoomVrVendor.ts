@@ -1,0 +1,88 @@
+import {Form} from "@/types/Form";
+
+export const form: Form[][] = [
+  [
+    { // form row
+      classes: ["flex", "justify-space-between"],
+      elements: [ // columns
+        { // columns in row
+          component: null,
+          name: "InputText",
+          db_column_name: "title",
+          type: "text",
+          model: null,
+          label: "タイトル",
+          hint: null,
+          placeholder: "リビングルーム",
+          required: true,
+          id: "title_input",
+          rules: [],
+          disabled: false,
+          props: ["placeholder", "required", "disabled"],
+          classes: ["flex-column", "column-2-space"],
+        },
+        { // columns in row
+          component: null,
+          name: "InputText",
+          db_column_name: "sub_title",
+          type: "text",
+          model: null,
+          label: "　サブタイトル",
+          hint: null,
+          placeholder: "〇〇コーナー",
+          required: false,
+          id: "sub_title_input",
+          rules: [],
+          disabled: false,
+          props: ["placeholder", "required", "disabled"],
+          classes: ["flex-column", "column-2-space"],
+        },
+      ],
+    },
+    { // form row
+      classes: ["flex", "justify-space-between"],
+      elements: [ // columns
+        { // columns in row
+          component: null,
+          name: "InputText",
+          db_column_name: "url",
+          type: "text",
+          model: null,
+          label: "URL",
+          hint: null,
+          placeholder: "https://marumaru.com/vendor/vr_url",
+          required: true,
+          id: "url_input",
+          rules: [],
+          disabled: false,
+          props: ["placeholder", "required", "disabled"],
+          classes: ["flex-column", "column-1"],
+        },
+      ],
+    },
+    { // form row
+      classes: ["flex"],
+      elements: [ // columns
+        { // columns in row
+          component: null,
+          name: "FileInput",
+          db_column_name: "image",
+          type: "text",
+          model: null,
+          label: "間取りタイプ画像",
+          hint: ".jpeg, .png がサポートされています",
+          required: false,
+          id: "vendor_image_input",
+          preview_text: "アップロードのため、クリックや画像ドロップしてください",
+          limit: "1MB以下",
+          accept: "image/*",
+          rules: [],
+          rule: null,
+          disabled: false,
+          props: ["placeholder", "required", "disabled", "accept", "hint", "model", "image_path", "preview_text", "limit", "rule"],
+          classes: ["flex-column", "column-1"],
+        },
+      ],
+    },
+  ]
+]

@@ -3,7 +3,6 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,django,intellij,pycharm
 
 ### Django ###
-/reactool/
 *.log
 *.pot
 *.pyc
@@ -426,22 +425,6 @@ fabric.properties
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
-/app/public/
-/app/src/
-/app/.env.development
-/app/.env.production
-/app/.gitignore
-/app/index.html
-/app/package.json
-/app/package-lock.json
-/app/README.md
-/app/tsconfig.json
-/app/vite.config.ts
 /app/.idea/
-/app/
-/static/admin/
+/app/dist/
 /static/img/
-/static/rest_framework/
-/static/js/
-/static/svg/
-/static/css/
