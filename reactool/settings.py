@@ -18,6 +18,7 @@ ALLOWED_HOSTS = [
   "bucket-reactool.s3.amazonaws.com",
   "demo.nazareworlds.com",
   "192.168.11.13",
+  "test.nulunus.com"
 ]
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = [
@@ -30,7 +31,7 @@ CORS_ORIGIN_WHITELIST = [
   "https://colors.reactool.jp",
   "https://demo.nazareworlds.com",
   "https://192.168.11.13:8000",
-
+  "https://test.nulunus.com",
 ]
 X_FRAME_OPTIONS = 'ALLOWALL'
 XS_SHARING_ALLOWED_METHODS = ['POST', 'GET', 'OPTIONS', 'PUT', 'DELETE']
