@@ -27,6 +27,7 @@ class Project(models.Model):
   archive = models.BooleanField(default=False)
   legacy = models.BooleanField(default=False)
   token_on = models.BooleanField(default=False)
+  # gtm_id = models.CharField(max_length=100, null=True, blank=True)
   name = models.CharField(null=False, blank=False, max_length=255)
   path = models.SlugField(max_length=255)
   context = models.TextField(null=True, blank=True)

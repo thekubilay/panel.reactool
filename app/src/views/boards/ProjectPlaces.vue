@@ -60,7 +60,7 @@
                  v-model:dr="dr"
                  v-model:activeTab="activeTab"
                  topProgress
-                 :closeAfter="closeAfter"
+                 :closeAfter="true"
                  :tabs="tabs"
                  :progress="progress"
                  :form="reform"

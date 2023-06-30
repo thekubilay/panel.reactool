@@ -50,6 +50,27 @@ export const form:Form[][] = [
       ],
     },
     { // form row
+      classes: ["flex"],
+      elements: [ // columns
+        { // columns in row
+          component: null,
+          name: "InputText",
+          db_column_name: "link",
+          type: "text",
+          model: null,
+          label: "URL",
+          hint: null,
+          placeholder: "https://reactool.jp",
+          required: true,
+          id: "link_input",
+          rules: [],
+          disabled: false,
+          props: ["placeholder", "required", "disabled"],
+          classes: ["flex-column", "column-1"],
+        },
+      ],
+    },
+    { // form row
       classes: ["flex", "justify-space-between"],
       elements: [ // columns
         { // columns in row

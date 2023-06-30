@@ -15,7 +15,6 @@
     "@vueuse/core": "^7.4.0",
     "axios": "^0.24.0",
     "chart.js": "^3.7.1",
-    "esbuild-darwin-64": "^0.15.13",
     "fullcalendar": "^5.10.2",
     "pinia": "^2.0.6",
     "primeicons": "^5.0.0",

@@ -1,7 +1,7 @@
 <template>
   <div ref="container" id="form">
-    <Spinner v-model="loading" :text="onload ? onload : null"/>
-    <TopEdgeProgress id="tpb" v-model="progress"/>
+    <Spinner v-model="_loading" :text="onload ? onload : null"/>
+    <TopEdgeProgress id="tpb" v-model="_progress"/>
     <div v-if="tabs" class="tabs flex align-center">
       <button v-for="(t, idx) in tabs" :key="idx" @click="setActive(idx)" :class="{active:idx===tab}"
               class="tab flex align-center justify-center">{{ t }}
@@ -95,6 +95,14 @@ const {isElementValid} = useFormValidation()
 const container = ref<HTMLElement | null>()
 const imported = ref<boolean>(false)
 const tab = ref<number>(0)
+
+const _progress = computed(() => {
+  return props.progress
+})
+const _loading = computed(() => {
+  return props.loading
+})
+
 
 onMounted(() => {
   reform.value = props.form

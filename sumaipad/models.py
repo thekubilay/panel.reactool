@@ -623,6 +623,7 @@ class MapPlace(models.Model):
   order_id = models.IntegerField(null=True, blank=False)
   show_directions = models.BooleanField(default=False)
   type = models.CharField(max_length=50, null=True)
+  link = models.URLField(null=True, blank=True)
   place = models.CharField(max_length=255, null=True)
   address = models.CharField(max_length=255, null=True)
   context = models.CharField(max_length=255, null=True, blank=True)
