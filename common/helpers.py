@@ -1,9 +1,7 @@
 import requests
-# import cv2
 import mojimoji
 
 from decouple import config
-from reactool.settings import DEBUG
 from PIL import Image
 from pytesseract import pytesseract
 from reactool.settings import GOOGLE_MAP_API_KEY
