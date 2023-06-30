@@ -65,6 +65,7 @@ import Spinner from "../loading/Spinner.vue";
 import DefaultSkeleton from "../skeletons/DefaultSkeleton.vue";
 import TopEdgeProgress from "@/components/loading/TopEdgeProgress.vue";
 import useStore from "@/stores/main"
+import APIexecutor from "@/services/APIexecutor";
 
 
 interface Emits {
@@ -109,6 +110,8 @@ const {
   setProps, setFormQueryValues
 } = useInit()
 const {isElementValid, isFormValid} = useFormValidation()
+const{get} = APIexecutor()
+
 const loading = ref<boolean>(false)
 const imported = ref<boolean>(false)
 const tab = ref<number>(0)
@@ -183,6 +186,7 @@ const inner_scope_submit = (event: KeyboardEvent, clicked = false): void => {
         cancel(response)
       })
     } else {
+      get("project/"+props.query.project_id+"/", "project")
       loading.value = false
     }
   }
