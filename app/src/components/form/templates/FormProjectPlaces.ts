@@ -61,7 +61,7 @@ export const form:Form[][] = [
           label: "URL",
           hint: null,
           placeholder: "https://reactool.jp",
-          required: true,
+          required: false,
           id: "link_input",
           rules: [],
           disabled: false,
