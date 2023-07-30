@@ -11,9 +11,10 @@
         <Button type="button" class="submit-button icon-button" icon="pi pi-list" @click="isRCOn" aria-haspopup="true"
                 aria-controls="rc_menu"/>
 <!--        <Menu id="rc_menu" ref="rcm" class="rc" :model="dropdownItems" :popup="true"/>-->
-        <Button @click="addRoom" style="width: 100px; height: 30px;" class="flex align-center justify-center" label="ルーム追加"></Button>
-        <Button @click="editRoom" style="width: 100px; height: 30px;" class="flex align-center justify-center" label="ルーム編集"></Button>
-        <Button @click="orderRooms" style="width: 100px; height: 30px;" class="flex align-center justify-center" label="ルームの並び替え"></Button>
+        <Button @click="addRoom" style="margin-left:10px;width: 80px; height: 30px;" class="flex align-center justify-center" label="ルーム追加"></Button>
+        <Button @click="editRoom" style="width: 80px; height: 30px;" class="flex align-center justify-center" label="ルーム編集"></Button>
+        <Button @click="addRoomPart" style="width: 130px; height: 30px;" class="flex align-center justify-center" label="ルームパーツ追加"></Button>
+        <Button @click="orderRooms" style="width: 130px; height: 30px;" class="flex align-center justify-center" label="ルームの並び替え"></Button>
       </div>
     </BarTool>
 
@@ -112,6 +113,7 @@ import DialogDelete from "@/components/dialog/DialogDelete.vue";
 import FormNested from "@/components/form/FormNested.vue";
 import ContextColorSimulatorRoomPartItems from "@/components/contexts/ContextColorSimulatorRoomPartItems.vue";
 import {form as FormColorSimulatorRoom} from "@/components/form/templates/FormColorSimulatorRoom";
+import {form as FormColorSimulatorRoomPart} from "@/components/form/templates/FormColorSimulatorRoomPart";
 
 const {
   d, d2, data, dr, rm, reform, query, loading, images, column,
@@ -160,6 +162,21 @@ const editRoom = (): void => {
     endpoints: ["app/color_simulator_rooms/" + room.value?.id, "project_details/" + project.value?.id],
     state: "project"
   }, room.value)
+}
+
+const addRoomPart = (): void => {
+  images.value = []
+  rm.value = false
+  query.value = {
+    color_simulator_room: room.value?.id
+  }
+  reform.value = FormColorSimulatorRoomPart
+  payload.value = {
+    method: "post",
+    endpoints: ["app/color_simulator_room_parts", "project_details/" + project.value?.id],
+    state: "project"
+  }
+  d.value = true
 }
 
 const orderRooms = (): void => {
