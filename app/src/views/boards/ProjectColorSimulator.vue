@@ -10,7 +10,10 @@
                   placeholder="ルーム選択"/>
         <Button type="button" class="submit-button icon-button" icon="pi pi-list" @click="isRCOn" aria-haspopup="true"
                 aria-controls="rc_menu"/>
-        <Menu id="rc_menu" ref="rcm" class="rc" :model="dropdownItems" :popup="true"/>
+<!--        <Menu id="rc_menu" ref="rcm" class="rc" :model="dropdownItems" :popup="true"/>-->
+        <Button @click="addRoom" style="width: 100px; height: 30px;" class="flex align-center justify-center" label="ルーム追加"></Button>
+        <Button @click="editRoom" style="width: 100px; height: 30px;" class="flex align-center justify-center" label="ルーム編集"></Button>
+        <Button @click="orderRooms" style="width: 100px; height: 30px;" class="flex align-center justify-center" label="ルームの並び替え"></Button>
       </div>
     </BarTool>
 
@@ -108,13 +111,15 @@ import ProjectColorSimulator from "@/views/boards/ProjectColorSimulator";
 import DialogDelete from "@/components/dialog/DialogDelete.vue";
 import FormNested from "@/components/form/FormNested.vue";
 import ContextColorSimulatorRoomPartItems from "@/components/contexts/ContextColorSimulatorRoomPartItems.vue";
+import {form as FormColorSimulatorRoom} from "@/components/form/templates/FormColorSimulatorRoom";
 
 const {
   d, d2, data, dr, rm, reform, query, loading, images, column,
   content, project,
   dropdownItems,
-  rcm,
+  rcm, payload,
   rooms, room, roomId,
+  useToggle,
   isRCOn, rowReorder, sro,
   open, removeItem, removeImage,
   submit, submitRowReorder,
@@ -126,6 +131,48 @@ onMounted((): void => {
     if (i === 0) roomId.value = item.id
   })
 })
+
+const addRoom = (): void => {
+  console.log("ok")
+  rm.value = false
+  query.value = {
+    project: project.value?.id || null
+  }
+  images.value = []
+  reform.value = FormColorSimulatorRoom
+  useToggle({
+    method: "post",
+    endpoints: ["app/color_simulator_rooms", "project_details/" + project.value?.id],
+    state: "project"
+  })
+}
+
+
+const editRoom = (): void => {
+  rm.value = true
+  query.value = {
+    project: project.value?.id || null
+  }
+  reform.value = FormColorSimulatorRoom
+  images.value = room.value?.image ? [{image: room.value?.image}] : []
+  useToggle({
+    method: "patch",
+    endpoints: ["app/color_simulator_rooms/" + room.value?.id, "project_details/" + project.value?.id],
+    state: "project"
+  }, room.value)
+}
+
+const orderRooms = (): void => {
+  rm.value = false
+  reform.value = [[]]
+  images.value = []
+  payload.value = {
+    method: "post",
+    endpoints: ["app/color_simulator_rooms", "project_details/" + project.value?.id],
+    state: "project"
+  }
+  d2.value = true
+}
 
 
 watch(() => project.value, val => {

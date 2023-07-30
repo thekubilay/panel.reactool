@@ -8,8 +8,8 @@ export default defineConfig({
   // base: process.env.NODE_ENV === "production" ? "/static/" : "http://0.0.0.0:3000/",
   base: process.env.NODE_ENV === "production" ? "/static/" : "./",
   server: {
-    host: 'localhost', // local
-    // host: '0.0.0.0', // network
+    // host: 'localhost', // local
+    host: '0.0.0.0', // network
     port: 3000,
     open: false,
     watch: {

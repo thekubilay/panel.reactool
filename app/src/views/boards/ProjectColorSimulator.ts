@@ -29,6 +29,7 @@ export default function () {
       icon: "pi pi-plus",
       label: 'ルームを追加',
       command: () => {
+        console.log("ok")
         rm.value = false
         query.value = {
           project: project.value?.id || null
@@ -164,10 +165,11 @@ export default function () {
     d, d2, data, dr, rm, reform, query, loading, images, column,
     content, project,
     dropdownItems,
-    rcm,
+    rcm, payload,
     rooms, room, roomId,
     isRCOn, rowReorder, sro,
     open, removeItem, removeImage,
     submit, submitRowReorder,
+    useToggle,
   }
 }

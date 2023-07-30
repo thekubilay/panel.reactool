@@ -53,7 +53,7 @@ export const request = (path: string, method: Method = "get", data: FormData | o
             url: "logs/errors/",
             data: object,
           }).then(() => {
-            window.location.reload();
+            // window.location.reload();
           })
         }
       }
