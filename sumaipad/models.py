@@ -3,7 +3,6 @@ import random
 from django.db import models
 from projects.models import Project
 from django_resized import ResizedImageField
-from reactool.settings import AWS_S3_CUSTOM_DOMAIN
 
 
 def makeDynamicDirectProjectPath(instance, filename):
@@ -716,7 +715,7 @@ class Link(models.Model):
 
   def image_url(self):
     if self.image:
-      return "https://" + AWS_S3_CUSTOM_DOMAIN + self.image.url
+      return self.image.url
     else:
       return None
 
@@ -740,7 +739,7 @@ class Gallery(models.Model):
 
   def thumbnail_url(self):
     if self.thumbnail:
-      return "https://" + AWS_S3_CUSTOM_DOMAIN + self.thumbnail.url
+      return self.thumbnail.url
     else:
       return None
 
