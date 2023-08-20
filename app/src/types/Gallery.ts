@@ -4,4 +4,5 @@ export interface Gallery {
   order_id: number|null,
   image: string|null,
   thumbnail: string|null,
+  thumbnail_url: string|null,
 }

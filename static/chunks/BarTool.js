@@ -1,1 +1,1 @@
-import{d as o,c as a,I as n,C as r,o as l}from"../main.js";const i=o({__name:"BarTool",props:{height:String},setup(e){return(t,s)=>(l(),a("div",{style:r({height:e.height}),class:"toolbar flex container align-center"},[n(t.$slots,"default")],4))}});export{i as _};
+import{d as o,c as a,J as n,C as r,o as l}from"../main.js";const i=o({__name:"BarTool",props:{height:String},setup(e){return(t,s)=>(l(),a("div",{style:r({height:e.height}),class:"toolbar flex container align-center"},[n(t.$slots,"default")],4))}});export{i as _};

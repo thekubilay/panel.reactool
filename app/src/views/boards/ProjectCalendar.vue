@@ -1,6 +1,12 @@
 <template>
   <div id="project_calendar" class="panel-board overflow-y">
+    <div class="flex align-center justify-end" style="height: 50px">
+      イベントカラー
+      <ColorPicker v-model="color"/>
+    </div>
+
     <FullCalendar ref="cal" :options="options"/>
+
     <Dialog v-model="d" title="スケジュールフォーム">
       <Spinner v-model="loading" text=""/>
       <div id="form">
@@ -17,13 +23,15 @@
             <div class="row flex justify-space-between column-2-space">
               <div class="flex-column column-2-space">
                 <span class="label flex">開始日</span>
-                <p style="height: 34px; font-size: .85rem; padding-top: 4px; color: #969595"
-                   class="date flex align-center">{{ setDateJPDateFormat(form.start.model) }}</p>
+                <Calendar v-model="form.start.model"/>
+                <!--                <p style="height: 34px; font-size: .85rem; padding-top: 4px; color: #969595"-->
+                <!--                   class="date flex align-center">{{ setDateJPDateFormat(form.start.model) }}</p>-->
               </div>
               <div class="flex-column column-2-space">
                 <span class="label flex">終了日</span>
-                <p style="height: 34px; font-size: .85rem; padding-top: 4px; color: #969595"
-                   class="date flex align-center">{{ setDateJPDateFormat(form.end.model) }}</p>
+                <Calendar v-model="form.end.model"/>
+                <!--                <p style="height: 34px; font-size: .85rem; padding-top: 4px; color: #969595"-->
+                <!--                   class="date flex align-center">{{ setDateJPDateFormat(form.end.model) }}</p>-->
               </div>
             </div>
             <div class="row flex justify-space-between column-2-space">
@@ -31,7 +39,8 @@
                 <span class="label flex">開始日<span class="required flex align-start">*必須</span></span>
                 <div class="overlay absolute pointer" @click="clicked('start')"
                      style="width: 100%; height: 100%; z-index: 99"></div>
-                <Calendar v-model="form.start.model" ref="startTime" hour-format="24" timeOnly date-format="yy年mm月dd日"/>
+                <Calendar v-model="form.start.model" ref="startTime" hour-format="24" timeOnly
+                          date-format="yy年mm月dd日"/>
               </div>
               <div class="flex-column column-2-space relative">
                 <span class="label flex">終了日<span class="required flex align-start">*必須</span></span>
@@ -88,12 +97,14 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction'
 import InputText from "primevue/inputtext";
-import Calendar from "primevue/calendar";
 import Editor from "primevue/editor";
 import Dropdown from "primevue/dropdown";
 import MultiSelect from "primevue/multiselect";
 import Dialog from "@/components/dialog/Dialog.vue"
 import DialogDelete from "@/components/dialog/DialogDelete.vue";
+import Calendar from 'primevue/calendar';
+import ColorPicker from 'primevue/colorpicker';
+
 
 import {onMounted, reactive, ref, watch} from "vue";
 import useFormRequestBuilder from "@/helpers/useFormRequestBuilder";
@@ -114,8 +125,7 @@ const startTime = ref<HTMLElement>()
 const endTime = ref<HTMLElement>()
 const response = ref<any>(null)
 const loading = ref<boolean>(false)
-const color = ref<string>("")
-const colors = ref<string[]>([])
+const color = ref<string>("74b9ff")
 const holopts = ref<{ name: string, value: number }[]>([
   {name: "日曜日", value: 0}, {name: "月曜日", value: 1},
   {name: "火曜日", value: 2}, {name: "水曜日", value: 3},
@@ -261,13 +271,15 @@ function removeItem() {
 }
 
 function submit(): void {
+  console.log(color.value)
   let errors: string[] = [];
   let query: CalendarEvent = {
     calendar: project.value?.calendar.id,
     title: form.title.model,
     start: form.start.model,
     end: form.end.model,
-    description: form.description.model
+    description: form.description.model,
+    color: "#" + color.value,
   }
   const keys: string[] = Object.keys(form)
   keys.forEach(key => {
@@ -292,7 +304,7 @@ function submit(): void {
 function submitHolidays(): void {
   payload.value = {
     method: "patch",
-    endpoints: ["app/calendars/"+project.value?.calendar.id, "project_details/" + project.value?.id],
+    endpoints: ["app/calendars/" + project.value?.calendar.id, "project_details/" + project.value?.id],
     state: "project"
   }
   const days: Date[] = []
@@ -323,13 +335,13 @@ function submitHolidays(): void {
         title: "休日",
         start: day,
         end: day,
-        color: "#ff7979"
+        color: "#ff7979",
       })
     })
   })
 
 
-  submitAsFormObject({holiday_codes:holidays.value?.join()}).then(() => {
+  submitAsFormObject({holiday_codes: holidays.value?.join()}).then(() => {
     loading.value = true
     payload.value = {
       method: "post",

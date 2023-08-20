@@ -5,5 +5,6 @@ export interface Links {
   name: string|null,
   link: string|null,
   image: string|null,
+  image_url: string|null,
   thumbnail: string|null,
 }

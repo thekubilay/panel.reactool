@@ -51,7 +51,6 @@
       "assets/main2.css"
     ],
     "assets": [
-      "assets/color.png",
       "assets/primeicons.eot",
       "assets/primeicons.ttf",
       "assets/primeicons.woff",
@@ -178,8 +177,8 @@
   "_menu.esm.js": {
     "file": "chunks/menu.esm.js",
     "imports": [
-      "src/main.ts",
-      "_portal.esm.js"
+      "_portal.esm.js",
+      "src/main.ts"
     ]
   },
   "node_modules/primevue/password/password.esm.js": {
@@ -836,7 +835,6 @@
       "_Dialog.js",
       "_Spinner.js",
       "_BarTool.js",
-      "_Icon.js",
       "_useFormRequestBuilder.js",
       "_useRightClickHandler.js",
       "_FormQuery.js",
@@ -860,7 +858,6 @@
       "_Dialog.js",
       "_Spinner.js",
       "_BarTool.js",
-      "_Icon.js",
       "_FormQuery.js",
       "_DialogDelete.js",
       "_ContextImagesThumbnailContainer.js",
@@ -869,7 +866,8 @@
       "_rules.js",
       "__commonjsHelpers.js",
       "_portal.esm.js",
-      "_plugin-vue_export-helper.js"
+      "_plugin-vue_export-helper.js",
+      "_Icon.js"
     ],
     "css": [
       "assets/ProjectLinks.css"
@@ -1233,34 +1231,23 @@
     "imports": [
       "src/main.ts",
       "_main.js",
-      "node_modules/primevue/calendar/calendar.esm.js",
       "_editor.esm.js",
       "node_modules/primevue/multiselect/multiselect.esm.js",
       "_Dialog.js",
       "_DialogDelete.js",
+      "node_modules/primevue/calendar/calendar.esm.js",
+      "_portal.esm.js",
       "_useFormRequestBuilder.js",
       "_useUtils.js",
       "_Spinner.js",
-      "_index.esm.js",
-      "_index.esm2.js",
-      "_portal.esm.js",
       "_index.esm3.js",
+      "_index.esm.js",
       "_virtualscroller.esm.js",
+      "_index.esm2.js",
       "_plugin-vue_export-helper.js"
     ],
     "css": [
       "assets/ProjectCalendar.css"
-    ]
-  },
-  "node_modules/primevue/calendar/calendar.esm.js": {
-    "file": "chunks/calendar.esm.js",
-    "src": "node_modules/primevue/calendar/calendar.esm.js",
-    "isDynamicEntry": true,
-    "imports": [
-      "src/main.ts",
-      "_index.esm.js",
-      "_index.esm2.js",
-      "_portal.esm.js"
     ]
   },
   "node_modules/primevue/multiselect/multiselect.esm.js": {
@@ -1272,6 +1259,17 @@
       "_index.esm3.js",
       "_index.esm.js",
       "_virtualscroller.esm.js",
+      "_portal.esm.js"
+    ]
+  },
+  "node_modules/primevue/calendar/calendar.esm.js": {
+    "file": "chunks/calendar.esm.js",
+    "src": "node_modules/primevue/calendar/calendar.esm.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/main.ts",
+      "_index.esm.js",
+      "_index.esm2.js",
       "_portal.esm.js"
     ]
   },
@@ -1460,8 +1458,8 @@
     "src": "node_modules/primevue/checkbox/checkbox.esm.js",
     "isDynamicEntry": true,
     "imports": [
-      "src/main.ts",
-      "_index.esm3.js"
+      "_index.esm3.js",
+      "src/main.ts"
     ]
   },
   "node_modules/primevue/textarea/textarea.esm.js": {

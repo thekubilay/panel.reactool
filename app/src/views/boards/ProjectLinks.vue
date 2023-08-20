@@ -14,7 +14,7 @@
         <div class="sheet-row sheet-row-header flex align-center">
           <div class="sheet-cell handle flex align-center"></div>
           <div class="sheet-cell num flex align-center">順番</div>
-          <div class="sheet-cell img flex align-center">画像</div>
+          <div class="sheet-cell value flex align-center">画像</div>
           <div class="sheet-cell value sheet-cell-long flex align-center">サイト名</div>
           <div class="sheet-cell value sheet-cell-long flex align-center">リンク</div>
         </div>
@@ -31,11 +31,14 @@
             <Menu id="rc_menu" ref="rcm" class="rc has-final-action" :model="rightClickMenu" :popup="true"/>
             <div class="sheet-cell handle flex align-center handle grab"><i class="pi pi-bars"></i></div>
             <div class="sheet-cell num flex align-center"><span class="text block">{{ index + 1 }}</span></div>
-            <div class="sheet-cell img flex align-center"><Icon v-if="element.image" svg="image" /></div>
+            <div class="sheet-cell value flex align-center">
+              <img style="width: 100px; height: auto" :src="element.image" alt="">
+            </div>
             <div class="sheet-cell value sheet-cell-long flex align-center">
               <span class="text block">{{ element.name }}</span>
             </div>
-            <div @click.stop="toLink(element)" class="sheet-cell value  sheet-cell-long flex align-center"><span style="color: blue; text-decoration: underline;" class="text block">サイトへ飛ぶ</span></div>
+            <div @click.stop="toLink(element)" class="sheet-cell value  sheet-cell-long flex align-center"><span
+              style="color: blue; text-decoration: underline;" class="text block">サイトへ飛ぶ</span></div>
           </div>
         </template>
       </draggable>
@@ -43,6 +46,7 @@
 
     <Dialog v-model="d" title="ルートフォーム">
       <FormQuery v-model="d"
+                 v-model:dr="dr"
                  close-after
                  topProgress
                  :progress="progress"
@@ -98,7 +102,7 @@ const rm = ref<boolean>(false)
 const loading = ref<boolean>(false)
 
 
-function toLink(element:Links) {
+function toLink(element: Links) {
   window.open(element.link || "#")
 }
 
@@ -107,7 +111,7 @@ function create() {
 }
 
 function open(element: Links) {
-  images.value = element.image ? [{image: element.image}]: []
+  images.value = element.image ? [{image: element.image}] : []
   rm.value = true
   useToggle({
     method: 'patch',
@@ -132,6 +136,7 @@ function removeImage(id: number | null) {
 function removeItem() {
   loading.value = true
   remove('app/links/' + data.value?.id).then(() => {
+    console.log("removed")
     dr.value = false
     get("project_details/" + project.value?.id, "project").then(() => {
       d.value = false

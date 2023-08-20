@@ -3,6 +3,7 @@ import random
 from django.db import models
 from projects.models import Project
 from django_resized import ResizedImageField
+from reactool.settings import AWS_S3_CUSTOM_DOMAIN
 
 
 def makeDynamicDirectProjectPath(instance, filename):
@@ -374,6 +375,7 @@ class LoanSetting(models.Model):
       self.id = new_id
     super().save(*args, **kwargs)
 
+
 class BuildingBankType(models.Model):
   building = models.ForeignKey(Building, on_delete=models.CASCADE, related_name="bank_types")
   order_id = models.IntegerField(null=True, blank=False)
@@ -712,6 +714,12 @@ class Link(models.Model):
   def __str__(self):
     return self.name
 
+  def image_url(self):
+    if self.image:
+      return "https://" + AWS_S3_CUSTOM_DOMAIN + self.image.url
+    else:
+      return None
+
   def save(self, *args, **kwargs):
     new_id = random.randint(100000000, 999999999)
     if not Link.objects.filter(id=self.id).exists():
@@ -729,6 +737,12 @@ class Gallery(models.Model):
 
   class Meta:
     ordering = ["order_id"]
+
+  def thumbnail_url(self):
+    if self.thumbnail:
+      return "https://" + AWS_S3_CUSTOM_DOMAIN + self.thumbnail.url
+    else:
+      return None
 
   def save(self, *args, **kwargs):
     new_id = random.randint(100000000, 999999999)

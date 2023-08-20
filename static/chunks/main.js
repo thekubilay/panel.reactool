@@ -1,4 +1,4 @@
-import{bS as d,bT as I,bU as b}from"../main.js";if(typeof FullCalendarVDom=="undefined")throw new Error("Please import the top-level fullcalendar lib before attempting to import a plugin.");var tt=FullCalendarVDom.Component,m=FullCalendarVDom.createElement,Jr=FullCalendarVDom.render,ae=FullCalendarVDom.createRef,Ae=FullCalendarVDom.Fragment,Qt=FullCalendarVDom.createContext,Qr=FullCalendarVDom.createPortal,Et=FullCalendarVDom.flushSync,en=FullCalendarVDom.unmountComponentAtNode;/*!
+import{bT as d,bU as I,bV as b}from"../main.js";if(typeof FullCalendarVDom=="undefined")throw new Error("Please import the top-level fullcalendar lib before attempting to import a plugin.");var tt=FullCalendarVDom.Component,m=FullCalendarVDom.createElement,Jr=FullCalendarVDom.render,ae=FullCalendarVDom.createRef,Ae=FullCalendarVDom.Fragment,Qt=FullCalendarVDom.createContext,Qr=FullCalendarVDom.createPortal,Et=FullCalendarVDom.flushSync,en=FullCalendarVDom.unmountComponentAtNode;/*!
 FullCalendar v5.11.5
 Docs & License: https://fullcalendar.io/
 (c) 2022 Adam Shaw

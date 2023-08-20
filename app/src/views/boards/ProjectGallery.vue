@@ -15,7 +15,7 @@
           <div class="sheet-cell handle flex align-center"></div>
           <div class="sheet-cell num flex align-center">順番</div>
           <div class="sheet-cell value sheet-cell-long flex align-center">画像名</div>
-<!--          <div class="sheet-cell value flex align-center">タイプ</div>-->
+          <!--          <div class="sheet-cell value flex align-center">タイプ</div>-->
         </div>
       </div>
       <draggable tag="div"
@@ -31,12 +31,9 @@
             <div class="sheet-cell handle flex align-center handle grab"><i class="pi pi-bars"></i></div>
             <div class="sheet-cell num flex align-center"><span class="text block">{{ index + 1 }}</span></div>
             <div class="sheet-cell value sheet-cell-long flex align-center">
-              <Icon svg="image"/>
-              <span class="text block" style="padding-bottom: 2px; width: calc(100% - 30px); margin-left: 5px">
-                {{ element.image.split("/", 6)[5].split(".")[0] }}
-              </span>
+              <img style="width: 100px; height: auto" :src="element.thumbnail_url" alt="">
             </div>
-<!--            <div class="sheet-cell value flex align-center"><span class="text block">{{ element.type }}</span></div>-->
+            <!--            <div class="sheet-cell value flex align-center"><span class="text block">{{ element.type }}</span></div>-->
           </div>
         </template>
       </draggable>
@@ -86,8 +83,13 @@ const gallery = ref<Gallery[]>(project.value?.gallery || [])
 function create() {
   useToggle({method: 'post', endpoints: ['app/galleries', 'project_details/' + project.value?.id], state: "project"})
 }
-function open(element:Gallery) {
-  useToggle({method: 'patch', endpoints: ['app/galleries/'+element.id, 'project_details/' + project.value?.id], state: "project"})
+
+function open(element: Gallery) {
+  useToggle({
+    method: 'patch',
+    endpoints: ['app/galleries/' + element.id, 'project_details/' + project.value?.id],
+    state: "project"
+  })
 }
 
 const rightClickMenu = ref<DropdownMenu[]>([
@@ -104,6 +106,7 @@ const rightClickMenu = ref<DropdownMenu[]>([
   {
     label: "行を削除する",
     command: () => {
+      console.log("ok")
       content.value = true
       remove("app/galleries/" + data.value?.id).then(() => {
         get("project_details/" + project.value?.id, "project").then(() => {
@@ -111,7 +114,8 @@ const rightClickMenu = ref<DropdownMenu[]>([
         })
       })
     }
-  },])
+  },
+])
 
 watch(() => project.value, val => {
   gallery.value = val?.gallery || []

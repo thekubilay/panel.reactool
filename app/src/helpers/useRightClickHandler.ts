@@ -7,10 +7,10 @@ export default function (data: { value: object|null }) {
 
   onClickOutside(rcm, (e: any): void => {
     if (rcm.value && rcmOpened.value) {
-      rcm.value.toggle()
-      setTimeout(():void => {
-        rcmOpened.value = false
-      }, 100)
+      // rcm.value.toggle()
+      // setTimeout(():void => {
+      //   rcmOpened.value = false
+      // }, 100)
     }
   })
 

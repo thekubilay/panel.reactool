@@ -11,12 +11,16 @@ from sumaipad.models import (ColorSimulatorRoom, ColorSimulatorRoomPart,
 
 
 class LinkSerializer(serializers.ModelSerializer):
+  image_url = serializers.StringRelatedField(required=False, read_only=True)
+
   class Meta:
     model = Link
     fields = "__all__"
 
 
 class GallerySerializer(serializers.ModelSerializer):
+  thumbnail_url = serializers.StringRelatedField(required=False, read_only=True)
+
   class Meta:
     model = Gallery
     fields = "__all__"
