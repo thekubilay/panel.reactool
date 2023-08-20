@@ -450,7 +450,7 @@
       "_plugin-vue_export-helper.js"
     ],
     "css": [
-      "assets/Tutorials2.css"
+      "assets/Tutorials.css"
     ]
   },
   "src/views/admin/TutorialImages.vue": {
@@ -533,7 +533,7 @@
       "_plugin-vue_export-helper.js"
     ],
     "css": [
-      "assets/Tutorials.css"
+      "assets/Tutorials2.css"
     ]
   },
   "src/views/boards/Salon.vue": {
