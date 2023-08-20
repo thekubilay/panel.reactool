@@ -23,7 +23,7 @@
                  :list="gallery" class="sb-container ss-container" handle=".handle" item-key="id">
         <template #item="{ element, index }">
           <div @contextmenu="isRCOn($event, element)"
-               @click="open(element)"
+               style="cursor: default;"
                aria-haspopup="true"
                aria-controls="plan_rc_menu"
                class="sheet-row flex align-center list-group-item relative pointer">
