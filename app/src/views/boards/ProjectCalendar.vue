@@ -1,8 +1,14 @@
 <template>
   <div id="project_calendar" class="panel-board overflow-y">
     <div class="flex align-center justify-end" style="height: 50px">
-      イベントカラー
-      <ColorPicker v-model="color"/>
+      <div>
+        休み名
+        <input v-model="holidayName"/>
+      </div>
+      <div>
+        イベントカラー
+        <ColorPicker v-model="color"/>
+      </div>
     </div>
 
     <FullCalendar ref="cal" :options="options"/>
@@ -121,6 +127,7 @@ const {remove, submitAsFormObject} = useFormRequestBuilder()
 const {d, d2, dr, data, useToggle,} = useHelpers()
 const {daysInBetween, setDateJPDateFormat, findDaysInAYear} = useUtils()
 const {project, payload, content} = useStore()
+const holidayName = ref("")
 const startTime = ref<HTMLElement>()
 const endTime = ref<HTMLElement>()
 const response = ref<any>(null)
@@ -313,7 +320,7 @@ function submitHolidays(): void {
     findDaysInAYear(holiday).forEach(day => {
       days.push({
         calendar: project.value?.calendar.id,
-        title: "休日",
+        title: holidayName.value,
         start: day,
         end: day,
         holiday: true,
@@ -332,7 +339,7 @@ function submitHolidays(): void {
     findDaysInAYear(holiday).forEach(day => {
       removeDays.push({
         calendar: project.value?.calendar.id,
-        title: "休日",
+        title: holidayName.value,
         start: day,
         end: day,
         color: "#ff7979",
