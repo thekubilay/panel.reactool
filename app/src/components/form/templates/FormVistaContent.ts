@@ -19,7 +19,7 @@ export const form: Form[][] = [
           id: "day_time_input",
           disabled: false,
           // @ts-ignore
-          options: [{name: "昼", value: "昼"}, {name: "夕", value: "夕"}],
+          options: [{name: "昼", value: "昼"}, {name: "夕", value: "夕"}, {name: "夜", value: "夜"}],
           optionLabel: "name",
           optionValue: "value",
           placeholder: "選択",
