@@ -18,7 +18,7 @@ export default function () {
   const reform = ref<Form[][]>()
   const query = ref<Vista | VistaContent>()
   const time = ref<string>("昼")
-  const times = ref<string[]>(["昼", "夕"])
+  const times = ref<string[]>(["昼", "夕", "夜"])
   const type = ref<string>("")
   const types = ref<string[]>([])
   const vistas = ref<VistaContent[] | undefined>([])
