@@ -13,7 +13,7 @@
           <div class="cell-handle flex-column align-center justify-center grab"><i class="pi pi-bars"></i></div>
           <div class="cell-content pointer"
                @click="open(element)"
-               :class="{sold:element.status === '完売済',
+               :class="{sold:element.status === '完売済' || element.status === '成約済',
                       sell: element.status === '販売中',
                       stop: element.status === '商談中',
                       next: element.status === '次期分譲'}">

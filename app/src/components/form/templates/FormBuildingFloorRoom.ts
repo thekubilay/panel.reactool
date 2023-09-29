@@ -63,10 +63,13 @@ export const form: Form[][] = [
           rules: [],
           id: "status_input",
           disabled: false,
-          options: [{name: "販売中", value: "販売中"}, {name: "商談中", value: "商談中"}, {
-            name: "次期分譲",
-            value: "次期分譲"
-          }, {name: "完売済", value: "完売済"}],
+          options: [
+            {name: "販売中", value: "販売中"},
+            {name: "商談中", value: "商談中"},
+            {name: "次期分譲", value: "次期分譲"},
+            {name: "完売済", value: "完売済"},
+            {name: "成約済", value: "成約済"}
+          ],
           optionLabel: "name",
           optionValue: "value",
           placeholder: "選択",
