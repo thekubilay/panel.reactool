@@ -132,6 +132,7 @@ onMounted(() => {
   position: relative;
   height: calc(100% - 30px);
   overflow-y: scroll;
+  max-height: 250px;
   overflow-x: hidden;
 }
 
