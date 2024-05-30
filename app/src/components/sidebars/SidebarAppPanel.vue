@@ -106,10 +106,6 @@ onMounted(() => {
   height: 28px;
 }
 
-#sidebar_app > nav .ctr1 a > span.icon-wrapper {
-//width: 40px; margin-right: 10px;
-}
-
 #sidebar_app > nav .ctr1 .part0 a.active {
   background-color: rgba(99, 102, 241, 0.4);
 }
@@ -126,6 +122,10 @@ onMounted(() => {
 
 #sidebar_app > nav .ctr2 .part .body a:hover {
   background-color: rgba(241, 241, 241, 0.1);
+}
+
+#sidebar_app > nav .ctr2 .part1 {
+  margin-bottom: 15px;
 }
 
 #sidebar_app > nav .ctr2 .part .body {
